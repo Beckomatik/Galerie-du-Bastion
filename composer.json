@@ -1,0 +1,15 @@
+{
+    "name": "kercode/galeriedubastion",
+    "autoload": {
+        "psr-4": {
+            "Projet\\": "./app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alan Dauphin",
+            "email": "alandauphin@hotmail.fr"
+        }
+    ],
+    "require": {}
+}
