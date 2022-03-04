@@ -6,21 +6,34 @@ class FrontController
 {
     function home()
     {
-        require "app/views/Front/home.php";
+        require "app/Views/Front/home.php";
     }
 
-//     function portfolio()
-//     {
-//         require "app/views/Front/protfolio.php";
-//     }
+    function about()
+    {
+        require "app/Views/Front/about.php";
+    }
 
-//     function contact()
-//     {
-//         $mails = new \Projet\Models\ContactModel();
-//         $allMails = $mails->getMails();
-       
-//         require "app/views/Front/contact.php";
-//     }
+    function portfolio()
+    {
+        require "app/Views/Front/portfolio.php";
+    }
+
+    function blog()
+    {
+        require "app/Views/Front/blog.php";
+    }
+
+    function shop()
+    {
+        require "app/Views/Front/shop.php";
+    }
+
+
+    function contact()
+    {
+        require "app/Views/Front/contact.php";
+    }
 
 //       /*===================== mail formulaire de contact==================================*/
 
@@ -31,9 +44,9 @@ class FrontController
   
 //           if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
 //               $Mail = $postMail->postMail($lastname, $firstname, $mail, $phone, $objet,  $content);
-//               require 'app/views/Front/confirmeContact.php';
+//               require 'app/Views/Front/confirmeContact.php';
 //           } else {
-//               header('Location: app/views/frontend/error.php');
+//               header('Location: app/Views/frontend/error.php');
 //           }
 //       }
 }

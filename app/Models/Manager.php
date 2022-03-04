@@ -2,17 +2,17 @@
 namespace Projet\Models;
 
 
-// class Manager
-// {
-//     protected function dbConnect()
-//     {
+class Manager
+{
+    protected function dbConnect()
+    {
 
-//         try {
-//             $bdd = new \PDO('mysql:host=localhost;dbname=kercode;charset=utf8', 'root', '');
-//             return $bdd;
-//         } catch (Exception $e) {
+        try {
+            $bdd = new \PDO('mysql:host=localhost;dbname=kercode;charset=utf8', 'root', '');
+            return $bdd;
+        } catch (Exception $e) {
 
-//             die('Erreur : ' . $e->getMessage());
-//         }
-//     }
-// }
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
+}

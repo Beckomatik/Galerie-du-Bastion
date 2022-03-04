@@ -4,7 +4,7 @@ namespace Projet\Models;
 
 
 class ContactModel extends Manager
-// {
+{
 //     public function postMail($lastname, $firstname, $mail, $phone, $objet,  $content)
 //     {
 //         $bdd = $this->dbConnect();
@@ -51,4 +51,4 @@ class ContactModel extends Manager
 //          return $req->fetch();
 //       }
 
-// }
+}

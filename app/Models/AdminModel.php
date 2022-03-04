@@ -4,7 +4,7 @@ namespace Projet\Models;
 
 
 class AdminModel extends Manager
-// {
+{
 //     public function creatAdmin($firstname, $mdp, $mail)
 //     {
 //         $bdd = $this->dbConnect();
@@ -47,4 +47,4 @@ class AdminModel extends Manager
 //         return $req;
 //     }
 
-// }
+}

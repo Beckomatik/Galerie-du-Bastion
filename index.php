@@ -9,12 +9,22 @@ try{
     $frontController = new \Projet\Controllers\FrontController();//objet controler
 
     if(isset($_GET['action'])){
+        
         if($_GET['action'] == 'contact'){
             $frontController->contact();
         }
 
+        elseif($_GET['action'] == 'about'){
+            $frontController->about();
+        }
         elseif($_GET['action'] == 'portfolio'){
             $frontController->portfolio();
+        }
+        elseif($_GET['action'] == 'blog'){
+            $frontController->blog();
+        }
+        elseif($_GET['action'] == 'shop'){
+            $frontController->shop();
         }
          // envois de mail dans la bdd
          elseif ($_GET['action'] == 'contactPost') {
@@ -35,5 +45,5 @@ try{
     }
 
 } catch(Exception $e){
-    require 'app/views/front/error.php';
+    require 'app/Views/front/error.php';
 }

@@ -3,11 +3,11 @@
 namespace Projet\Controllers;
 
 class adminController
-//{
+{
 //     // connexion à la page de connexion
 //     function createPageAdmin()
 //     {
-//         require 'app/views/Admin/createAdmin.php';
+//         require 'app/Views/Admin/createAdmin.php';
 //     }
 
 
@@ -17,7 +17,7 @@ class adminController
 //          $userManager = new \Projet\Models\AdminModel();
 //          $user = $userManager->creatAdmin($firstname, $mdp, $mail);
 
-//          require 'app/views/Admin/createAdmin.php';
+//          require 'app/Views/Admin/createAdmin.php';
  
 //      }
 
@@ -25,7 +25,7 @@ class adminController
 //     function connexionAdmin()
 //     {
 
-//         require 'app/views/Admin/connexion.php';
+//         require 'app/Views/Admin/connexion.php';
 //     }
 
 //     // connexion au tableau de bord apres comparaison du mot de passe
@@ -50,12 +50,12 @@ class adminController
 
 //         if ($isPasswordCorrect) {
 
-//             require 'app/views/Admin/dashboard.php';
+//             require 'app/Views/Admin/dashboard.php';
 //         } 
         
 //         else {
 //             echo 'vos identifients sont incorrect';
-//             //require('views/backend/erreur.php');
+//             //require('Views/backend/erreur.php');
 //         }
 
 
@@ -66,7 +66,7 @@ class adminController
 //         $mails = new \Projet\Models\ContactModel();
 //         $allMails = $mails->getMails();
 
-//         require 'app/views/Admin/emailView.php';
+//         require 'app/Views/Admin/emailView.php';
 //     }
 
 //      /*=========================== supprimer un mail ==================================*/
@@ -84,7 +84,7 @@ class adminController
 //         $mail = new \Projet\Models\ContactModel();
 //         $mailOne = $mail->getMail($id);
 
-//         require 'app/views/Admin/email.php';
+//         require 'app/Views/Admin/email.php';
 //     }
 
 //     /* retour tableau de bord */
@@ -93,7 +93,7 @@ class adminController
 //         $countMail = new \Projet\Models\ContactModel();
 //         $nbrMail = $countMail->countMail();
 
-//         require 'app/views/Admin/dashboard.php';
+//         require 'app/Views/Admin/dashboard.php';
 //     }
 
 
@@ -101,7 +101,7 @@ class adminController
 //     {
 //         $userManager = new \Projet\Models\AdminModel();
 //         $newCompte = $userManager->compte($id);
-//         require 'app/views/Admin/compte.php';
+//         require 'app/Views/Admin/compte.php';
 //     }
 
 //     function newCompte($id, $firstname, $mail)
@@ -114,4 +114,4 @@ class adminController
 //         header('Location: indexAdmin.php?action=compte&id=' . $id);
 //     }
 
-// }
+}
