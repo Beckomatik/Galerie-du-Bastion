@@ -7,9 +7,9 @@ burgerMenu.addEventListener('click',function(){
 });
 
 // boite modale
-function modale() {
-  mod = document.getElementById("modid");
-  mod.style.visibility = (mod.style.visibility == "visible") ? "hidden" : "visible";
-  }
+// function modale() {
+//   mod = document.getElementById("modid");
+//   mod.style.visibility = (mod.style.visibility == "visible") ? "hidden" : "visible";
+//   }
 
  
