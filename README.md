@@ -1,0 +1,1 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/77504e72828d1359c8ce/maintainability)](https://codeclimate.com/github/Beckomatik/Galerie-du-Bastion/maintainability)
