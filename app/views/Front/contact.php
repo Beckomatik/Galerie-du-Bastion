@@ -1,6 +1,6 @@
 <?php include ('header.php'); ?>
 
-<main class="container">
+<main class="container contact">
         <div class="formulaire">
             <h1>Contactez moi !</h1>
             <p>Une questions sur mon métier et mes services ? Ne restez pas dans le doute et posez-moi toutes vos questions !</p>
@@ -27,6 +27,13 @@
 
             </form>
         </div>
+        <h2>Trouver le studio</h2>
+        <p>Vous pouvez me retrouver ou m'écrire au : </p>
+        <p>5 Pont des Indes</p>
+        <p>56100 Lorient</p>
+        <div id="geomap">
+	    <!-- Ici s'affichera la carte -->
+	    </div>
 
 </main>
 

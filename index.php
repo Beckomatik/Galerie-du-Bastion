@@ -26,20 +26,26 @@ try{
         elseif($_GET['action'] == 'shop'){
             $frontController->shop();
         }
-         // envois de mail dans la bdd
-         elseif ($_GET['action'] == 'contactPost') {
-            $lastname = htmlspecialchars($_POST['name']);
-            $firstname = htmlspecialchars($_POST['firstname']);
-            $mail = htmlspecialchars($_POST['mail']);
-            $phone = htmlspecialchars($_POST['phone']);
-            $objet = htmlspecialchars($_POST['object']);
-            $content = htmlspecialchars($_POST['content']);
-            if (!empty($lastname) && (!empty($firstname) && (!empty($mail) && (!empty($phone) && (!empty($objet) && (!empty($content))))))) {
-                $frontController->contactPost($lastname, $firstname, $mail, $phone, $objet, $content);
-            } else {
-                throw new Exception('tous les champs ne sont pas remplis');
-            }
+        elseif($_GET['action'] == 'legales'){
+            $frontController->legales();
         }
+        elseif($_GET['action'] == 'cgv'){
+            $frontController->cgv();
+        }
+         // envois de mail dans la bdd
+        //  elseif ($_GET['action'] == 'contactPost') {
+        //     $lastname = htmlspecialchars($_POST['name']);
+        //     $firstname = htmlspecialchars($_POST['firstname']);
+        //     $mail = htmlspecialchars($_POST['mail']);
+        //     $phone = htmlspecialchars($_POST['phone']);
+        //     $objet = htmlspecialchars($_POST['object']);
+        //     $content = htmlspecialchars($_POST['content']);
+        //     if (!empty($lastname) && (!empty($firstname) && (!empty($mail) && (!empty($phone) && (!empty($objet) && (!empty($content))))))) {
+        //         $frontController->contactPost($lastname, $firstname, $mail, $phone, $objet, $content);
+        //     } else {
+        //         throw new Exception('tous les champs ne sont pas remplis');
+        //     }
+        // }
     }else{
         $frontController->home();
     }

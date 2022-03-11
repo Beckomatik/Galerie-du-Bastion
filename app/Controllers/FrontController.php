@@ -34,6 +34,15 @@ class FrontController
     {
         require "app/Views/Front/contact.php";
     }
+    function legales()
+    {
+        require "app/Views/Front/legales.php";
+    }
+    
+    function cgv()
+    {
+        require "app/Views/Front/cgv.php";
+    }
 
 //       /*===================== mail formulaire de contact==================================*/
 
