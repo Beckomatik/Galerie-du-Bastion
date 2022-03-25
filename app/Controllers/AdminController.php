@@ -2,13 +2,13 @@
 
 namespace Projet\Controllers;
 
-class adminController
+class AdminController
 {
-//     // connexion à la page de connexion
-//     function createPageAdmin()
-//     {
-//         require 'app/Views/Admin/createAdmin.php';
-//     }
+    // connexion à la page de connexion
+    // function createPageAdmin()
+    // {
+    //     require 'app/Views/Admin/createAdmin.php';
+    // }
 
 
 //      // création de l'administrateur
@@ -21,12 +21,12 @@ class adminController
  
 //      }
 
-//      // connexion à la page de connexion
-//     function connexionAdmin()
-//     {
+     // connexion à la page de connexion
+    function connexionAdmin()
+    {
 
-//         require 'app/Views/Admin/connexion.php';
-//     }
+        require 'app/Views/Admin/connexion.php';
+    }
 
 //     // connexion au tableau de bord apres comparaison du mot de passe
 

@@ -15,7 +15,7 @@
     <p>&nbsp;</p>
 
     <h2><strong>Réalisation du site :</strong></h2>
-    <p>Alan Nihp – <a title="Alan Nihp, développeur web en Bretagne sud" href="/" target="_blank">www.monsite.fr</a>
+    <p>Alan Dauphin – <a title="Alan Dauphin, développeur web en Bretagne sud" href="/" target="_blank">www.monsite.fr</a>
     </p>
     <p>&nbsp;</p>
 

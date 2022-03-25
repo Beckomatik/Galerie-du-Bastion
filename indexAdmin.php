@@ -5,10 +5,23 @@ session_start();
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-// try {
+try {
 
-//     $backController = new \Projet\Controllers\AdminController();//objet controler
+    $adminController = new \Projet\Controllers\AdminController(); //objet controler
 
+        if(isset($_GET['action'])){
+            $adminController->connexionAdmin();
+        }
+
+        else 
+        {
+            $adminController->home();
+        }
+    }
+catch (Exception $e)
+{
+    require 'app/Views/Admin/error.php';
+}
     
 //     if (isset($_GET['action'])) {
 

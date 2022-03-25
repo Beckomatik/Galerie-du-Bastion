@@ -46,16 +46,16 @@ class FrontController
 
 //       /*===================== mail formulaire de contact==================================*/
 
-//       function contactPost($lastname, $firstname, $mail, $phone, $objet,  $content)
-//       {
-//           $postMail = new \Projet\Models\ContactModel();
+      function contactPost($data)
+      {
+          $postMail = new \Projet\Models\ContactModel();
   
   
-//           if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-//               $Mail = $postMail->postMail($lastname, $firstname, $mail, $phone, $objet,  $content);
-//               require 'app/Views/Front/confirmeContact.php';
-//           } else {
-//               header('Location: app/Views/frontend/error.php');
-//           }
-//       }
+          if (filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+              $Mail = $postMail->postMail($data);
+              require 'app/Views/Front/confirmeContact.php';
+          } else {
+              header('Location: app/Views/frontend/error.php');
+          }
+      }
 }

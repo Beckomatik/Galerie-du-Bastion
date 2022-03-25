@@ -7,8 +7,8 @@ class AdminModel extends Manager
 {
 //     public function creatAdmin($firstname, $mdp, $mail)
 //     {
-//         $bdd = $this->dbConnect();
-//         $user = $bdd->prepare('INSERT INTO administrateurs( firstname,mdp, mail )  VALUE ( ?, ?, ?)');
+//         $db = $this->dbConnect();
+//         $user = $db->prepare('INSERT INTO administrateurs( firstname,mdp, mail )  VALUE ( ?, ?, ?)');
 //         $user->execute(array($firstname, $mdp, $mail));
     
 //         return $user;
@@ -16,8 +16,8 @@ class AdminModel extends Manager
 
 //     public function recupMdp($mail, $mdp)
 //     {
-//         $bdd = $this->dbConnect();
-//         $req = $bdd->prepare('SELECT * FROM administrateurs  WHERE mail=?');
+//         $db = $this->dbConnect();
+//         $req = $db->prepare('SELECT * FROM administrateurs  WHERE mail=?');
 //         $req->execute(array($mail));
 
 //         return $req;
@@ -26,8 +26,8 @@ class AdminModel extends Manager
 
 //     public function compte($id)
 //     {
-//         $bdd = $this->dbConnect();
-//         $req = $bdd->prepare('SELECT firstname, mail FROM administrateurs WHERE id = ?');
+//         $db = $this->dbConnect();
+//         $req = $db->prepare('SELECT firstname, mail FROM administrateurs WHERE id = ?');
 //         $req->execute(array($id));
 //         return $req->fetch();
       
@@ -37,8 +37,8 @@ class AdminModel extends Manager
 
 //     public function newCompte($id, $firstname, $mail)
 //     {
-//         $bdd = $this->dbConnect();
-//         $req = $bdd->prepare('UPDATE administrateurs SET firstname = :firstname , mail = :mail WHERE id = :id');
+//         $db = $this->dbConnect();
+//         $req = $db->prepare('UPDATE administrateurs SET firstname = :firstname , mail = :mail WHERE id = :id');
 //         $req->execute([
 //             'mail' => $mail,
 //             'firstname' => $firstname,

@@ -255,6 +255,34 @@ h2{
   height: 100%;
   object-fit: cover;
 }
+/* les derniers articles de blog */
+
+
+#home-article{
+  width: 100%;
+  /* border: 10px solid yellow; */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+
+#home-blog .txt-article {
+  /* border: 2px solid red; */
+  width: 100%;
+  height: 30vh;
+  overflow:hidden;
+}
+
+#home-blog .txt-article .btn{
+  width: 50%;
+}
+
+
+
+#home-blog #home-article img{
+  width: 100%;
+}
 
 /* PAGE CONTACT */
 

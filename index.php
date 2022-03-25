@@ -32,20 +32,27 @@ try{
         elseif($_GET['action'] == 'cgv'){
             $frontController->cgv();
         }
-         // envois de mail dans la bdd
-        //  elseif ($_GET['action'] == 'contactPost') {
-        //     $lastname = htmlspecialchars($_POST['name']);
-        //     $firstname = htmlspecialchars($_POST['firstname']);
-        //     $mail = htmlspecialchars($_POST['mail']);
-        //     $phone = htmlspecialchars($_POST['phone']);
-        //     $objet = htmlspecialchars($_POST['object']);
-        //     $content = htmlspecialchars($_POST['content']);
-        //     if (!empty($lastname) && (!empty($firstname) && (!empty($mail) && (!empty($phone) && (!empty($objet) && (!empty($content))))))) {
-        //         $frontController->contactPost($lastname, $firstname, $mail, $phone, $objet, $content);
-        //     } else {
-        //         throw new Exception('tous les champs ne sont pas remplis');
-        //     }
-        // }
+        //  envois de mail dans la bdd
+         elseif ($_GET['action'] == 'contactPost') {
+            $fullname = htmlspecialchars($_POST['fullname']);
+            $email = htmlspecialchars($_POST['email']);
+            $phone = htmlspecialchars($_POST['phone']);
+            $object = htmlspecialchars($_POST['objet']);
+            $content = htmlspecialchars($_POST['content']);
+            // $createdat = htmlspecialchars($_POST['created_at']);
+            $data = [
+                "fullname"=>$fullname,
+                "email"=>$email,
+                "phone"=>$phone,
+                "objet"=>$object,
+                "content"=>$content
+            ];
+            if (!empty($fullname) && (!empty($email) && (!empty($phone) && (!empty($object) && (!empty($content)))))) {
+                $frontController->contactPost($data);
+            } else {
+                throw new Exception('tous les champs ne sont pas remplis');
+            }
+        }
     }else{
         $frontController->home();
     }

@@ -8,8 +8,8 @@ class Manager
     {
 
         try {
-            $bdd = new \PDO('mysql:host=localhost;dbname=kercode;charset=utf8', 'root', '');
-            return $bdd;
+            $db = new \PDO('mysql:host=localhost;dbname=galeriedubastion;charset=utf8', 'root', '');
+            return $db;
         } catch (Exception $e) {
 
             die('Erreur : ' . $e->getMessage());

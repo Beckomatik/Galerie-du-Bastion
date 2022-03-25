@@ -16,7 +16,7 @@
                 <input type="tel" id="phone" name="phone" placeholder="Votre numéro de téléphone">
 
                 <label for="object">Objet</label>
-                <input type="text" id="object" name="object" placeholder="Objet de votre demande">
+                <input type="text" id="object" name="objet" placeholder="Objet de votre demande">
 
 
                 <label for="content">Votre message <span>*</span></label>
