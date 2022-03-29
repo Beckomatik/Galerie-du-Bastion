@@ -5,23 +5,31 @@ namespace Projet\Models;
 
 class AdminModel extends Manager
 {
-//     public function creatAdmin($firstname, $mdp, $mail)
-//     {
-//         $db = $this->dbConnect();
-//         $user = $db->prepare('INSERT INTO administrateurs( firstname,mdp, mail )  VALUE ( ?, ?, ?)');
-//         $user->execute(array($firstname, $mdp, $mail));
+    public function createAdmin($firstname, $lastname, $mdp, $email)
+    {
+        $db = $this->dbConnect();
+        $user = $db->prepare('INSERT INTO admins( firstname, lastname, mdp, email )  VALUE( ?, ?, ?, ?)');
+        $user->execute(array($firstname, $lastname, $mdp, $email));
     
-//         return $user;
-//     }
+        return $user;
+    }
 
-//     public function recupMdp($mail, $mdp)
-//     {
-//         $db = $this->dbConnect();
-//         $req = $db->prepare('SELECT * FROM administrateurs  WHERE mail=?');
-//         $req->execute(array($mail));
+    public function recupMdp($mail, $mdp)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT * FROM admins WHERE email=?');
+        $req->execute(array($mail));
 
-//         return $req;
-//     }
+        return $req;
+    }
+    public function sendArticle($title, $picture, $content)
+    {
+        $db = $this->dbConnect();
+        $post = $db->prepare('INSERT INTO blogposts (title, picture, content) VALUE(?,?,?)');
+        $post->execute(array($title, $picture, $content));
+
+        return $post;
+    }
 
 
 //     public function compte($id)

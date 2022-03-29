@@ -22,13 +22,13 @@ class ContactModel extends Manager
 
 //        /*================================ nombres de mail  ====================================*/
 
-//     public function countMail()
-//     {
-//         $db = $this->dbConnect();
-//         $req = $db->prepare('SELECT COUNT(id) FROM contacts WHERE id');
-//         $req->execute(array());
-//         return $req;
-//     }
+    public function countMail()
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT COUNT(id) FROM contacts WHERE id');
+        $req->execute(array());
+        return $req;
+    }
 
 //       /*====================================== supprimer un mail ===========================================*/
 

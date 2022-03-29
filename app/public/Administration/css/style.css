@@ -1,0 +1,93 @@
+/* CSS BACK */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Sora', sans-serif;
+    color: #333;
+}
+
+/* variables CSS */
+:root {
+  --light: #fff;
+  --dark: #333;
+  --red: #DB2437;
+  --blue: #24DBC8;
+}
+
+li{
+    list-style-type: none;
+}
+
+/* HEADER */
+
+#head{
+    background-color: #333; 
+    display: flex;
+    flex-wrap: wrap;
+    align-items:center ;
+
+}
+#top-nav{
+    width: 100%;
+} 
+#top-nav ul{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content:space-between;
+}
+
+
+#top-nav li{
+   margin: 10px 5px;
+    width: 45%;
+    text-align: center;
+}
+
+#head a{
+    color: #fff;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+#head #top-bar{
+    width: 100%;
+    text-align: center;
+    background-color: #24DBC8;
+   
+    padding: 10px;
+    font-size: 1.3rem;
+}
+#head #top-bar a{
+    color:#333;
+}
+
+main{
+    font-size: 1.4rem;
+}
+
+/* SIDENAV */
+
+#sidenav{
+    background-color: #333;
+
+}
+#sidenav p{
+    background-color: #fff;
+    padding: 10px;
+}
+#sidenav ul{
+    padding: 0 10px;
+}
+#sidenav li{
+    margin: 10px 0;
+    text-align: center;
+}
+
+#sidenav li a{
+    color: #fff;
+    text-decoration: none;
+    
+}

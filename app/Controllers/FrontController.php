@@ -2,46 +2,46 @@
 
 namespace Projet\Controllers;
 
-class FrontController
+class FrontController extends Controller
 {
     function home()
     {
-        require "app/Views/Front/home.php";
+        require $this->view('home');
     }
 
     function about()
     {
-        require "app/Views/Front/about.php";
+        require $this->view('about');
     }
 
     function portfolio()
     {
-        require "app/Views/Front/portfolio.php";
+        require $this->view('portfolio');
     }
 
     function blog()
     {
-        require "app/Views/Front/blog.php";
+        require $this->view('blog');
     }
 
     function shop()
     {
-        require "app/Views/Front/shop.php";
+        require $this->view('shop');
     }
 
 
     function contact()
     {
-        require "app/Views/Front/contact.php";
+        require $this->view('contact');
     }
     function legales()
     {
-        require "app/Views/Front/legales.php";
+        require $this->view('legales');
     }
     
     function cgv()
     {
-        require "app/Views/Front/cgv.php";
+        require $this->view('cgv');
     }
 
 //       /*===================== mail formulaire de contact==================================*/

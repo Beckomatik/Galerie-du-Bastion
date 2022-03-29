@@ -10,15 +10,50 @@ try {
     $adminController = new \Projet\Controllers\AdminController(); //objet controler
 
         if(isset($_GET['action'])){
-            $adminController->connexionAdmin();
-        }
 
-        else 
-        {
-            $adminController->home();
+                if ($_GET['action'] == 'createAdmin'){ 
+                $email = $_POST['email'];
+                $pass = $_POST['mdp'];
+                $firstname = $_POST['firstname'];
+                $lastname = $_POST['lastname'];
+                $mdp = password_hash($pass, PASSWORD_DEFAULT);
+                $adminController->createAdmin($firstname, $lastname, $mdp, $email);
+                }
+                
+                if ($_GET['action'] == 'connexionAdmin') { //connexion admin
+                    $email = htmlspecialchars($_POST['email']);
+                    $mdp = $_POST['mdp'];
+                    if (!empty($email) && !empty($mdp)) {
+                        $adminController->connexion($email, $mdp); // on passe deux paramètre
+                    } else {
+                        throw new Exception('renseigner vos identifiants');
+                    }
+                } 
+
+                elseif($_GET['action'] == 'contact'){
+                    $adminController->contactAdmin();
+                }
+        
+                elseif($_GET['action'] == 'about'){
+                    $adminController->aboutAdmin();
+                }
+                elseif($_GET['action'] == 'portfolio'){
+                    $adminController->portfolioAdmin();
+                }
+                elseif($_GET['action'] == 'blog'){
+                    $adminController->blogAdmin();
+                }
+                elseif($_GET['action'] == 'postArticle'){
+                    $adminController->postArticle();
+                }
+                elseif($_GET['action'] == 'yourinfos'){
+                    $adminController->infosAdmin();
+                }
+    }else{
+            // $adminController->connexionAdmin();
+            $adminController->dashBoard();
         }
-    }
-catch (Exception $e)
+} catch (Exception $e)
 {
     require 'app/Views/Admin/error.php';
 }

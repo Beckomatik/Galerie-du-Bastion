@@ -2,30 +2,102 @@
 
 namespace Projet\Controllers;
 
-class AdminController
+class AdminController extends Controller
 {
-    // connexion à la page de connexion
-    // function createPageAdmin()
-    // {
-    //     require 'app/Views/Admin/createAdmin.php';
-    // }
-
-
-//      // création de l'administrateur
-//      function createAdmin($firstname, $mdp, $mail)
-//      {
-//          $userManager = new \Projet\Models\AdminModel();
-//          $user = $userManager->creatAdmin($firstname, $mdp, $mail);
-
-//          require 'app/Views/Admin/createAdmin.php';
- 
-//      }
-
      // connexion à la page de connexion
     function connexionAdmin()
     {
+        return $this->viewAdmin('connexionAdmin');
+    }
 
-        require 'app/Views/Admin/connexion.php';
+    // création de l'administrateur
+    function createAdmin($firstname, $lastname, $mdp, $email)
+    {
+        $userManager = new \Projet\Models\AdminModel();
+        $user = $userManager->createAdmin($firstname, $lastname, $mdp, $email);
+
+        require 'app/views/Admin/createAdmin.php';
+
+    }
+
+    function createAdminAccount()
+    {
+        return $this->viewAdmin('createAdmin');
+    }
+
+    function addAdmin()
+    {
+        return $this->viewAdmin('createAdmin');
+    }
+
+     // connexion au tableau de bord apres comparaison du mot de passe
+
+     function connexion($mail, $mdp)
+     { //recup du mot de pass
+         $userManager = new \Projet\Models\AdminModel();
+         $connexAdm = $userManager->recupMdp($mail, $mdp);
+ 
+         $resultat = $connexAdm->fetch();
+ 
+         $isPasswordCorrect = password_verify($mdp, $resultat['mdp']);
+ 
+         $_SESSION['email'] = $resultat['mail']; // transformation des variables recupérées en session
+         $_SESSION['mdp'] = $resultat['mdp'];
+         $_SESSION['id'] = $resultat['id'];
+         $_SESSION['firstname'] = $resultat['firstname'];
+         $_SESSION['lastname'] = $resultat['lastname'];
+ 
+ 
+         $countMail = new \Projet\Models\ContactModel();
+         $nbrMail = $countMail->countMail();
+ 
+         if ($isPasswordCorrect) {
+ 
+             require 'app/views/Admin/dashboard.php';
+         } 
+         
+         else {
+             echo 'vos identifients sont incorrect';
+             //require('views/backend/erreur.php');
+         }
+ 
+ 
+     }
+
+    // accès au dashboard
+    function dashBoard()
+    {
+        return $this->viewAdmin('dashboard');
+    }
+
+    function aboutAdmin()
+    {
+        return $this->viewAdmin('aboutAdmin');
+    }
+    function portfolioAdmin()
+    {
+        return $this->viewAdmin('portfolioAdmin');
+    }
+    function blogAdmin()
+    {
+        return $this->viewAdmin('blogAdmin');
+    }
+    // poster un article
+    function postArticle($title, $picture, $content)
+    {
+        $post = new \Projet\Models\AdminModel();
+        $newPost = $post->sendArticle($title, $picture, $content);
+
+        require 'app/views/Admin/blogAdmin.php';
+    }
+
+    function contactAdmin()
+    {
+        return $this->viewAdmin('contactAdmin');
+    }
+    function infosAdmin()
+    {
+        return $this->viewAdmin('infosAdmin');
     }
 
 //     // connexion au tableau de bord apres comparaison du mot de passe
