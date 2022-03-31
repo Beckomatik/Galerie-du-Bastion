@@ -16,10 +16,10 @@
 
 
         <label for="email">email :</label></td>
-        <input type="text" placeholder="votre email" name="mail" id="email">
+        <input type="text" placeholder="votre email" name="email" id="email">
 
         <label for="password">Mot de passe :</label>
-        <input type="password" placeholder="votre mot de passe" name="pass" id="password">
+        <input type="password" placeholder="votre mot de passe" name="mdp" id="password">
 
         <input type="submit">
 
@@ -29,7 +29,7 @@
   </div>
 
 
-  <h2><a href="/app/Views/Admin/createAdmin.php">Création d'un compte</a></h2>
+  <h2><a href="indexAdmin.php?action=createAdminPage">Création d'un compte</a></h2>
 </body>
 
 </html>

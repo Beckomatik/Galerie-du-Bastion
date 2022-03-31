@@ -5,7 +5,7 @@ namespace Projet\Controllers;
 class AdminController extends Controller
 {
      // connexion à la page de connexion
-    function connexionAdmin()
+    function connexionAdminPage()
     {
         return $this->viewAdmin('connexionAdmin');
     }
@@ -16,40 +16,47 @@ class AdminController extends Controller
         $userManager = new \Projet\Models\AdminModel();
         $user = $userManager->createAdmin($firstname, $lastname, $mdp, $email);
 
-        require 'app/views/Admin/createAdmin.php';
+        require 'app/views/Admin/connexionAdmin.php';
 
     }
-
-    function createAdminAccount()
+    // accès à la page de création d'un admin
+    function createAdminPage()
     {
         return $this->viewAdmin('createAdmin');
     }
 
-    function addAdmin()
+    function infoCompte()
     {
-        return $this->viewAdmin('createAdmin');
+        $id = $_SESSION['id'];
+       
+        $userManager = new \Projet\Models\AdminModel();
+        $user = $userManager->infoCompte($id);  
+        $info = $user->fetch();      
+      
+        return $this->viewAdmin('infosAdmin', $info);
     }
+   
 
      // connexion au tableau de bord apres comparaison du mot de passe
 
-     function connexion($mail, $mdp)
-     { //recup du mot de pass
+     function connexion($email, $mdp)
+     { 
          $userManager = new \Projet\Models\AdminModel();
-         $connexAdm = $userManager->recupMdp($mail, $mdp);
+         $connexAdm = $userManager->recupMdp($email);
  
          $resultat = $connexAdm->fetch();
  
          $isPasswordCorrect = password_verify($mdp, $resultat['mdp']);
  
-         $_SESSION['email'] = $resultat['mail']; // transformation des variables recupérées en session
+         $_SESSION['email'] = $resultat['email']; 
          $_SESSION['mdp'] = $resultat['mdp'];
          $_SESSION['id'] = $resultat['id'];
          $_SESSION['firstname'] = $resultat['firstname'];
          $_SESSION['lastname'] = $resultat['lastname'];
  
  
-         $countMail = new \Projet\Models\ContactModel();
-         $nbrMail = $countMail->countMail();
+        //  $countMail = new \Projet\Models\ContactModel();
+        //  $nbrMail = $countMail->countMail();
  
          if ($isPasswordCorrect) {
  
@@ -90,15 +97,19 @@ class AdminController extends Controller
 
         require 'app/views/Admin/blogAdmin.php';
     }
+    function sendImages($name)
+    {
+        $images = new \Projet\Models\AdminModel();
+        $newImage = $images->sendImages($name);
+
+        require 'app/views/Admin/blogAdmin.php';
+    }
 
     function contactAdmin()
     {
         return $this->viewAdmin('contactAdmin');
     }
-    function infosAdmin()
-    {
-        return $this->viewAdmin('infosAdmin');
-    }
+ 
 
 //     // connexion au tableau de bord apres comparaison du mot de passe
 

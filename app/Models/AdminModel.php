@@ -8,17 +8,17 @@ class AdminModel extends Manager
     public function createAdmin($firstname, $lastname, $mdp, $email)
     {
         $db = $this->dbConnect();
-        $user = $db->prepare('INSERT INTO admins( firstname, lastname, mdp, email )  VALUE( ?, ?, ?, ?)');
+        $user = $db->prepare('INSERT INTO admins( firstname, lastname, mdp, email )  VALUE( ?,?,?,?)');
         $user->execute(array($firstname, $lastname, $mdp, $email));
     
         return $user;
     }
 
-    public function recupMdp($mail, $mdp)
+    public function recupMdp($email)
     {
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT * FROM admins WHERE email=?');
-        $req->execute(array($mail));
+        $req->execute(array($email));
 
         return $req;
     }
@@ -29,6 +29,23 @@ class AdminModel extends Manager
         $post->execute(array($title, $picture, $content));
 
         return $post;
+    }
+    public function sendImages($name)
+    {
+        $db = $this->dbConnect();
+        $images = $db->prepare('INSERT INTO images (name) VALUE(?)');
+        $images->execute(array($name));
+        echo 'image enregistrée';
+        return $images;
+    }
+
+    public function infoCompte($id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT email, firstname, lastname FROM admins WHERE id = ?');
+        $req->execute(array($id));
+
+        return $req;
     }
 
 

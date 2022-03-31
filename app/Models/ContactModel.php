@@ -7,9 +7,10 @@ class ContactModel extends Manager
 {
     public function postMail($data)
     {
+       
         $db = $this->dbConnect();
-        $req = $db->prepare('INSERT INTO contacts( fullname,  mail, phone, objet, content) VALUE(?, ?, ?, ?, ?)');
-        $req->execute(array($data));
+        $req = $db->prepare('INSERT INTO contacts( fullname,  mail, phone, objet, content) VALUE(:fullname, :mail, :phone, :objet, :content)');
+        $req->execute($data);
         return $req;
     }
 
@@ -22,13 +23,13 @@ class ContactModel extends Manager
 
 //        /*================================ nombres de mail  ====================================*/
 
-    public function countMail()
-    {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT COUNT(id) FROM contacts WHERE id');
-        $req->execute(array());
-        return $req;
-    }
+    // public function countMail()
+    // {
+    //     $db = $this->dbConnect();
+    //     $req = $db->prepare('SELECT COUNT(id) FROM contacts WHERE id');
+    //     $req->execute(array());
+    //     return $req;
+    // }
 
 //       /*====================================== supprimer un mail ===========================================*/
 

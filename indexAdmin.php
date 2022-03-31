@@ -9,54 +9,85 @@ try {
 
     $adminController = new \Projet\Controllers\AdminController(); //objet controler
 
-        if(isset($_GET['action'])){
+    if (isset($_GET['action'])) {
 
-                if ($_GET['action'] == 'createAdmin'){ 
-                $email = $_POST['email'];
-                $pass = $_POST['mdp'];
-                $firstname = $_POST['firstname'];
-                $lastname = $_POST['lastname'];
-                $mdp = password_hash($pass, PASSWORD_DEFAULT);
-                $adminController->createAdmin($firstname, $lastname, $mdp, $email);
-                }
-                
-                if ($_GET['action'] == 'connexionAdmin') { //connexion admin
-                    $email = htmlspecialchars($_POST['email']);
-                    $mdp = $_POST['mdp'];
-                    if (!empty($email) && !empty($mdp)) {
-                        $adminController->connexion($email, $mdp); // on passe deux paramètre
-                    } else {
-                        throw new Exception('renseigner vos identifiants');
-                    }
-                } 
+        // création d'un nouvel admin
 
-                elseif($_GET['action'] == 'contact'){
-                    $adminController->contactAdmin();
-                }
-        
-                elseif($_GET['action'] == 'about'){
-                    $adminController->aboutAdmin();
-                }
-                elseif($_GET['action'] == 'portfolio'){
-                    $adminController->portfolioAdmin();
-                }
-                elseif($_GET['action'] == 'blog'){
-                    $adminController->blogAdmin();
-                }
-                elseif($_GET['action'] == 'postArticle'){
-                    $adminController->postArticle();
-                }
-                elseif($_GET['action'] == 'yourinfos'){
-                    $adminController->infosAdmin();
-                }
-    }else{
-            // $adminController->connexionAdmin();
-            $adminController->dashBoard();
+
+
+        if ($_GET['action'] == 'createAdmin') {
+            $email = $_POST['email'];
+            $pass = $_POST['mdp'];
+            $firstname = $_POST['firstname'];
+            $lastname = $_POST['lastname'];
+            $mdp = password_hash($pass, PASSWORD_DEFAULT);
+            $adminController->createAdmin($firstname, $lastname, $mdp, $email);
         }
-} catch (Exception $e)
-{
-    require 'app/Views/Admin/error.php';
-}
+
+        // connexion de l'admin
+        if ($_GET['action'] == 'connexionAdmin') { 
+       
+            $email = htmlspecialchars($_POST['email']);
+            $mdp = $_POST['mdp'];
+            if (!empty($email) && !empty($mdp)) {
+                $adminController->connexion($email, $mdp);
+            } else {
+                throw new Exception('renseigner vos identifiants');
+            }
+
+        // accès aux différentes pages
+        } elseif ($_GET['action'] == 'createAdminPage') {
+            $adminController->createAdminPage();
+        } elseif ($_GET['action'] == 'contact') {
+            $adminController->contactAdmin();
+        } elseif ($_GET['action'] == 'about') {
+            $adminController->aboutAdmin();
+        } elseif ($_GET['action'] == 'portfolio') {
+            $adminController->portfolioAdmin();
+        } elseif ($_GET['action'] == 'blog') {
+            $adminController->blogAdmin();
+        }
+        elseif ($_GET['action'] == 'yourinfos') {
+           
+            $adminController->infoCompte();
+        }
+
+        // envoi de ficher photo
+        elseif (isset($_FILES['photo']) && ($_GET['action'] == 'sendpicture')) {
+            $tmpName = $_FILES['photo']['tmp_name'];
+            $name = $_FILES['photo']['name'];
+            $size = $_FILES['photo']['size'];
+            $error = $_FILES['photo']['error'];
+            $type = $_FILES['photo']['type'];
+
+            $arrExtension = explode('.', $name);
+            $extension = strtolower(end($arrExtension));
+
+            $extensionsAuthorized = ['jpg', 'jpeg', 'gif', 'png', 'wep'];
+            $maxSize = 5000000;
+
+            if (in_array($extension, $extensionsAuthorized) && $size <= $maxSize && $error == 0) {
+
+                // pour modifier le nom d'une image si les noms sont similaires
+                $uniqueName = uniqid('', true);
+                $fileName = $uniqueName . '.' . $extension;
+                // enregistre les images uploader dans le chemin
+                move_uploaded_file($tmpName, './app/public/Administration/img/' . $name);
+                $adminController->sendImages($name);
+            } else {
+                echo 'Mauvaise extension ou photo trop volumineuse ou erreur';
+            }
+        }
+
+        
+            } else {
+                $adminController->connexionAdminPage();
+               
+            }
+    }
+    catch (Exception $e) {
+        require 'app/Views/Admin/error.php';
+    }
     
 //     if (isset($_GET['action'])) {
 

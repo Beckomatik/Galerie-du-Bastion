@@ -4,11 +4,11 @@ namespace Projet\Controllers;
 
 class Controller
 {
-    public function view($viewname, $error = null)
+    public function view($viewname, $datas = null)
     {
         include('app/Views/Front/' . $viewname . '.php');
     }
-    public function viewAdmin($viewname, $error = null)
+    public function viewAdmin($viewname, $datas = null)
     {
         include('app/Views/Admin/' . $viewname . '.php');
     }

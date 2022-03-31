@@ -39,13 +39,13 @@ try{
             $phone = htmlspecialchars($_POST['phone']);
             $object = htmlspecialchars($_POST['objet']);
             $content = htmlspecialchars($_POST['content']);
-            // $createdat = htmlspecialchars($_POST['created_at']);
+           
             $data = [
-                "fullname"=>$fullname,
-                "email"=>$email,
-                "phone"=>$phone,
-                "objet"=>$object,
-                "content"=>$content
+                ":fullname"=>$fullname,
+                ":mail"=>$email,
+                ":phone"=>$phone,
+                ":objet"=>$object,
+                ":content"=>$content
             ];
             if (!empty($fullname) && (!empty($email) && (!empty($phone) && (!empty($object) && (!empty($content)))))) {
                 $frontController->contactPost($data);

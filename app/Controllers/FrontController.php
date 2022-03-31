@@ -51,7 +51,7 @@ class FrontController extends Controller
           $postMail = new \Projet\Models\ContactModel();
   
   
-          if (filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+          if (filter_var($data[':mail'], FILTER_VALIDATE_EMAIL)) {
               $Mail = $postMail->postMail($data);
               require 'app/Views/Front/confirmeContact.php';
           } else {
