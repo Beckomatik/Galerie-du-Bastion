@@ -4,7 +4,10 @@ namespace Projet\Controllers;
 
 class AdminController extends Controller
 {
-     // connexion à la page de connexion
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // +++++++++ CONNEXION ET ADMINISTRATION ++++++++++++++++++++++++++++++++++++++++++++
+
+    // connexion à la page de connexion
     function connexionAdminPage()
     {
         return $this->viewAdmin('connexionAdmin');
@@ -15,10 +18,9 @@ class AdminController extends Controller
     {
         $userManager = new \Projet\Models\AdminModel();
         $user = $userManager->createAdmin($firstname, $lastname, $mdp, $email);
-
         require 'app/views/Admin/connexionAdmin.php';
-
     }
+
     // accès à la page de création d'un admin
     function createAdminPage()
     {
@@ -28,15 +30,12 @@ class AdminController extends Controller
     // récupérer et afficher les infos du détenteur du compte
     function infoCompte()
     {
-        $id = $_SESSION['id'];
-       
+        $id = $_SESSION['id'];       
         $userManager = new \Projet\Models\AdminModel();
         $user = $userManager->infoCompte($id);  
-        $info = $user->fetch();      
-      
+        $info = $user->fetch();            
         return $this->viewAdmin('infosAdmin', $info);
-    }
-   
+    }   
 
      // connexion au tableau de bord apres comparaison du mot de passe
      function connexion($email, $mdp)
@@ -62,7 +61,8 @@ class AdminController extends Controller
          } 
      }
 
-
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // ++++++++++++++ ACCES PAGES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     // accès au dashboard
     function dashBoard()
@@ -75,7 +75,15 @@ class AdminController extends Controller
         return $this->viewAdmin('aboutAdmin');
     }
 
-    // envoi des éléments de la page portfolio dans la base de données
+    function contactAdmin()
+    {
+        return $this->viewAdmin('contactAdmin');
+    }
+
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // ++++++++++++++ PORFOLIO ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // envoi des éléments de la page portfolio vers la base de données
     function portfolioForm($data)
     {
         $form = new \Projet\Models\AdminModel();
@@ -83,15 +91,6 @@ class AdminController extends Controller
 
         header('Location: indexAdmin.php?action=portfolio');
     }
-    // envoi des articles de la page blog dans la base de données
-    function articleForm($data)
-    {
-        $form = new \Projet\Models\AdminModel();
-        $newForm = $form->articleForm($data);
-
-        header('Location: indexAdmin.php?action=blog');
-    }
-
     // ajout des photos dans la page porfolioAdmin
     function portfolioAdmin()
     {
@@ -102,66 +101,55 @@ class AdminController extends Controller
         $data=[
             "result" => $result,
             "resPath" => $resPath
-        ];
-       
+        ];       
         return $this->viewAdmin('portfolioAdmin', $data);
     }
 
-    // suppression de photos du portfolio
-    function deletePicture()
+     // suppression de photos du portfolio
+     function deletePicture()
+     {
+         $delPictures = new \Projet\Models\AdminModel();
+         $delPicture = $delPictures->deletePicture(); 
+         header('Location: indexAdmin.php?action=portfolio&success=true');
+     }
+
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // ++++++++++++++ BLOG ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // envoi des articles de la page blog vers la base de données
+    function articleForm($data)
     {
-        $delPictures = new \Projet\Models\AdminModel();
-        $delPicture = $delPictures->deletePicture();
+        $form = new \Projet\Models\AdminModel();
+        $newForm = $form->articleForm($data);
 
-        header('Location: indexAdmin.php?action=portfolio&success=true');
+        header('Location: indexAdmin.php?action=blog');
     }
-
-    
-
+    // ajout des photos et contenu de la bdd vers la page blog
     function blogAdmin()
     {
-        $imagesManager = new \Projet\Models\AdminModel();
-        $myPics = $imagesManager->getPortfolioItems();
-        $result = $myPics->fetchAll();
+        $articleManager = new \Projet\Models\AdminModel();
+        $myPost = $articleManager->getBlogItems();
+        $result = $myPost->fetchAll();
         $resPath = "/app/public/Administration/img/";
         $data=[
             "result" => $result,
             "resPath" => $resPath
         ];
         return $this->viewAdmin('blogAdmin', $data);
-    }
-    // poster un article
-    function postArticle($title, $picture, $content)
+    }   
+
+    // suppression d'article du blog
+    function deleteArticle()
     {
-        $post = new \Projet\Models\AdminModel();
-        $newPost = $post->sendArticle($title, $picture, $content);
+        $delPictures = new \Projet\Models\AdminModel();
+        $delPicture = $delPictures->deleteArticle();
+        header('Location: indexAdmin.php?action=blog&success=true');
+    }    
 
-        require 'app/views/Admin/blogAdmin.php';
-    }
+}
 
-    // envoi d'images depuis blog & portfolio
-    function sendImages($name)
-    {
-        $images = new \Projet\Models\AdminModel();
-        $newImage = $images->sendImages($name);
 
-        require 'app/views/Admin/blogAdmin.php';
-    }
-    // function sendPicFolio($name)
-    // {
-    //     $images = new \Projet\Models\AdminModel();
-    //     $newImage = $images->sendPicFolio($name);
-
-    // }
-
-   
-
-   
-
-    function contactAdmin()
-    {
-        return $this->viewAdmin('contactAdmin');
-    }
+    
  
 
 //     }
@@ -219,4 +207,3 @@ class AdminController extends Controller
 //         header('Location: indexAdmin.php?action=compte&id=' . $id);
 //     }
 
-}

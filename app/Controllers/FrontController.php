@@ -31,7 +31,16 @@ class FrontController extends Controller
 
     function blog()
     {
-        return $this->view('blog');
+        
+        $articleManager = new \Projet\Models\FrontModel();
+        $myPosts = $articleManager->getBlogItems();
+        $result = $myPosts->fetchAll();
+        $resPath = "/app/public/Administration/img/";
+        $data=[
+            "result" => $result,
+            "resPath" => $resPath
+        ];
+        return $this->view('blog', $data);
     }
 
     function shop()

@@ -5,127 +5,98 @@ namespace Projet\Models;
 
 class AdminModel extends Manager
 {
-    public function createAdmin($firstname, $lastname, $mdp, $email)
-    {
-        $db = $this->dbConnect();
-        $user = $db->prepare('INSERT INTO admins( firstname, lastname, mdp, email )  VALUES( ?,?,?,?)');
-        $user->execute(array($firstname, $lastname, $mdp, $email));
-    
-        return $user;
-    }
+        public function createAdmin($firstname, $lastname, $mdp, $email)
+        {
+            $db = $this->dbConnect();
+            $user = $db->prepare('INSERT INTO admins( firstname, lastname, mdp, email )  VALUES( ?,?,?,?)');
+            $user->execute(array($firstname, $lastname, $mdp, $email));        
+            return $user;
+        }
 
-    public function recupMdp($email)
-    {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT * FROM admins WHERE email=?');
-        $req->execute(array($email));
+        public function recupMdp($email)
+        {
+            $db = $this->dbConnect();
+            $req = $db->prepare('SELECT * FROM admins WHERE email=?');
+            $req->execute(array($email));
+            return $req;
+        }
 
-        return $req;
-    }
-    public function sendArticle($title, $picture, $content)
-    {
-        $db = $this->dbConnect();
-        $post = $db->prepare('INSERT INTO blogposts (title, picture, content) VALUES(?,?,?)');
-        $post->execute(array($title, $picture, $content));
 
-        return $post;
-    }
-    // envoyé des images en bases de données
-    public function sendImages($name)
-    {
-        $db = $this->dbConnect();
-        $images = $db->prepare('INSERT INTO portfolios (picture) VALUES(?)');
-        $images->execute(array($name));
-        echo 'image enregistrée';
-        return $images;
-    }
-    // depuis le portfolio
-    // public function sendPicFolio($name)
-    // {
-       
-    //     $db = $this->dbConnect();
-    //     $images = $db->prepare('INSERT INTO images (picture) VALUES(?)');
-    //     $images->execute(array($name));
-    //     echo 'image enregistrée';
-    //     return $images;
-    // }
-
-    // supprimer photos de la bdd depuis le portfolio
-    public function deletePicture()
-    {
-        $db = $this->dbConnect();
-        $images = $db->prepare('DELETE FROM portfolios WHERE id=?');
-        $images->execute([$_GET['id']]);
-        echo 'image supprimée';
-        return $images;
-    }
-
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // ++++++++ PORTFOLIO ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  
         // ajout des éléments du portfolio en bdd
-    public function portfolioForm($data)
-    {
-        $db = $this->dbConnect();
-        $title = $db->prepare('INSERT INTO portfolios (picture, title, category, alt) VALUES(:picture, :title, :category, :alt)');
-        $title->execute($data);
-        
-        
-        return $title;
-    }
-        // ajout des articles du blog en bdd
-    public function articleForm($data)
-    {
-        $db = $this->dbConnect();
-        $title = $db->prepare('INSERT INTO blogposts (title, picture, content, category, alt) VALUES(:title, :picture, :content, :category, :alt)');
-        $title->execute($data);
-        
-        
-        return $title;
-    }
-   
+        public function portfolioForm($data)
+        {
+            $db = $this->dbConnect();
+            $title = $db->prepare('INSERT INTO portfolios (picture, title, category, alt) VALUES(:picture, :title, :category, :alt)');
+            $title->execute($data);
+            return $title;
+        }
 
-    // récupérer les images de la base de donnée
-    public function getPortfolioItems()
-    {
+         // récupérer les images de la base de donnée
+        public function getPortfolioItems()
+        {
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT picture, title, category, id, alt FROM portfolios ORDER BY id DESC');
         $req->execute();
-
         return $req;
+        }
+ 
+        // supprimer photos de la bdd depuis le portfolio
+        public function deletePicture()
+        {
+            $db = $this->dbConnect();
+            $images = $db->prepare('DELETE FROM portfolios WHERE id=?');
+            $images->execute([$_GET['id']]);
+            return $images;
+        }
 
-    }
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // ++++++++ BLOG +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+        // ajout des articles du blog en bdd
+        public function articleForm($data)
+        {
+            $db = $this->dbConnect();
+            $title = $db->prepare('INSERT INTO blogposts (title, picture, content, category, alt) VALUES(:title, :picture, :content, :category, :alt)');
+            $title->execute($data);     
+            return $title;
+        }
+
+        // récupérer les articles de la base de donnée
+        public function getBlogItems()
+        {
+            $db = $this->dbConnect();
+            $req = $db->prepare('SELECT title, picture, content, category, id, alt FROM blogposts ORDER BY id DESC');
+            $req->execute();      
+             return $req;
+        }
+
+        // supprimer article de la bdd depuis le blogadmin
+        public function deleteArticle()
+        {
+            $db = $this->dbConnect();
+            $images = $db->prepare('DELETE FROM blogposts WHERE id=?');
+            $images->execute([$_GET['id']]);
+            return $images;
+        }
+
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // ++++++++ INFO COMPTE +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   
+        public function infoCompte($id)
+        {
+            $db = $this->dbConnect();
+            $req = $db->prepare('SELECT email, firstname, lastname FROM admins WHERE id = ?');
+            $req->execute(array($id));
+            return $req;
+        }
+
+   
 
 
 
-    public function infoCompte($id)
-    {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT email, firstname, lastname FROM admins WHERE id = ?');
-        $req->execute(array($id));
 
-        return $req;
-    }
-
-
-//     public function compte($id)
-//     {
-//         $db = $this->dbConnect();
-//         $req = $db->prepare('SELECT firstname, mail FROM administrateurs WHERE id = ?');
-//         $req->execute(array($id));
-//         return $req->fetch();
-      
-
-//         return $req;
-//     }
-
-//     public function newCompte($id, $firstname, $mail)
-//     {
-//         $db = $this->dbConnect();
-//         $req = $db->prepare('UPDATE administrateurs SET firstname = :firstname , mail = :mail WHERE id = :id');
-//         $req->execute([
-//             'mail' => $mail,
-//             'firstname' => $firstname,
-//             'id' => $id
-//         ]);
-//         return $req;
-//     }
 
 }

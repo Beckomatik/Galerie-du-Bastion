@@ -357,17 +357,25 @@ input[type=submit]{
 .forms a{
   color: rgb(0, 153, 181);
   font-weight: 800;
-  /* text-decoration: underline wavy rgb(0, 150, 177); */
 }
 
 .forms p{
   font-size: 1.2rem;
 }
 
-.myPosts{
+#picportfolio{
   margin-top: 30px;
 }
 
-.myPosts img{
+#picportfolio img{
+  width: 100%;
+}
+
+/* BLOG */
+#myArticle{
+  margin-top: 30px;
+}
+
+#myArticle img{
   width: 100%;
 }

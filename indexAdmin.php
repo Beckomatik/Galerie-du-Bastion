@@ -48,8 +48,6 @@ try {
         } elseif ($_GET['action'] == 'portfolio') {
             $adminController->portfolioAdmin();
 
-        
-
         } elseif ($_GET['action'] == 'blog') {
             $adminController->blogAdmin();
 
@@ -66,7 +64,8 @@ try {
         
         
         // envoi d'article depuis le blog
-        }elseif (isset($_FILES['photo']) && ($_GET['action'] == 'sendArticle')) {
+        }elseif ($_GET['action'] == 'sendArticle') {
+            if(isset($_FILES['photo']))
             $tmpName = $_FILES['photo']['tmp_name'];
             $name = $_FILES['photo']['name'];
             $size = $_FILES['photo']['size'];
@@ -97,10 +96,15 @@ try {
                 ':alt' => htmlspecialchars($_POST['alt']) 
             ];           
             $adminController->articleForm($data);  
+        
 
         // suppression de photo du porfolio
         }elseif($_GET['action'] == 'deletePicture'){
             $adminController->deletePicture();
+        
+        // suppression d'article du blog'
+        }elseif($_GET['action'] == 'deleteArticle'){
+            $adminController->deleteArticle();
         }
 
         // ENVOI DU FORMULAIRE PORTFOLIO
