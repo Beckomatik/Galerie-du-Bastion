@@ -74,13 +74,21 @@ main{
     font-size: 1.4rem;
 }
 
+h1{
+    font-size: 2rem;
+    margin-top:20px ;
+}
+h1 i{
+    color: var(--red);  
+}
+
 /* SIDENAV */
 
 #sidenav{
     background-color: #333;
 
 }
-#sidenav p{
+#sidenav h1{
     background-color: #fff;
     padding: 10px;
 }
@@ -98,44 +106,58 @@ main{
     
 }
 
-/* PORTFOLIO */
+/* PORTFOLIO ET BLOG */
 
-.picportfolio{
+/* les images */
+.myPosts{
     width: 100%;
-    margin: 20px auto;
+    margin: 0 auto 50px;
+    font-size: 1rem;
 }
-
-.picportfolio img{
+.myPosts img{
     width: 100%;
     height: 50vh;
     object-fit: contain;
-    background-color: #333;
+    background-color: rgba(51, 51, 51, 0.129);
+}
+.myPosts a{
+    background-color: var(--red);
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    text-decoration: none;
+}
+.myPosts p:first-of-type{
+    font-weight: 800;
+}
+.myPosts p:last-of-type{
+    margin-top: 10px;
 }
 
-#portfolio form{
+/* le formulaire */
+
+.forms form{
     display: flex;
     flex-wrap: wrap;
 }
-
-#portfolio form label{
+.forms form label{
     margin-top: 15px;
 }
-
-#portfolio form label, #postImage{
+.forms form label, #postImage{
     width: 100%;
 }
-
-#portfolio form textarea{
+.forms form textarea{
     width: 100%;
     height: 10vh;
 }
-
-#postImage{
+.forms #mesimages{
+    margin: 25px 0;
+}
+.postForm{
     margin: 10px 0;
     width: 100%;
 }
-
-#postImage input{
+.postForm input{
     padding: 15px;
     background-color: #24DBC8;
     border: 1px solid var(--blue);

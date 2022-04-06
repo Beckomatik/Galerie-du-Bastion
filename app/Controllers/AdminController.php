@@ -75,13 +75,21 @@ class AdminController extends Controller
         return $this->viewAdmin('aboutAdmin');
     }
 
-    // envoi des élémenents de la page portfolio dans la base de données
+    // envoi des éléments de la page portfolio dans la base de données
     function portfolioForm($data)
     {
         $form = new \Projet\Models\AdminModel();
         $newForm = $form->portfolioForm($data);
 
         header('Location: indexAdmin.php?action=portfolio');
+    }
+    // envoi des articles de la page blog dans la base de données
+    function articleForm($data)
+    {
+        $form = new \Projet\Models\AdminModel();
+        $newForm = $form->articleForm($data);
+
+        header('Location: indexAdmin.php?action=blog');
     }
 
     // ajout des photos dans la page porfolioAdmin
@@ -97,6 +105,15 @@ class AdminController extends Controller
         ];
        
         return $this->viewAdmin('portfolioAdmin', $data);
+    }
+
+    // suppression de photos du portfolio
+    function deletePicture()
+    {
+        $delPictures = new \Projet\Models\AdminModel();
+        $delPicture = $delPictures->deletePicture();
+
+        header('Location: indexAdmin.php?action=portfolio&success=true');
     }
 
     

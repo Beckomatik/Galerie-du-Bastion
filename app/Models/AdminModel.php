@@ -50,10 +50,31 @@ class AdminModel extends Manager
     //     return $images;
     // }
 
+    // supprimer photos de la bdd depuis le portfolio
+    public function deletePicture()
+    {
+        $db = $this->dbConnect();
+        $images = $db->prepare('DELETE FROM portfolios WHERE id=?');
+        $images->execute([$_GET['id']]);
+        echo 'image supprimée';
+        return $images;
+    }
+
+        // ajout des éléments du portfolio en bdd
     public function portfolioForm($data)
     {
         $db = $this->dbConnect();
         $title = $db->prepare('INSERT INTO portfolios (picture, title, category, alt) VALUES(:picture, :title, :category, :alt)');
+        $title->execute($data);
+        
+        
+        return $title;
+    }
+        // ajout des articles du blog en bdd
+    public function articleForm($data)
+    {
+        $db = $this->dbConnect();
+        $title = $db->prepare('INSERT INTO blogposts (title, picture, content, category, alt) VALUES(:title, :picture, :content, :category, :alt)');
         $title->execute($data);
         
         
@@ -65,7 +86,7 @@ class AdminModel extends Manager
     public function getPortfolioItems()
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT picture, title, category, alt FROM portfolios ORDER BY id DESC');
+        $req = $db->prepare('SELECT picture, title, category, id, alt FROM portfolios ORDER BY id DESC');
         $req->execute();
 
         return $req;

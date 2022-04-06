@@ -3,7 +3,7 @@
 <main>
 
     <nav id="sidenav">
-        <p>Gérez vos pages :</p>
+        <h1><i class="fa-solid fa-arrow-right"></i> Gérez vos pages :</h1>
         <ul>
             <li><a href="indexAdmin.php?action=about">A propos</a></li>
             <li><a href="indexAdmin.php?action=portfolio">Portfolio</a></li>

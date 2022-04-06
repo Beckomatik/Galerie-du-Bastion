@@ -65,8 +65,8 @@ try {
         
         
         
-        // envoi de ficher photo depuis le blog
-        }elseif (isset($_FILES['photo']) && ($_GET['action'] == 'sendpicture')) {
+        // envoi d'article depuis le blog
+        }elseif (isset($_FILES['photo']) && ($_GET['action'] == 'sendArticle')) {
             $tmpName = $_FILES['photo']['tmp_name'];
             $name = $_FILES['photo']['name'];
             $size = $_FILES['photo']['size'];
@@ -86,10 +86,21 @@ try {
                 $fileName = $uniqueName . '.' . $extension;
                 // enregistre les images uploader dans le chemin
                 move_uploaded_file($tmpName, './app/public/Administration/img/' . $name);
-                $adminController->sendImages($name);
+              
             } else {
                 echo 'Mauvaise extension ou photo trop volumineuse ou erreur';
-            }
+            }$data=[
+                ':picture' => $name,
+                ':title' => htmlspecialchars($_POST['title']),
+                ':content' => htmlspecialchars($_POST['content']),
+                ':category' => htmlspecialchars($_POST['category']), 
+                ':alt' => htmlspecialchars($_POST['alt']) 
+            ];           
+            $adminController->articleForm($data);  
+
+        // suppression de photo du porfolio
+        }elseif($_GET['action'] == 'deletePicture'){
+            $adminController->deletePicture();
         }
 
         // ENVOI DU FORMULAIRE PORTFOLIO
@@ -123,16 +134,13 @@ try {
                 ':title' => htmlspecialchars($_POST['title']),
                 ':category' => htmlspecialchars($_POST['category']), 
                 ':alt' => htmlspecialchars($_POST['alt']) 
-            ];
-           
-            $adminController->portfolioForm($data);
-           
+            ];           
+            $adminController->portfolioForm($data);           
         }
         
-            } else {
-                $adminController->connexionAdminPage();
-               
-            }
+        } else {
+            $adminController->connexionAdminPage();               
+        }
     }
     catch (Exception $e) {
         require 'app/Views/Admin/error.php';

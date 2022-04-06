@@ -350,24 +350,24 @@ input[type=submit]{
 
 /* PORTFOLIO */
 
-#portfolio{
+.forms{
   width: 95%;
   margin: 0 auto;
 }
-#portfolio a{
+.forms a{
   color: rgb(0, 153, 181);
   font-weight: 800;
   /* text-decoration: underline wavy rgb(0, 150, 177); */
 }
 
-#portfolio p{
+.forms p{
   font-size: 1.2rem;
 }
 
-.picportfolio{
+.myPosts{
   margin-top: 30px;
 }
 
-.picportfolio img{
+.myPosts img{
   width: 100%;
 }
