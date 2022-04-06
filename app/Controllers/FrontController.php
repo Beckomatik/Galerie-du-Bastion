@@ -6,42 +6,52 @@ class FrontController extends Controller
 {
     function home()
     {
-        require $this->view('home');
+        return $this->view('home');
     }
 
     function about()
     {
-        require $this->view('about');
+        return $this->view('about');
     }
 
     function portfolio()
     {
-        require $this->view('portfolio');
+   
+        $imagesManager = new \Projet\Models\FrontModel();
+        $myPics = $imagesManager->getPortfolioItems();
+        $result = $myPics->fetchAll();
+        $resPath = "/app/public/Administration/img/";
+        $data=[
+            "result" => $result,
+            "resPath" => $resPath
+        ];
+       
+        return $this->view('portfolio', $data);
     }
 
     function blog()
     {
-        require $this->view('blog');
+        return $this->view('blog');
     }
 
     function shop()
     {
-        require $this->view('shop');
+        return $this->view('shop');
     }
 
 
     function contact()
     {
-        require $this->view('contact');
+        return $this->view('contact');
     }
     function legales()
     {
-        require $this->view('legales');
+        return $this->view('legales');
     }
     
     function cgv()
     {
-        require $this->view('cgv');
+        return $this->view('cgv');
     }
 
 //       /*===================== mail formulaire de contact==================================*/
@@ -58,4 +68,7 @@ class FrontController extends Controller
               header('Location: app/Views/frontend/error.php');
           }
       }
+
+   
+ 
 }

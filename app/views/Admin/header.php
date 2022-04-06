@@ -20,10 +20,10 @@
             <li><a href="indexAdmin.php?action=yourinfos">Vos informations</a></li>
             <li><a href="">menu 2</a></li>
             <li><a href="/" target="_blank">Voir votre site</a></li>
-            <li><a href="/">Se déconnecter</a></li>
+            <li><a href="/indexAdmin.php?action=deconnexion">Se déconnecter</a></li>
         </ul>
     </nav>
     <div id="top-bar">
-       <a href="/indexAdmin.php">La Galerie - Administration</a> 
+       <a href="/indexAdmin.php?action=dashBoard">La Galerie - Administration</a> 
     </div>
 </header>

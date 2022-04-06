@@ -25,6 +25,7 @@ class AdminController extends Controller
         return $this->viewAdmin('createAdmin');
     }
 
+    // récupérer et afficher les infos du détenteur du compte
     function infoCompte()
     {
         $id = $_SESSION['id'];
@@ -38,7 +39,6 @@ class AdminController extends Controller
    
 
      // connexion au tableau de bord apres comparaison du mot de passe
-
      function connexion($email, $mdp)
      { 
          $userManager = new \Projet\Models\AdminModel();
@@ -54,22 +54,15 @@ class AdminController extends Controller
          $_SESSION['firstname'] = $resultat['firstname'];
          $_SESSION['lastname'] = $resultat['lastname'];
  
- 
-        //  $countMail = new \Projet\Models\ContactModel();
-        //  $nbrMail = $countMail->countMail();
- 
-         if ($isPasswordCorrect) {
- 
+         if ($isPasswordCorrect) { 
              require 'app/views/Admin/dashboard.php';
-         } 
-         
+         }          
          else {
-             echo 'vos identifients sont incorrect';
-             //require('views/backend/erreur.php');
-         }
- 
- 
+             echo 'vos identifiants sont incorrect';
+         } 
      }
+
+
 
     // accès au dashboard
     function dashBoard()
@@ -81,13 +74,44 @@ class AdminController extends Controller
     {
         return $this->viewAdmin('aboutAdmin');
     }
+
+    // envoi des élémenents de la page portfolio dans la base de données
+    function portfolioForm($data)
+    {
+        $form = new \Projet\Models\AdminModel();
+        $newForm = $form->portfolioForm($data);
+
+        header('Location: indexAdmin.php?action=portfolio');
+    }
+
+    // ajout des photos dans la page porfolioAdmin
     function portfolioAdmin()
     {
-        return $this->viewAdmin('portfolioAdmin');
+        $imagesManager = new \Projet\Models\AdminModel();
+        $myPics = $imagesManager->getPortfolioItems();
+        $result = $myPics->fetchAll();
+        $resPath = "/app/public/Administration/img/";
+        $data=[
+            "result" => $result,
+            "resPath" => $resPath
+        ];
+       
+        return $this->viewAdmin('portfolioAdmin', $data);
     }
+
+    
+
     function blogAdmin()
     {
-        return $this->viewAdmin('blogAdmin');
+        $imagesManager = new \Projet\Models\AdminModel();
+        $myPics = $imagesManager->getPortfolioItems();
+        $result = $myPics->fetchAll();
+        $resPath = "/app/public/Administration/img/";
+        $data=[
+            "result" => $result,
+            "resPath" => $resPath
+        ];
+        return $this->viewAdmin('blogAdmin', $data);
     }
     // poster un article
     function postArticle($title, $picture, $content)
@@ -97,6 +121,8 @@ class AdminController extends Controller
 
         require 'app/views/Admin/blogAdmin.php';
     }
+
+    // envoi d'images depuis blog & portfolio
     function sendImages($name)
     {
         $images = new \Projet\Models\AdminModel();
@@ -104,43 +130,22 @@ class AdminController extends Controller
 
         require 'app/views/Admin/blogAdmin.php';
     }
+    // function sendPicFolio($name)
+    // {
+    //     $images = new \Projet\Models\AdminModel();
+    //     $newImage = $images->sendPicFolio($name);
+
+    // }
+
+   
+
+   
 
     function contactAdmin()
     {
         return $this->viewAdmin('contactAdmin');
     }
  
-
-//     // connexion au tableau de bord apres comparaison du mot de passe
-
-//     function connexion($mail, $mdp)
-//     { //recup du mot de pass
-//         $userManager = new \Projet\Models\AdminModel();
-//         $connexAdm = $userManager->recupMdp($mail, $mdp);
-
-//         $resultat = $connexAdm->fetch();
-
-//         $isPasswordCorrect = password_verify($mdp, $resultat['mdp']);
-
-//         $_SESSION['mail'] = $resultat['mail']; // transformation des variables recupérées en session
-//         $_SESSION['mdp'] = $resultat['mdp'];
-//         $_SESSION['id'] = $resultat['id'];
-//         $_SESSION['firstname'] = $resultat['firstname'];
-
-
-//         $countMail = new \Projet\Models\ContactModel();
-//         $nbrMail = $countMail->countMail();
-
-//         if ($isPasswordCorrect) {
-
-//             require 'app/Views/Admin/dashboard.php';
-//         } 
-        
-//         else {
-//             echo 'vos identifients sont incorrect';
-//             //require('Views/backend/erreur.php');
-//         }
-
 
 //     }
 //     /*=========================== page EmailView  ==========================================*/

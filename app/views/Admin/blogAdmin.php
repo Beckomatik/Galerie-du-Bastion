@@ -12,7 +12,7 @@
     <!-- <label for="title">Ajouter un titre</label>
     <input type="text" name="title" id="title" placeholder="ex: mon super titre"> -->
 
-    <label for="photo">Ajouter une ou plusieurs photos (5mo maximum)</label>
+    <label for="photo">Ajouter une photo (5mo maximum)</label>
     <input type="file" multiple accept=".png, .jpg, .jpeg, .gif, .webp" name="photo" id="photo">
 <!-- 
     <label for="content">Ecrivez votre article</label>
@@ -22,11 +22,10 @@
 </form>
 
 <p>Mes images</p>
-<?php 
-$req = $db->query('SELECT name from images');
-while($data = $req->fetch()){
-    echo'<img src="./app/public/Administration/img/'.$data['name'].'">';
-}
-?>
+<?php  foreach ($datas['result'] as $data)
+{?>
+
+<div class="picportfolio">Image -><img src="<?= $datas["resPath"] . $data['name'] ?>" alt=""> </div>
+<?php } ?>
 
 <?php include ('footer.php'); ?>

@@ -347,3 +347,27 @@ input[type=submit]{
 .cgv p{
  margin: 20px 0;
 }
+
+/* PORTFOLIO */
+
+#portfolio{
+  width: 95%;
+  margin: 0 auto;
+}
+#portfolio a{
+  color: rgb(0, 153, 181);
+  font-weight: 800;
+  /* text-decoration: underline wavy rgb(0, 150, 177); */
+}
+
+#portfolio p{
+  font-size: 1.2rem;
+}
+
+.picportfolio{
+  margin-top: 30px;
+}
+
+.picportfolio img{
+  width: 100%;
+}

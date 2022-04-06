@@ -38,22 +38,35 @@ try {
         // accès aux différentes pages
         } elseif ($_GET['action'] == 'createAdminPage') {
             $adminController->createAdminPage();
+
         } elseif ($_GET['action'] == 'contact') {
             $adminController->contactAdmin();
+
         } elseif ($_GET['action'] == 'about') {
             $adminController->aboutAdmin();
+
         } elseif ($_GET['action'] == 'portfolio') {
             $adminController->portfolioAdmin();
+
+        
+
         } elseif ($_GET['action'] == 'blog') {
             $adminController->blogAdmin();
-        }
-        elseif ($_GET['action'] == 'yourinfos') {
-           
-            $adminController->infoCompte();
-        }
 
-        // envoi de ficher photo
-        elseif (isset($_FILES['photo']) && ($_GET['action'] == 'sendpicture')) {
+         } elseif ($_GET['action'] == 'yourinfos') {           
+            $adminController->infoCompte();
+
+        } elseif ($_GET['action'] == 'dashBoard') {           
+            $adminController->dashBoard();
+
+        } elseif ($_GET['action'] == 'deconnexion') {           
+            session_destroy();
+            $adminController->connexionAdminPage();
+        
+        
+        
+        // envoi de ficher photo depuis le blog
+        }elseif (isset($_FILES['photo']) && ($_GET['action'] == 'sendpicture')) {
             $tmpName = $_FILES['photo']['tmp_name'];
             $name = $_FILES['photo']['name'];
             $size = $_FILES['photo']['size'];
@@ -79,6 +92,42 @@ try {
             }
         }
 
+        // ENVOI DU FORMULAIRE PORTFOLIO
+        elseif ($_GET['action'] == 'sendPicFolio'){
+        
+        if(isset($_FILES['photo'])) 
+            $tmpName = $_FILES['photo']['tmp_name'];
+            $name = $_FILES['photo']['name'];
+            $size = $_FILES['photo']['size'];
+            $error = $_FILES['photo']['error'];
+            $type = $_FILES['photo']['type'];
+
+            $arrExtension = explode('.', $name);
+            $extension = strtolower(end($arrExtension));
+
+            $extensionsAuthorized = ['jpg', 'jpeg', 'gif', 'png', 'wep'];
+            $maxSize = 5000000;
+
+            if (in_array($extension, $extensionsAuthorized) && $size <= $maxSize && $error == 0) {
+
+                // pour modifier le nom d'une image si les noms sont similaires
+                $uniqueName = uniqid('', true);
+                $fileName = $uniqueName . '.' . $extension;
+                // enregistre les images uploader dans le chemin
+                move_uploaded_file($tmpName, './app/public/Administration/img/' . $name);
+              
+            } else {
+                echo 'Mauvaise extension ou photo trop volumineuse ou erreur';
+            }$data=[
+                ':picture' => $name,
+                ':title' => htmlspecialchars($_POST['title']),
+                ':category' => htmlspecialchars($_POST['category']), 
+                ':alt' => htmlspecialchars($_POST['alt']) 
+            ];
+           
+            $adminController->portfolioForm($data);
+           
+        }
         
             } else {
                 $adminController->connexionAdminPage();
