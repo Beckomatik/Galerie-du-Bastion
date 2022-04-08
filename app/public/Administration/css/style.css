@@ -127,11 +127,27 @@ h1 i{
     padding: 5px;
     text-decoration: none;
 }
+
+.myPosts .modifOrDel{
+    display: flex;
+    justify-content: space-around;
+}
+
+.myPosts .modifOrDel a{
+    font-weight: normal;
+  
+}
+.myPosts .modifOrDel a:first-of-type{
+    background-color: var(--blue);
+    color: var(--dark);
+  
+}
+
 .myPosts p:first-of-type{
     font-weight: 800;
 }
 .myPosts p:last-of-type{
-    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 /* le formulaire */
@@ -167,6 +183,10 @@ input{
     cursor: pointer;
 }
 input#photo{
-  text-overflow:clip; 
-    border: 2px solid red;  
+    width: 100%;
+    overflow-wrap: break-word;
 }
+input#file-upload-button{
+    width: 100%!important;
+}
+

@@ -102,13 +102,62 @@ try {
         }elseif($_GET['action'] == 'deletePicture'){
             $adminController->deletePicture();
         
+        // redirection vers page de modification d'un article
+        }elseif($_GET['action'] == 'updateArticlePage'){
+            $adminController->updateArticlePage($_GET['id']);
+
+        // modification d'article du blog'
+
+        // }elseif($_GET['action'] == 'modifyArticle'){
+        //     $id = $_SESSION['id'];
+        //     $newPicture = $_POST['newPicture'];
+        //     $newAlt = $_POST['newAlt'];
+        //     $newTitle = $_POST['newTitle'];
+        //     $newContent = $_POST['newContent'];
+        //     $new = $_POST['newCategory'];
+
+        //     $adminController->modifyArticle($id, $newPicture, $newAlt, $newTitle, $newContent, $newCategory);
+        }elseif ($_GET['action'] == 'modifyArticle') {
+            if(isset($_FILES['photo']))
+            $tmpName = $_FILES['photo']['tmp_name'];
+            $name = $_FILES['photo']['name'];
+            $size = $_FILES['photo']['size'];
+            $error = $_FILES['photo']['error'];
+            $type = $_FILES['photo']['type'];
+
+            $arrExtension = explode('.', $name);
+            $extension = strtolower(end($arrExtension));
+
+            $extensionsAuthorized = ['jpg', 'jpeg', 'gif', 'png', 'wep'];
+            $maxSize = 5000000;
+
+            if (in_array($extension, $extensionsAuthorized) && $size <= $maxSize && $error == 0) {
+
+                // pour modifier le nom d'une image si les noms sont similaires
+                $uniqueName = uniqid('', true);
+                $fileName = $uniqueName . '.' . $extension;
+                // enregistre les images uploader dans le chemin
+                move_uploaded_file($tmpName, './app/public/Administration/img/' . $name);
+              
+            } else {
+                echo 'Mauvaise extension ou photo trop volumineuse ou erreur';
+            }$data=[
+                'id' =>$_GET['id'],
+                'picture' => $name,
+                'title' => htmlspecialchars($_POST['title']),
+                'content' => htmlspecialchars($_POST['content']),
+                'category' => htmlspecialchars($_POST['category']), 
+                'alt' => htmlspecialchars($_POST['alt']) 
+            ];           
+            $adminController->modifyArticle($data);  
+
         // suppression d'article du blog'
         }elseif($_GET['action'] == 'deleteArticle'){
             $adminController->deleteArticle();
-        }
+       
 
         // ENVOI DU FORMULAIRE PORTFOLIO
-        elseif ($_GET['action'] == 'sendPicFolio'){
+        }elseif ($_GET['action'] == 'sendPicFolio'){
         
         if(isset($_FILES['photo'])) 
             $tmpName = $_FILES['photo']['tmp_name'];

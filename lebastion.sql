@@ -19,8 +19,11 @@ INSERT INTO `admins` (`id`, `firstname`, `lastname`, `mdp`, `email`, `created_at
 	(2, 'John', 'Doe', '$2y$10$h1yju8rahkWE27wKLpOj3.ElasgxBSbvlMRpzxoN7kGDVminChkXq', 'jane@contact.fr', '2022-03-31 10:36:37');
 /*!40000 ALTER TABLE `admins` ENABLE KEYS */;
 
--- Listage des données de la table galeriedubastion.blogposts : ~0 rows (environ)
+-- Listage des données de la table galeriedubastion.blogposts : ~1 rows (environ)
 /*!40000 ALTER TABLE `blogposts` DISABLE KEYS */;
+INSERT INTO `blogposts` (`id`, `title`, `picture`, `content`, `category`, `alt`, `created_at`) VALUES
+	(6, 'un titre', 'mihail-ribkin-26yvIaheDMU-unsplash.jpg', 'contenu de l&#039;article ', 'petit cité de caractère', 'balise alt', '2022-04-06 14:28:57'),
+	(11, 'essaie envoi multiple', 'milica-spasojevic-lt6SR2P13wc-unsplash.jpg', 'blah blah', '', '', '2022-04-06 16:10:37');
 /*!40000 ALTER TABLE `blogposts` ENABLE KEYS */;
 
 -- Listage des données de la table galeriedubastion.comments : ~0 rows (environ)

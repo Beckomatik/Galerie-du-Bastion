@@ -138,11 +138,34 @@ class AdminController extends Controller
         return $this->viewAdmin('blogAdmin', $data);
     }   
 
+    // modification d'article du blog
+    function modifyArticle($data)
+    {
+        $modifArticles = new \Projet\Models\AdminModel();
+        $modifArticle = $modifArticles->modifyArticle($data);
+        header('Location: indexAdmin.php?action=blog&success=true');
+    }    
+
+    // redirection vers page de modification d'article
+    function updateArticlePage($id)
+    {
+        $articleManager = new \Projet\Models\AdminModel();
+        $myPost = $articleManager->getBlogItem($id);
+        $result = $myPost->fetch();
+        $resPath = "/app/public/Administration/img/";
+        $data=[
+            "result" => $result,
+            "resPath" => $resPath
+        ];
+   
+        return $this->viewAdmin('updateBlogAdmin', $data);
+    }
+
     // suppression d'article du blog
     function deleteArticle()
     {
-        $delPictures = new \Projet\Models\AdminModel();
-        $delPicture = $delPictures->deleteArticle();
+        $delArticles = new \Projet\Models\AdminModel();
+        $deArticle = $delArticles->deleteArticle();
         header('Location: indexAdmin.php?action=blog&success=true');
     }    
 

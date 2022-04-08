@@ -68,18 +68,37 @@ class AdminModel extends Manager
         public function getBlogItems()
         {
             $db = $this->dbConnect();
-            $req = $db->prepare('SELECT title, picture, content, category, id, alt FROM blogposts ORDER BY id DESC');
+            $req = $db->prepare('SELECT title, picture, content, category, id, alt, created_at FROM blogposts ORDER BY id DESC');
             $req->execute();      
              return $req;
+        }
+
+        // page update article
+        public function getBlogItem($id)
+        {
+            $db = $this->dbConnect();
+            $req = $db->prepare('SELECT title, picture, content, category, id, alt, created_at FROM blogposts WHERE id=?');
+            $req->execute(array($id));      
+             return $req;
+        }
+
+        // modifier article de la bdd depuis le blogadmin
+        public function modifyArticle($data)
+        {
+            $db = $this->dbConnect();
+
+            $images = $db->prepare('UPDATE blogposts SET picture=:picture, alt=:alt, title=:title, content=:content, category=:category  WHERE id=:id ');
+            $images->execute(array(':picture' => $data['picture'], ':title' => $data['title'], ':alt' => $data['alt'], ':content' => $data['content'], ':category' => $data['category'], ':id' => $data['id']));
+            return $images;
         }
 
         // supprimer article de la bdd depuis le blogadmin
         public function deleteArticle()
         {
             $db = $this->dbConnect();
-            $images = $db->prepare('DELETE FROM blogposts WHERE id=?');
-            $images->execute([$_GET['id']]);
-            return $images;
+            $delArticles = $db->prepare('DELETE FROM blogposts WHERE id=?');
+            $delArticles->execute([$_GET['id']]);
+            return $delArticles;
         }
 
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

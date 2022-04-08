@@ -9,7 +9,7 @@
 <form action="indexAdmin.php?action=sendArticle" method="post" enctype="multipart/form-data">
 
         <label for="photo">Ajouter une photo (5mo maximum)</label>
-        <input type="file" multiple accept=".png, .jpg, .jpeg, .gif, .webp" name="photo" id="photo">
+        <input type="file" accept=".png, .jpg, .jpeg, .gif, .webp" name="photo" id="photo">
         
         <label for="alt">Pour le bon référencement de votre site , veuillez ajouter un descriptif de votre image</label>
         <textarea name="alt" id="alt" placeholder="Une brève description"></textarea>
@@ -35,8 +35,11 @@
             <p>Titre : <?=$data['title'] ?></p>            
             <p>Catégorie : <?=$data['category'] ?></p>            
             <p>Contenu : <?=$data['content'] ?></p> 
-            <p>Balise Alt : <?=$data['alt'] ?></p>           
-            <p><a href="indexAdmin.php?action=deleteArticle&id=<?= $data['id'] ?>">Supprimer l'article</a></p>
+            <p>Balise Alt : <?=$data['alt'] ?></p>  
+            <div class="modifOrDel">        
+                <a href="indexAdmin.php?action=updateArticlePage&id=<?= $data['id'] ?>">Modifier l'article</a>
+                <a href="indexAdmin.php?action=deleteArticle&id=<?= $data['id'] ?>">Supprimer l'article</a>
+            </div> 
         </div>
 
     <?php } ?>
