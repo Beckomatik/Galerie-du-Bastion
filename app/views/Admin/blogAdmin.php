@@ -29,7 +29,7 @@
 
 <p id="mesarticles">Mes articles</p>
     <?php foreach ($datas['result'] as $data) { ?>
-
+<p>un test git</p>
         <div class="myPosts">          
             <img src="<?= $datas["resPath"] . $data['picture'] ?>" alt="">
             <p>Titre : <?=$data['title'] ?></p>            
