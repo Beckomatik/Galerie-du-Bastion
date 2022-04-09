@@ -32,7 +32,7 @@
                     <li><a href="index.php?action=about">A Propos</a></li>
                     <li><a href="index.php?action=portfolio">Portfolio</a></li>
                     <li><a href="index.php?action=blog">Blog</a></li>
-                    <li><a href="index.php?action=shop">Boutique</a></li>
+                    <!-- <li><a href="index.php?action=shop">Boutique</a></li> -->
                     <li><a href="index.php?action=contact">Contact</a></li>
                 </ul>
             </nav>

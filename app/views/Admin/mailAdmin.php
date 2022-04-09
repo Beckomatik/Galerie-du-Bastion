@@ -2,7 +2,7 @@
 
 <main class="container forms" id="mailPage">
 
-    <h1>Message de&nbsp;: <?=$datas['fullname'] ?></h1>
+    <h1><img src="/app/public/Administration/img/avatar.png" alt=""><?=$datas['fullname'] ?></h1>
     
     <div class="oneMail">      
           
@@ -11,6 +11,10 @@
             <p>Téléphone : <?=$datas['phone'] ?></p>
             <p><?=$datas['objet'] ?></p>
             <p id="mailContent"><?=$datas['content'] ?></p>
+            <div class="modifOrDel">        
+                <a href="mailto:<?= $datas['mail'] ?>">Répondre</a>
+                <a href="indexAdmin.php?action=deleteMail&id=<?= $datas['id'] ?>">Supprimer</a>
+            </div> 
       
     </div>
 

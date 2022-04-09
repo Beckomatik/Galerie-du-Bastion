@@ -131,17 +131,20 @@ h1 i{
     padding: 5px;
     text-decoration: none;
 }
+.myPosts p:last-of-type{
+    margin-top: 10px;
+}
 
-.myPosts .modifOrDel{
+.modifOrDel{
     display: flex;
     justify-content: space-around;
 }
 
-.myPosts .modifOrDel a{
+.modifOrDel a{
     font-weight: normal;
   
 }
-.myPosts .modifOrDel a:first-of-type{
+.modifOrDel a:first-of-type{
     background-color: var(--blue);
     color: var(--dark);
   
@@ -153,6 +156,7 @@ h1 i{
 .myPosts p:last-of-type{
     margin-bottom: 10px;
 }
+
 
 /* le formulaire */
 
@@ -196,10 +200,20 @@ input#photo{
 
 #mailsPage .mail{
     background-color: rgba(154, 154, 154, 0.158);
-    border-radius: 10px;
+    border-radius: 10px 10px 0 10px;
     padding: 5px;
-    margin: 15px 0;
+    margin-top: 15px;
     font-size: 1.2rem;
+}
+#mailsPage .fullMail #delMail{
+   text-align: end;
+}
+#mailsPage .fullMail #delMail a{
+   background-color: var(--red);
+   color: var(--light);
+   font-size: 1rem;
+   padding: 5px;
+   border-radius: 0 0 10px 10px;
 }
 
 
@@ -219,5 +233,43 @@ input#photo{
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
+}
+
+/* PAGE UN MAIL */
+#mailPage{
+    background-color: rgba(154, 154, 154, 0.158);
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 15px;
+}
+#mailPage h1{
+    margin-top: 0;
+}
+#mailPage p{
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+#mailPage img{
+    width: 10%;
+    margin-right: 10px;
+    margin-bottom: -3px;
+}
+
+#mailPage .oneMail a{
+
+    background-color: var(--red);
+    color: var(--light);
+    border-radius: 5px;
+    padding: 5px;
+    text-decoration: none;
+    font-size: 1rem;    
+}
+#mailPage .oneMail a:first-of-type{
+    background-color: var(--dark);
+    color: var(--light);     
+}
+
+#mailPage .oneMail .modifOrDel{
+    margin-top: 10px;
 }
 

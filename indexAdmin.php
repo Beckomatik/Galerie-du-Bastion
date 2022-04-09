@@ -61,13 +61,19 @@ try {
             session_destroy();
             $adminController->connexionAdminPage();
         
+        // voir tous les mails
         } elseif ($_GET['action'] == 'mails') {                      
             $adminController->mailsAdmin();
         
-          // voir un mail
+        // voir un mail
        }elseif ($_GET['action'] == 'showMail'){
             $id = $_GET['id'];
             $adminController->showMail($id);
+        
+       }elseif ($_GET['action'] == 'deleteMail'){
+            $id = $_GET['id'];
+            $adminController->deleteMail($id);
+            
         
         
         

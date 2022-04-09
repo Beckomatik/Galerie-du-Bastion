@@ -32,6 +32,15 @@ class ContactModel extends Manager
         return $req;
     }
 
+    public function deleteMail($id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('DELETE FROM contacts WHERE id = ? ');
+        $req->execute(array($id));
+        
+        return $req;
+    }
+
 
 //        /*================================ nombres de mail  ====================================*/
 

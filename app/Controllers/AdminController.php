@@ -195,6 +195,13 @@ class AdminController extends Controller
 
         return $this->viewAdmin('mailAdmin', $data);
     }
+    function deleteMail($id)
+    {
+        $mail = new \Projet\Models\ContactModel();
+        $mailOne = $mail->deleteMail($id);
+
+        header('Location: indexAdmin.php?action=mails');
+    }
 
 
 }
