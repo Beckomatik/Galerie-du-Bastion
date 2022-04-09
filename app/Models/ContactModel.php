@@ -14,12 +14,24 @@ class ContactModel extends Manager
         return $req;
     }
 
-//     public function getMails()
-//     {
-//        $db = $this->dbConnect();
-//        $req = $db->query("SELECT id, lastname, firstname,  mail, phone, objet, content  FROM contacts  ORDER BY id DESC " );
-//        return $req;
-//     }
+    public function getMails()
+    {
+       $db = $this->dbConnect();
+       $req = $db->prepare('SELECT id, fullname, mail, phone, objet, content, created_at FROM contacts ORDER BY id DESC');
+       $req->execute();
+       
+       return $req;
+    }
+
+    public function getMail($id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT id, fullname, mail, phone, objet, content, created_at  FROM contacts WHERE id = ? ');
+        $req->execute(array($id));
+        
+        return $req;
+    }
+
 
 //        /*================================ nombres de mail  ====================================*/
 
@@ -44,12 +56,5 @@ class ContactModel extends Manager
 
 //        /*================================ show one mail  ====================================*/
 
-//       public function getMail($id)
-//       {
-//          $db = $this->dbConnect();
-//          $req = $db->prepare('SELECT *  FROM contacts WHERE id = ? ' );
-//          $req->execute(array($id));
-//          return $req->fetch();
-//       }
 
 }

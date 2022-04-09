@@ -61,6 +61,14 @@ try {
             session_destroy();
             $adminController->connexionAdminPage();
         
+        } elseif ($_GET['action'] == 'mails') {                      
+            $adminController->mailsAdmin();
+        
+          // voir un mail
+       }elseif ($_GET['action'] == 'showMail'){
+            $id = $_GET['id'];
+            $adminController->showMail($id);
+        
         
         
         // envoi d'article depuis le blog
@@ -108,17 +116,8 @@ try {
 
         // modification d'article du blog'
 
-        // }elseif($_GET['action'] == 'modifyArticle'){
-        //     $id = $_SESSION['id'];
-        //     $newPicture = $_POST['newPicture'];
-        //     $newAlt = $_POST['newAlt'];
-        //     $newTitle = $_POST['newTitle'];
-        //     $newContent = $_POST['newContent'];
-        //     $new = $_POST['newCategory'];
-
-        //     $adminController->modifyArticle($id, $newPicture, $newAlt, $newTitle, $newContent, $newCategory);
         }elseif ($_GET['action'] == 'modifyArticle') {
-            if(isset($_FILES['photo']))
+            if(!empty($_FILES['photo']))
             $tmpName = $_FILES['photo']['tmp_name'];
             $name = $_FILES['photo']['name'];
             $size = $_FILES['photo']['size'];
@@ -130,6 +129,10 @@ try {
 
             $extensionsAuthorized = ['jpg', 'jpeg', 'gif', 'png', 'wep'];
             $maxSize = 5000000;
+            if($size > $maxSize){
+                echo 'Le fichier est trop volumineux';die;
+            // créer une page d'erreur exprès pour les fichiers de photos trop volumineux
+            }
 
             if (in_array($extension, $extensionsAuthorized) && $size <= $maxSize && $error == 0) {
 
@@ -138,18 +141,29 @@ try {
                 $fileName = $uniqueName . '.' . $extension;
                 // enregistre les images uploader dans le chemin
                 move_uploaded_file($tmpName, './app/public/Administration/img/' . $name);
+                $data=[
+                    'id' =>$_GET['id'],
+                    'picture' => $name,
+                    'title' => htmlspecialchars($_POST['title']),
+                    'content' => htmlspecialchars($_POST['content']),
+                    'category' => htmlspecialchars($_POST['category']), 
+                    'alt' => htmlspecialchars($_POST['alt']) 
+                ];           
+                // modify with picture
+                $adminController->modifyArticle($data); 
               
             } else {
-                echo 'Mauvaise extension ou photo trop volumineuse ou erreur';
-            }$data=[
-                'id' =>$_GET['id'],
-                'picture' => $name,
-                'title' => htmlspecialchars($_POST['title']),
-                'content' => htmlspecialchars($_POST['content']),
-                'category' => htmlspecialchars($_POST['category']), 
-                'alt' => htmlspecialchars($_POST['alt']) 
-            ];           
-            $adminController->modifyArticle($data);  
+               
+                $data=[
+                    'id' =>$_GET['id'],
+                  
+                    'title' => htmlspecialchars($_POST['title']),
+                    'content' => htmlspecialchars($_POST['content']),
+                    'category' => htmlspecialchars($_POST['category']), 
+                    'alt' => htmlspecialchars($_POST['alt']) 
+                ];  
+                $adminController->modifyArticleWithoutPic($data); 
+            } 
 
         // suppression d'article du blog'
         }elseif($_GET['action'] == 'deleteArticle'){
@@ -243,11 +257,7 @@ try {
 //             $backController->deleteMail($id);
 //         }
 
-//         // voir un mail
-//         elseif ($_GET['action'] == 'showMail'){
-//             $id = $_GET['id'];
-//             $backController->showMail($id);
-//         }
+//       
 //         // retour tableau de bord
 //         elseif ($_GET['action'] == 'dashbord'){
 //             $backController->dashbord();

@@ -69,7 +69,8 @@ class AdminModel extends Manager
         {
             $db = $this->dbConnect();
             $req = $db->prepare('SELECT title, picture, content, category, id, alt, created_at FROM blogposts ORDER BY id DESC');
-            $req->execute();      
+            $req->execute(); 
+                 
              return $req;
         }
 
@@ -89,6 +90,15 @@ class AdminModel extends Manager
 
             $images = $db->prepare('UPDATE blogposts SET picture=:picture, alt=:alt, title=:title, content=:content, category=:category  WHERE id=:id ');
             $images->execute(array(':picture' => $data['picture'], ':title' => $data['title'], ':alt' => $data['alt'], ':content' => $data['content'], ':category' => $data['category'], ':id' => $data['id']));
+            return $images;
+        }
+        // modifier article de la bdd depuis le blogadmin
+        public function modifyArticleWithoutPic($data)
+        {
+            $db = $this->dbConnect();
+
+            $images = $db->prepare('UPDATE blogposts SET alt=:alt, title=:title, content=:content, category=:category  WHERE id=:id ');
+            $images->execute(array(':title' => $data['title'], ':alt' => $data['alt'], ':content' => $data['content'], ':category' => $data['category'], ':id' => $data['id']));
             return $images;
         }
 

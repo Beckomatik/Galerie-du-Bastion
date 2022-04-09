@@ -145,6 +145,12 @@ class AdminController extends Controller
         $modifArticle = $modifArticles->modifyArticle($data);
         header('Location: indexAdmin.php?action=blog&success=true');
     }    
+    function modifyArticleWithoutPic($data)
+    {
+        $modifArticles = new \Projet\Models\AdminModel();
+        $modifArticle = $modifArticles->modifyArticleWithoutPic($data);
+        header('Location: indexAdmin.php?action=blog&success=true');
+    }    
 
     // redirection vers page de modification d'article
     function updateArticlePage($id)
@@ -167,7 +173,29 @@ class AdminController extends Controller
         $delArticles = new \Projet\Models\AdminModel();
         $deArticle = $delArticles->deleteArticle();
         header('Location: indexAdmin.php?action=blog&success=true');
-    }    
+    }  
+    
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // ++++++++++++++  MAILS  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+    function mailsAdmin()
+    {
+        $mails = new \Projet\Models\ContactModel();
+        $seeMails = $mails->getMails();
+        $data = $seeMails->fetchAll();
+
+        return $this->viewAdmin('mailsAdmin', $data);
+    }
+
+    function showMail($id)
+    {
+        $mail = new \Projet\Models\ContactModel();
+        $mailOne = $mail->getMail($id);
+        $data = $mailOne->fetch();
+
+        return $this->viewAdmin('mailAdmin', $data);
+    }
+
 
 }
 
@@ -195,13 +223,7 @@ class AdminController extends Controller
 //      }
 
 
-//      function showMail($id)
-//     {
-//         $mail = new \Projet\Models\ContactModel();
-//         $mailOne = $mail->getMail($id);
 
-//         require 'app/Views/Admin/email.php';
-//     }
 
 //     /* retour tableau de bord */
 //     function dashbord()

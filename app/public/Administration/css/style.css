@@ -26,6 +26,10 @@ li{
     list-style-type: none;
 }
 
+a{
+    text-decoration: none;
+}
+
 /* HEADER */
 
 #head{
@@ -186,7 +190,34 @@ input#photo{
     width: 100%;
     overflow-wrap: break-word;
 }
-input#file-upload-button{
-    width: 100%!important;
+
+
+/* PAGE MAILS */
+
+#mailsPage .mail{
+    background-color: rgba(154, 154, 154, 0.158);
+    border-radius: 10px;
+    padding: 5px;
+    margin: 15px 0;
+    font-size: 1.2rem;
+}
+
+
+#mailsPage .mail .topMail{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+}
+#mailsPage .mail .topMail p:last-of-type{
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+#mailsPage .mail #mailContent{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
