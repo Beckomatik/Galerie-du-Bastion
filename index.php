@@ -52,11 +52,57 @@ try{
             } else {
                 throw new Exception('tous les champs ne sont pas remplis');
             }
+        // accès à la pacge de création d'un user
+        } elseif($_GET['action'] == 'userRegistrationPage'){
+            $frontController->userRegistrationPage();
+        
+        // création du user
+        } elseif($_GET['action'] == 'userRegistration'){
+            $lastname = htmlspecialchars($_POST['lastname']);
+            $firstname = htmlspecialchars($_POST['firstname']);
+            $pseudo = htmlspecialchars($_POST['pseudo']);
+            $email = htmlspecialchars($_POST['email']);
+            $pass = htmlspecialchars($_POST['mdp']);
+            $confirm_mdp = htmlspecialchars($_POST['confirm_mdp']);
+            if($pass == $confirm_mdp){
+                $mdp = password_hash($pass, PASSWORD_DEFAULT);
+                $mdp_confirm = password_hash($confirm_mdp, PASSWORD_DEFAULT);
+            }else{
+                echo 'Les mots de passe ne sont pas les mêmes !' ;
+            }
+
+            $data = [
+                ":lastname"=>$lastname,
+                ":firstname"=>$firstname,
+                ":pseudo"=>$firstname,
+                ":email"=>$email,
+                ":mdp"=>$mdp,
+                ":confirm_mdp"=>$mdp_confirm           
+            ];
+            // var_dump($data);die;
+           
+            if ((!empty($lastname) && (!empty($firstname) && (!empty($pseudo) && (!empty($email) && (!empty($pass)) && (!empty($confirm_mdp))))))) {
+                $frontController->userRegistration($data);
+            } else {
+                throw new Exception('tous les champs ne sont pas remplis');
+            }
+        
+        // accès à la page de connexion du user
+        } elseif($_GET['action'] == 'userConnexionPage'){
+            $frontController->userConnexionPage();
+        
+        // connexion du user
+        } elseif($_GET['action'] == 'userConnexion'){
+            if(isset($_POST['']))
+            $frontController->userConnexion();
         }
+
+
+
     }else{
         $frontController->home();
     }
 
 } catch(Exception $e){
-    require 'app/Views/front/error.php';
+    require 'app/Views/Front/error.php';
 }

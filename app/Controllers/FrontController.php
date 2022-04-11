@@ -43,6 +43,37 @@ class FrontController extends Controller
         return $this->view('blog', $data);
     }
 
+    function userRegistrationPage()
+    {
+        return $this->view('userRegistrationPage');
+    }
+
+    function userRegistration($data)
+    {
+        $userRegistration = new \Projet\Models\FrontModel();
+  
+  
+        if (filter_var($data[':email'], FILTER_VALIDATE_EMAIL)) {
+            $newUser = $userRegistration->userRegistration($data);
+          
+            return $this->view('confirmNewUser');
+        } else {
+            header('Location: app/Views/Front/error.php');
+        }
+        return $this->view('home');
+    }
+
+    function userConnexionPage()
+    {
+        return $this->view('userConnexionPage');
+    }
+
+    function userConnexion()
+    {
+        
+        return $this->view('home');
+    }
+
     function shop()
     {
         return $this->view('shop');
@@ -74,7 +105,7 @@ class FrontController extends Controller
               $Mail = $postMail->postMail($data);
               require 'app/Views/Front/confirmeContact.php';
           } else {
-              header('Location: app/Views/frontend/error.php');
+              header('Location: app/Views/Front/error.php');
           }
       }
 

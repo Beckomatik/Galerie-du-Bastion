@@ -21,6 +21,15 @@ class FrontModel extends Manager{
 
         return $req;
     }
+
+    public function userRegistration($data)
+    {
+       
+        $db = $this->dbConnect();
+        $req = $db->prepare('INSERT INTO users( lastname, firstname, email, pseudo, mdp, confirm_mdp) VALUE(:lastname, :firstname, :email, :pseudo, :mdp, :confirm_mdp)');
+        $req->execute($data);
+        return $req;
+    }
    
 
 

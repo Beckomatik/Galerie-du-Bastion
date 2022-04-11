@@ -3,7 +3,7 @@
 <main>
 ERROR 
 
-<?php echo $e ?>
+<!-- <?php echo $e ?> -->
 
 </main>
 

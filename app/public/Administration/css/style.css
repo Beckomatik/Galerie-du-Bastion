@@ -197,6 +197,16 @@ input#photo{
 
 
 /* PAGE MAILS */
+#mailsPage img{
+    width: 60px;
+    margin-right: 15px;
+    margin-bottom: -15px;
+}
+
+#mailsPage h1{
+    margin-bottom: 30px;
+    /* text-align: center; */
+}
 
 #mailsPage .mail{
     background-color: rgba(154, 154, 154, 0.158);
@@ -227,7 +237,7 @@ input#photo{
     font-weight: normal;
 }
 
-#mailsPage .mail #mailContent{
+#mailsPage .mail .mailContent{
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -236,6 +246,14 @@ input#photo{
 }
 
 /* PAGE UN MAIL */
+#mailItem .backBtn{
+    margin-top: 15px;
+}
+#mailItem .backBtn img{
+    width: 35px;
+    margin-right: 10px;
+    margin-bottom: -7px;
+}
 #mailPage{
     background-color: rgba(154, 154, 154, 0.158);
     border-radius: 10px;

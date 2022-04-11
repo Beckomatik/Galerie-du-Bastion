@@ -2,7 +2,7 @@
 
 <main class="container forms" id="mailsPage">
 
-    <h1>Mes mails</h1>
+    <h1><img src="/app/public/Administration/img/logoemail.png" alt=""> Mes mails</h1>
     <?php foreach($datas as $data){ ?>
     <div class="fullMail">
         <div class="mail">
@@ -14,7 +14,7 @@
                 <!-- <p>Email : <?=$data['mail'] ?></p> -->
                 <!-- <p>Téléphone : <?=$data['phone'] ?></p> -->
                 <p><?=$data['objet'] ?></p>
-                <p id="mailContent"><?=$data['content'] ?></p>
+                <p class="mailContent"><?=$data['content'] ?></p>
             </a>        
         </div>
         <div id="delMail"><a href="indexAdmin.php?action=deleteMail&id=<?= $data['id'] ?>">Supprimer</a></div>

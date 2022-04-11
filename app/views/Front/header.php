@@ -34,6 +34,7 @@
                     <li><a href="index.php?action=blog">Blog</a></li>
                     <!-- <li><a href="index.php?action=shop">Boutique</a></li> -->
                     <li><a href="index.php?action=contact">Contact</a></li>
+                    <li><a href="index.php?action=userConnexionPage"><img src="/app/public/Front/image/connexion.png" alt="bouton de connexion">Espace utilisateur</a></li>
                 </ul>
             </nav>
             <!-- CORP NAME -->
