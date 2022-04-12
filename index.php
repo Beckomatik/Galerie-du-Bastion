@@ -8,70 +8,91 @@ require_once __DIR__ . '/vendor/autoload.php';
 try{
     $frontController = new \Projet\Controllers\FrontController();//objet controler
 
-    if(isset($_GET['action'])){
+    if(isset($_GET['action']))
+    {
         
-        if($_GET['action'] == 'contact'){
+        if($_GET['action'] == 'contact')
+        {
             $frontController->contact();
         }
 
-        elseif($_GET['action'] == 'about'){
+        elseif($_GET['action'] == 'about')
+        {
             $frontController->about();
         }
-        elseif($_GET['action'] == 'portfolio'){
+        elseif($_GET['action'] == 'portfolio')
+        {
             $frontController->portfolio();
         }
-        elseif($_GET['action'] == 'blog'){
+        elseif($_GET['action'] == 'blog')
+        {
             $frontController->blog();
         }
-        elseif($_GET['action'] == 'shop'){
+        elseif($_GET['action'] == 'shop')
+        {
             $frontController->shop();
         }
-        elseif($_GET['action'] == 'legales'){
+        elseif($_GET['action'] == 'legales')
+        {
             $frontController->legales();
         }
-        elseif($_GET['action'] == 'cgv'){
+        elseif($_GET['action'] == 'cgv')
+        {
             $frontController->cgv();
         }
         //  envois de mail dans la bdd
-         elseif ($_GET['action'] == 'contactPost') {
+        elseif ($_GET['action'] == 'contactPost') 
+        {
             $fullname = htmlspecialchars($_POST['fullname']);
             $email = htmlspecialchars($_POST['email']);
             $phone = htmlspecialchars($_POST['phone']);
             $object = htmlspecialchars($_POST['objet']);
             $content = htmlspecialchars($_POST['content']);
            
-            $data = [
+            $data = 
+            [
                 ":fullname"=>$fullname,
                 ":mail"=>$email,
                 ":phone"=>$phone,
                 ":objet"=>$object,
                 ":content"=>$content
             ];
-            if (!empty($fullname) && (!empty($email) && (!empty($phone) && (!empty($object) && (!empty($content)))))) {
-                $frontController->contactPost($data);
-            } else {
-                throw new Exception('tous les champs ne sont pas remplis');
-            }
+            if (!empty($fullname) && (!empty($email) && (!empty($phone) && (!empty($object) && (!empty($content)))))) 
+                {
+                    $frontController->contactPost($data);
+                } 
+            else 
+                {
+                    throw new Exception('tous les champs ne sont pas remplis');
+                }
+        } 
+            
         // accès à la pacge de création d'un user
-        } elseif($_GET['action'] == 'userRegistrationPage'){
-            $frontController->userRegistrationPage();
-        
+        elseif($_GET['action'] == 'userRegistrationPage')
+        {
+            $frontController->userRegistrationPage();        
+        }         
         // création du user
-        } elseif($_GET['action'] == 'userRegistration'){
+        elseif($_GET['action'] == 'userRegistration')
+        {
             $lastname = htmlspecialchars($_POST['lastname']);
             $firstname = htmlspecialchars($_POST['firstname']);
             $pseudo = htmlspecialchars($_POST['pseudo']);
             $email = htmlspecialchars($_POST['email']);
             $pass = htmlspecialchars($_POST['mdp']);
             $confirm_mdp = htmlspecialchars($_POST['confirm_mdp']);
-            if($pass == $confirm_mdp){
-                $mdp = password_hash($pass, PASSWORD_DEFAULT);
-                $mdp_confirm = password_hash($confirm_mdp, PASSWORD_DEFAULT);
-            }else{
-                echo 'Les mots de passe ne sont pas les mêmes !' ;
-            }
+            if($pass == $confirm_mdp)
+                {
+                    $mdp = password_hash($pass, PASSWORD_DEFAULT);
+                    $mdp_confirm = password_hash($confirm_mdp, PASSWORD_DEFAULT);
+                }
+            else
+                {
+                    echo 'Les mots de passe ne sont pas les mêmes !' ;
+                }
 
-            $data = [
+            $data = 
+            [
                 ":lastname"=>$lastname,
                 ":firstname"=>$firstname,
                 ":pseudo"=>$firstname,
@@ -79,30 +100,44 @@ try{
                 ":mdp"=>$mdp,
                 ":confirm_mdp"=>$mdp_confirm           
             ];
-            // var_dump($data);die;
            
-            if ((!empty($lastname) && (!empty($firstname) && (!empty($pseudo) && (!empty($email) && (!empty($pass)) && (!empty($confirm_mdp))))))) {
-                $frontController->userRegistration($data);
-            } else {
-                throw new Exception('tous les champs ne sont pas remplis');
-            }
-        
+            if ((!empty($lastname) && (!empty($firstname) && (!empty($pseudo) && (!empty($email) && (!empty($pass)) && (!empty($confirm_mdp))))))) 
+                {
+                    $frontController->userRegistration($data);
+                } 
+            else 
+                {
+                    throw new Exception('tous les champs ne sont pas remplis');
+                }        
+        }             
         // accès à la page de connexion du user
-        } elseif($_GET['action'] == 'userConnexionPage'){
-            $frontController->userConnexionPage();
-        
+        elseif($_GET['action'] == 'userConnexionPage')
+        {
+            $frontController->userConnexionPage();           
+        }         
         // connexion du user
-        } elseif($_GET['action'] == 'userConnexion'){
-            if(isset($_POST['']))
-            $frontController->userConnexion();
+        elseif($_GET['action'] == 'userConnexion')
+        {
+            $email = htmlspecialchars($_POST['email']);
+            $mdp = $_POST['mdp'];
+            
+
+            if (!empty($email) && (!empty($mdp)))
+            {
+                $frontController->userConnexion($email, $mdp);
+            }
+            else 
+            {
+                throw new Exception('tous les champs ne sont pas remplis');
+            }            
         }
-
-
-
-    }else{
+    }
+    else
+    {
         $frontController->home();
     }
-
-} catch(Exception $e){
+} 
+catch(Exception $e)
+{
     require 'app/Views/Front/error.php';
 }

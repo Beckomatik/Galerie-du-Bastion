@@ -30,8 +30,16 @@ class FrontModel extends Manager{
         $req->execute($data);
         return $req;
     }
-   
 
-
+    // vérification pour connexion user
+    public function verifyMail($email)
+    {
+       
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT id, email, mdp FROM users WHERE email=?');
+        $req->execute(array($email));
+      
+        return $req;
+    }
 
 }

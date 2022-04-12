@@ -21,7 +21,8 @@ class FrontController extends Controller
         $myPics = $imagesManager->getPortfolioItems();
         $result = $myPics->fetchAll();
         $resPath = "/app/public/Administration/img/";
-        $data=[
+        $data=
+        [
             "result" => $result,
             "resPath" => $resPath
         ];
@@ -30,13 +31,13 @@ class FrontController extends Controller
     }
 
     function blog()
-    {
-        
+    {        
         $articleManager = new \Projet\Models\FrontModel();
         $myPosts = $articleManager->getBlogItems();
         $result = $myPosts->fetchAll();
         $resPath = "/app/public/Administration/img/";
-        $data=[
+        $data=
+        [
             "result" => $result,
             "resPath" => $resPath
         ];
@@ -50,14 +51,15 @@ class FrontController extends Controller
 
     function userRegistration($data)
     {
-        $userRegistration = new \Projet\Models\FrontModel();
+        $userRegistration = new \Projet\Models\FrontModel();  
   
-  
-        if (filter_var($data[':email'], FILTER_VALIDATE_EMAIL)) {
-            $newUser = $userRegistration->userRegistration($data);
-          
+        if (filter_var($data[':email'], FILTER_VALIDATE_EMAIL)) 
+        {
+            $newUser = $userRegistration->userRegistration($data);          
             return $this->view('confirmNewUser');
-        } else {
+        } 
+        else 
+        {
             header('Location: app/Views/Front/error.php');
         }
         return $this->view('home');
@@ -68,10 +70,27 @@ class FrontController extends Controller
         return $this->view('userConnexionPage');
     }
 
-    function userConnexion()
+    function userConnexion($email, $mdp)
     {
+        $user = new \Projet\Models\FrontModel();
+        $userConnexion = $user->verifyMail($email);
         
-        return $this->view('home');
+
+        $result = $userConnexion->fetch();
+        $correctPassword = password_verify($mdp, $result['mdp']);
+
+        $_SESSION['email'] = $result['email'];
+        $_SESSION['mdp'] = $result['mdp'];
+        $_SESSION['id'] = $result['id'];
+
+        if($correctPassword)
+        {
+            return $this->view('confirmConnexion');
+        }
+        else
+        {
+            return $this->view('userConnexionPage');
+        }
     }
 
     function shop()
