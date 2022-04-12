@@ -1,6 +1,6 @@
 <?php include ('header.php'); ?>
 
-<main class="forms" id="createUser">
+<main class="forms userAccount">
     <h1>Je m'inscris pour profiter de plus de contenu !</h1>
     <form action="index.php?action=userRegistration" method="POST">
 

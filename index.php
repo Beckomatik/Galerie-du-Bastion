@@ -82,14 +82,14 @@ try{
             $pass = htmlspecialchars($_POST['mdp']);
             $confirm_mdp = htmlspecialchars($_POST['confirm_mdp']);
             if($pass == $confirm_mdp)
-                {
-                    $mdp = password_hash($pass, PASSWORD_DEFAULT);
-                    $mdp_confirm = password_hash($confirm_mdp, PASSWORD_DEFAULT);
-                }
+            {
+                $mdp = password_hash($pass, PASSWORD_DEFAULT);
+                $mdp_confirm = password_hash($confirm_mdp, PASSWORD_DEFAULT);
+            }
             else
-                {
-                    echo 'Les mots de passe ne sont pas les mêmes !' ;
-                }
+            {
+                echo 'Les mots de passe ne sont pas les mêmes !' ;
+            }
 
             $data = 
             [
@@ -102,13 +102,13 @@ try{
             ];
            
             if ((!empty($lastname) && (!empty($firstname) && (!empty($pseudo) && (!empty($email) && (!empty($pass)) && (!empty($confirm_mdp))))))) 
-                {
-                    $frontController->userRegistration($data);
-                } 
+            {
+                $frontController->userRegistration($data);
+            } 
             else 
-                {
-                    throw new Exception('tous les champs ne sont pas remplis');
-                }        
+            {
+                throw new Exception('tous les champs ne sont pas remplis');
+            }        
         }             
         // accès à la page de connexion du user
         elseif($_GET['action'] == 'userConnexionPage')
@@ -128,7 +128,10 @@ try{
             }
             else 
             {
-                throw new Exception('tous les champs ne sont pas remplis');
+                header('Location: app/Views/Front/userConnexionPage.php?erreur');
+                // $error = 'Tous les champs doivent etre remplis ! ';
+                // // $frontController->userConnexionPage($error);
+                // throw new Exception($error);
             }            
         }
     }
@@ -139,5 +142,6 @@ try{
 } 
 catch(Exception $e)
 {
+    // die($e->getMessage());
     require 'app/Views/Front/error.php';
 }

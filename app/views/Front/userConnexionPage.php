@@ -1,7 +1,13 @@
 <?php include ('header.php'); ?>
 
-<main class="forms" id="connexionUser">
+<main class="forms userAccount">
     <div class="userConnexion">
+        <?php 
+        if(isset($_GET['erreur']))
+        {
+            echo 'Tous le champs ne sont pas remplis 😲 !';
+        }
+        ?>
         <h1>Connectez-vous à votre compte</h1>
         <form action="index.php?action=userConnexion" method="POST">
 
