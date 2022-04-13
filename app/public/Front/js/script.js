@@ -1,6 +1,6 @@
 // menu burger
-var burgerMenu = document.getElementById('burger-menu');
-var overlay = document.getElementById('menu');
+let burgerMenu = document.getElementById('burger-menu');
+let overlay = document.getElementById('menu');
 burgerMenu.addEventListener('click',function(){
   this.classList.toggle("close");
   overlay.classList.toggle("overlay");
@@ -8,9 +8,9 @@ burgerMenu.addEventListener('click',function(){
 
 // MAP
  // On initialise la latitude et la longitude de Paris (centre de la carte)
- var lat = 47.745429;
- var lon = -3.360740;
- var macarte = null;
+ let lat = 47.745429;
+ let lon = -3.360740;
+ let macarte = null;
  // Fonction d'initialisation de la carte
  function initMap() {
      // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
@@ -23,7 +23,7 @@ burgerMenu.addEventListener('click',function(){
          maxZoom: 20
      }).addTo(macarte);
     //  créer un marker
-     var marker = L.marker([lat, lon]).addTo(macarte);
+     let marker = L.marker([lat, lon]).addTo(macarte);
  }
  window.onload = function(){
 // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé

@@ -1,5 +1,7 @@
 <?php
 namespace Projet\Models;
+$username = 'root';
+$password = '';
 
 
 class Manager

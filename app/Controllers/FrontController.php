@@ -41,7 +41,31 @@ class FrontController extends Controller
             "result" => $result,
             "resPath" => $resPath
         ];
-        return $this->view('blog', $data);
+        return $this->view('blogArticles', $data);
+    }
+
+    function oneArticle($id)
+    {
+        $article = new \Projet\Models\FrontModel();
+        $oneArticle = $article->getArticle($id);
+        $result = $oneArticle->fetch();
+        $resPath = "/app/public/Administration/img/";
+        $data=
+        [
+            "result" => $result,
+            "resPath" => $resPath
+        ];
+      
+        return $this->view('blogArticle', $data);
+    }
+
+    public function postComment($data)
+    {
+        $comment = new \Projet\Models\FrontModel();  
+        $result = $comment->postComment($data);
+
+        $this->oneArticle($data['idArticle']);
+
     }
 
     function userRegistrationPage()

@@ -40,6 +40,22 @@ try{
         {
             $frontController->cgv();
         }
+        elseif($_GET['action'] == 'oneArticle')
+        {
+            $id = $_GET['id'];
+            $frontController->oneArticle($id);
+        }
+        elseif($_GET['action'] == 'postComment')
+        {
+            $data = [
+                'idUser' => htmlspecialchars($_GET['user_id']),
+                'idArticle' => htmlspecialchars($_GET['article_id']),
+                'content' => htmlspecialchars($_POST['content']),
+            ];
+            $frontController->postComment($data);
+        }
+
+
         //  envois de mail dans la bdd
         elseif ($_GET['action'] == 'contactPost') 
         {
@@ -58,16 +74,16 @@ try{
                 ":content"=>$content
             ];
             if (!empty($fullname) && (!empty($email) && (!empty($phone) && (!empty($object) && (!empty($content)))))) 
-                {
-                    $frontController->contactPost($data);
-                } 
+            {
+                 $frontController->contactPost($data);
+            } 
             else 
-                {
-                    throw new Exception('tous les champs ne sont pas remplis');
-                }
+            {
+                throw new Exception('tous les champs ne sont pas remplis');
+            }
         } 
             
-        // accès à la pacge de création d'un user
+        // accès à la page de création d'un user
         elseif($_GET['action'] == 'userRegistrationPage')
         {
             $frontController->userRegistrationPage();        

@@ -16,9 +16,31 @@ class FrontModel extends Manager{
     public function getBlogItems()
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT title, picture, content, category, alt, created_at FROM blogposts ORDER BY id DESC');
+        $req = $db->prepare('SELECT id, title, picture, content, category, alt, created_at FROM blogposts ORDER BY id DESC');
         $req->execute(array());
 
+        return $req;
+    }
+
+    public function getArticle($id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT id, title, picture, content, category, alt, created_at FROM blogposts WHERE id = ?');
+        $req->execute(array($id));
+        
+        return $req;
+    }
+
+    public function postComment($data)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('INSERT INTO comments (content, blogpost_id, user_id) VALUE (:content, :blogpost_id, :user_id)');
+        $req->execute(array(
+            ':content' => $data['content'],
+            ':blogpost_id' => $data['idArticle'],
+            ':user_id' => $data['idUser'],
+        ));
+        
         return $req;
     }
 

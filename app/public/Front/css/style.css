@@ -376,13 +376,49 @@ input[type=submit]{
 }
 
 /* BLOG */
-#myArticle{
+.forms .createdAt, .forms .category{
+  font-size: 1rem;
+}
+.myArticle{
   margin-top: 30px;
 }
-
-#myArticle img{
+.myArticle p{
   width: 100%;
- 
+}
+
+.myArticle img{
+  width: 100%;
+  margin: 10px 0; 
+}
+#blogPage .myArticle{
+  display: flex;
+  flex-wrap: wrap;
+}
+#blogPage .btn{
+  border: 0;
+  border-radius: 40px;
+  background-color: var(--blue);
+  width: 50%;
+  padding: 10px;
+  margin: 10px auto 0;
+}
+#blogPage .btn a{
+  color: var(--light);
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+
+/* un article de blog */
+#oneArticlePage .myArticle h1{
+  margin-bottom: 5px;
+}
+#oneArticlePage .backBtn{
+  margin-top: -5px;
+}
+#oneArticlePage .backBtn img{
+  width: 35px;
+  margin-right: 10px;
+  margin-bottom: -7px;
 }
 
 /* CONNEXION USER */
