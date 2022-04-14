@@ -30,7 +30,7 @@ class FrontController extends Controller
         return $this->view('portfolio', $data);
     }
 
-    function blog()
+    function blogArticles()
     {        
         $articleManager = new \Projet\Models\FrontModel();
         $myPosts = $articleManager->getBlogItems();
@@ -49,14 +49,21 @@ class FrontController extends Controller
         $article = new \Projet\Models\FrontModel();
         $oneArticle = $article->getArticle($id);
         $result = $oneArticle->fetch();
+
+        
         $resPath = "/app/public/Administration/img/";
         $data=
         [
             "result" => $result,
             "resPath" => $resPath
         ];
-      
-        return $this->view('blogArticle', $data);
+        
+        $result2 = $article->getComments($id);      
+        $comments = $result2->fetchAll();
+        
+        $datas = array_merge($data, $comments);
+
+        return $this->view('blogArticle', $datas);
     }
 
     public function postComment($data)

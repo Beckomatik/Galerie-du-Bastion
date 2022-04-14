@@ -11,6 +11,7 @@ class Manager
 
         try {
             $db = new \PDO('mysql:host=localhost;dbname=galeriedubastion;charset=utf8', 'root', '');
+            $db->query("SET lc_time_names = 'fr_FR'");
             return $db;
         } catch (Exception $e) {
 

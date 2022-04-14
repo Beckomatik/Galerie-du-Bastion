@@ -26,7 +26,7 @@ try{
         }
         elseif($_GET['action'] == 'blog')
         {
-            $frontController->blog();
+            $frontController->blogArticles();
         }
         elseif($_GET['action'] == 'shop')
         {
@@ -150,6 +150,11 @@ try{
                 // throw new Exception($error);
             }            
         }
+        elseif($_GET['action'] == 'deconnexion')
+        {
+            session_destroy();
+            header('Location: index.php');          
+        }  
     }
     else
     {

@@ -1,11 +1,3 @@
-// menu burger
-let burgerMenu = document.getElementById('burger-menu');
-let overlay = document.getElementById('menu');
-burgerMenu.addEventListener('click',function(){
-  this.classList.toggle("close");
-  overlay.classList.toggle("overlay");
-});
-
 // MAP
  // On initialise la latitude et la longitude de Paris (centre de la carte)
  let lat = 47.745429;

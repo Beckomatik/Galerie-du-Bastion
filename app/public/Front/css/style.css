@@ -40,7 +40,7 @@ h2{
   margin: 0 auto;
 }
 
-  /* menu burger */
+/* MENU BURGER *****************************************************************************************/ 
 #burger-menu {
     cursor: pointer;
     height: 27px;
@@ -49,6 +49,8 @@ h2{
     position: relative;
     z-index:2;
   }
+
+/* création et animation du menu burger */
 #burger-menu span,
 #burger-menu span:before,
 #burger-menu span:after {
@@ -79,15 +81,18 @@ h2{
     width: 27px;
   }
   
+  /* croix de fermeture du menu */
   #burger-menu.close span {
     transform: rotate(-45deg);
     top: 13px;
     width: 27px;
+    background-color: var(--light);
   }
   #burger-menu.close span:before {
     top: 0px;
     transform: rotate(90deg);
     width: 27px;
+    background-color: var(--light);
   }
   #burger-menu.close span:after {
     top: 0px;
@@ -100,8 +105,8 @@ h2{
   #menu{
     z-index:1;
     min-width:100%;
-    min-height:100%;
-    position: fixed;
+    height: 100vh;
+    position: absolute;
     top:0;
     height:0;
     visibility: hidden;
@@ -114,6 +119,7 @@ h2{
   #menu.overlay{
     visibility: visible;
     opacity: 1;
+    height: 115%;
     padding-top:100px;
     background:rgba(0,0,0,0.5);
     backdrop-filter: blur(8px);
@@ -126,7 +132,7 @@ h2{
     margin-bottom:30px;
   }
 
-/* HEADER */
+/* HEADER **************************************************/
   header{
   display: flex;
   flex-wrap: wrap;
@@ -162,42 +168,8 @@ h2{
     width: 100%;
   }
 
-  /* boite modale */
-  #modid{    
-      visibility: hidden;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      z-index: 1000;
-  }
-  #modid div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    height: 200px;
-    margin-top: 100px;
-    background-color: var(--dark);
-    text-align: center;
-    padding: 15px 0 5px;
-  }
-  #modid p, #modid a{
-    color: var(--light);
-    margin-bottom: 10px;
-  }
-  #modid p:last-of-type{
-    margin-bottom: 40px;
-  }
-  #modid img{
-    width: 15px;
-    margin-left: 5px;
-    margin-bottom: -3px;
-  }
-
-/* FOOTER */
+ 
+/* FOOTER *************************************************/
   footer{
     background-color: var(--dark);
     padding: 30px 0;
@@ -230,7 +202,7 @@ h2{
     text-align: center;
   }
 
-/* PAGE HOME */
+/* PAGE HOME *******************************************/
 .homepage{
   display: flex;
   flex-direction: column;
@@ -288,8 +260,7 @@ h2{
   width: 100%;
 }
 
-/* PAGE CONTACT */
-
+/* PAGE CONTACT *********************************************/
 
 .formulaire{
   display: flex;
@@ -335,7 +306,7 @@ input[type=submit]{
 }
 
 
-/* PAGE ABOUT */
+/* PAGE ABOUT **********************************************/
 .me span{
   color:var(--red);
 }
@@ -352,7 +323,7 @@ input[type=submit]{
  margin: 20px 0;
 }
 
-/* PORTFOLIO */
+/* PORTFOLIO ************************************************/
 
 .forms{
   width: 95%;
@@ -375,7 +346,7 @@ input[type=submit]{
   width: 100%;
 }
 
-/* BLOG */
+/* BLOG *********************************************************/
 .forms .createdAt, .forms .category{
   font-size: 1rem;
 }
@@ -412,6 +383,7 @@ input[type=submit]{
 #oneArticlePage .myArticle h1{
   margin-bottom: 5px;
 }
+
 #oneArticlePage .backBtn{
   margin-top: -5px;
 }
@@ -421,7 +393,44 @@ input[type=submit]{
   margin-bottom: -7px;
 }
 
-/* CONNEXION USER */
+/* section commentaires */
+#oneArticlePage #content{
+  background-color:rgb(223, 223, 223);
+  font-size: 1.2rem;
+  padding: 5px;
+  border: 0;
+  margin-bottom: 0;
+}
+
+#oneArticlePage h2{
+  margin: 20px 0 5px;
+}
+#oneArticlePage #infoCom{
+  font-size: 0.8rem;
+}
+#oneArticlePage section{
+  margin: 20px 0 10px;
+}
+#oneArticlePage .oneComment{
+  background-color: rgb(223, 223, 223);
+  margin: 15px 0;
+  padding: 10px;
+}
+#oneArticlePage .oneComment img{
+  width: 15px;
+}
+#oneArticlePage .oneComment p{
+  margin: 5px 0;
+}
+#oneArticlePage .oneComment #comDate{
+  font-size: 0.8rem;
+}
+#oneArticlePage .oneComment #comCom span{
+  margin: 0 10px;
+}
+
+
+/* CONNEXION USER ***********************************************/
 .userAccount h1{
   margin-bottom: 10px;
 }
