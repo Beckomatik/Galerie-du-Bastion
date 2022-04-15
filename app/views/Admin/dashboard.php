@@ -1,20 +1,36 @@
 <?php include ('header.php'); ?>
 
-<main>
+<main id="dashboard">
 
-    <nav id="sidenav">
-        <h1><i class="fa-solid fa-arrow-right"></i> Gérez vos pages&nbsp;:</h1>
+    <nav class="container" id="sidenav">
         <ul>
-            <li><a href="indexAdmin.php?action=about">A propos</a></li>
-            <li><a href="indexAdmin.php?action=portfolio">Portfolio</a></li>
-            <li><a href="indexAdmin.php?action=blog">Blog</a></li>
-            <li><a href="indexAdmin.php?action=contact">Contact</a></li>
-            <li><a href="indexAdmin.php?action=mails">Mes messages</a></li>
+            <li>
+                <a href="indexAdmin.php?action=yourinfos">
+                    <p>Mes infos</p>
+                    <p><img src="/app/public/Administration/img/info.png" alt=""></p>
+                </a>
+             
+            </li>
+            <li>
+                <a href="indexAdmin.php?action=portfolio">
+                    <p>Portfolio</p>
+                    <p><img src="/app/public/Administration/img/gallery.png" alt=""></p>
+                </a>
+            </li>
+            <li>
+                <a href="indexAdmin.php?action=blog">
+                    <p>Blog</p>
+                    <p><img src="/app/public/Administration/img/blogging.png" alt=""></p>
+                </a>
+            </li>
+            <li>
+                <a href="indexAdmin.php?action=mails">
+                    <p>Mes emails</p>
+                    <p><img src="/app/public/Administration/img/mail.png" alt=""></p>
+                </a>
+            </li>
         </ul>
     </nav>
-
-
-
 
 </main>
 

@@ -34,6 +34,7 @@
                     <li><a href="index.php?action=blog">Blog</a></li>
                     <li><a href="index.php?action=contact">Contact</a></li>
                     <?php if(isset($_SESSION['id'])){ ?>
+                        <li><a href="index.php?action=myAccount">Mon compte</a></li>
                         <li><a href="index.php?action=deconnexion">Se déconnecter</a></li>
                     <?php } else { ?>                    
                     <li><a href="index.php?action=userConnexionPage"><img src="/app/public/Front/image/connexion.png" alt="bouton de connexion">Espace utilisateur</a></li>
@@ -64,4 +65,5 @@
             <img src="/app/public/Front/image/bandeaunoborder.png"
                 alt="photographie de galerie du bastion, portraits, street photography, wildlife">
         </div>
+        
     </header>

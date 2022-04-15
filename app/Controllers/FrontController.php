@@ -87,7 +87,7 @@ class FrontController extends Controller
         if (filter_var($data[':email'], FILTER_VALIDATE_EMAIL)) 
         {
             $newUser = $userRegistration->userRegistration($data);          
-            return $this->view('confirmNewUser');
+            return $this->view('userConnexionPage');
         } 
         else 
         {
@@ -113,15 +113,21 @@ class FrontController extends Controller
         $_SESSION['email'] = $result['email'];
         $_SESSION['mdp'] = $result['mdp'];
         $_SESSION['id'] = $result['id'];
+        $_SESSION['pseudo'] = $result['pseudo'];
 
         if($correctPassword)
         {
-            return $this->view('confirmConnexion');
+            return $this->view('myAccountPage');
         }
         else
         {
             return $this->view('userConnexionPage');
         }
+    }
+
+    function myAccountPage()
+    {
+        return $this->view('myAccountPage');
     }
 
     function shop()

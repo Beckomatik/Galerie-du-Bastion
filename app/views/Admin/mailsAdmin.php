@@ -1,6 +1,10 @@
 <?php include ('header.php'); ?>
 
 <main class="container forms" id="mailsPage">
+    <div class="backToMenu">
+        <a href="/indexAdmin.php?action=dashBoard"><img src="/app/public/Administration/img/back-button.png" alt="">
+            Retour à l'accueil</a>
+    </div>
 
     <h1><img src="/app/public/Administration/img/logoemail.png" alt=""> Mes mails</h1>
     <?php foreach($datas as $data){ ?>
@@ -15,7 +19,7 @@
                 <!-- <p>Téléphone : <?=$data['phone'] ?></p> -->
                 <p><?=$data['objet'] ?></p>
                 <p class="mailContent"><?=$data['content'] ?></p>
-            </a>        
+            </a>
         </div>
         <div id="delMail"><a href="indexAdmin.php?action=deleteMail&id=<?= $data['id'] ?>">Supprimer</a></div>
     </div>

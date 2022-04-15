@@ -1,7 +1,8 @@
 <?php include ('header.php'); ?>
 
 <main>
-ERROR 
+    
+Un problème est survenu
 
 </main>
 

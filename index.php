@@ -5,6 +5,12 @@ session_start();
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+function eCatcher($e) {
+    if($_ENV["APP_ENV"] == "development") {
+     var_dump($e);die;     
+    }
+  }
+
 try{
     $frontController = new \Projet\Controllers\FrontController();//objet controler
 
@@ -111,7 +117,7 @@ try{
             [
                 ":lastname"=>$lastname,
                 ":firstname"=>$firstname,
-                ":pseudo"=>$firstname,
+                ":pseudo"=>$pseudo,
                 ":email"=>$email,
                 ":mdp"=>$mdp,
                 ":confirm_mdp"=>$mdp_confirm           
@@ -150,6 +156,12 @@ try{
                 // throw new Exception($error);
             }            
         }
+
+        elseif($_GET['action'] == 'myAccount')
+        {
+            $frontController->myAccountPage();          
+        }  
+
         elseif($_GET['action'] == 'deconnexion')
         {
             session_destroy();
@@ -166,3 +178,8 @@ catch(Exception $e)
     // die($e->getMessage());
     require 'app/Views/Front/error.php';
 }
+catch(Error $e) 
+{
+    eCatcher($e);
+    require "app/Views/Front/oups.php";
+} 

@@ -17,15 +17,13 @@
 <body>
 
 <header id="head">
-    <nav id="top-nav">
-        <ul>
-            <li><a href="indexAdmin.php?action=yourinfos">Vos informations</a></li>
-            <li><a href="/indexAdmin.php?action=dashBoard">Menu</a></li>
-            <li><a href="/" target="_blank">Voir votre site</a></li>
-            <li><a href="/indexAdmin.php?action=deconnexion">Se déconnecter</a></li>
-        </ul>
-    </nav>
     <div id="top-bar">
        <a href="/indexAdmin.php?action=dashBoard">La Galerie - Administration</a> 
     </div>
+    <nav id="top-nav">
+        <ul>
+            <li><a href="/" target="_blank">Voir mon site</a></li>
+            <li><a href="/indexAdmin.php?action=deconnexion">Déconnexion</a></li>
+        </ul>
+    </nav>
 </header>

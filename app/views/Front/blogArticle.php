@@ -34,7 +34,7 @@ if(isset($_SESSION['id'])){?>
     <?php if(isset($comment['pseudo'])){?>
         <div class="oneComment">
             <p id="comName"><?= $comment['pseudo']?></p>    
-            <p id="comDate"><?= $comment['created_at']?></p>    
+            <p id="comDate">A écrit le <?= $comment['created_at']?></p>    
             <p id="comCom"><img src="/app/public/Front/image/straight-quotes.png" alt="guillemets de citation"><span><?= $comment['content']?></span><img src="/app/public/Front/image/straight-quotes.png" alt="guillemets de citation"></p>  
         </div>
       

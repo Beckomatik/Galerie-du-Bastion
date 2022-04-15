@@ -12,10 +12,10 @@
         <form action="index.php?action=userConnexion" method="POST">
 
             <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" placeholder="Votre e-mail">
+            <input type="email" id="email" name="email" placeholder="Votre e-mail" required>
             
             <label for="password">Mot de passe</label>
-            <input type="password" placeholder="Votre mot de passe" name="mdp" id="password">
+            <input type="password" placeholder="Votre mot de passe" name="mdp" id="password" required>
 
             <input type="submit" value="Se connecter">
 
