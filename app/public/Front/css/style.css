@@ -40,6 +40,15 @@ h2{
   margin: 0 auto;
 }
 
+.error{
+  background-color: var(--red);
+  width: 100%;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 1.2rem;
+}
+
 /* MENU BURGER *****************************************************************************************/ 
 #burger-menu {
     cursor: pointer;
@@ -369,7 +378,7 @@ input[type=submit]{
   border: 0;
   border-radius: 40px;
   background-color: var(--blue);
-  width: 50%;
+  width: 160px;
   padding: 10px;
   margin: 10px auto 0;
 }
@@ -482,4 +491,37 @@ input[type=submit]{
 .userAccount .userRegistration a{
   color: var(--light);
   font-weight: normal;
+}
+
+/* DASHBOARD USER ***************************/
+#dashboardUser .userComments{
+  margin: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  background-color: rgb(220, 220, 220);
+  border-radius: 10px;
+  padding: 10px 0 0 10px;
+}
+#dashboardUser .userComments strong{
+  font-weight: 800;
+}
+#dashboardUser .userComments span{
+  font-style: italic;
+}
+#dashboardUser .userComments .deleteComment{
+  /* border: 1px solid var(--red); */
+  border-radius: 10px 0 0 0;
+  text-align: center;
+  margin-top: 5px;
+  padding: 5px;
+  align-self: flex-end;
+  background-color: var(--light);
+}
+
+
+#dashboardUser .userComments .deleteComment img{
+  width: 20px;
+  margin-right: 10px;
+  margin-bottom: -3px;
 }

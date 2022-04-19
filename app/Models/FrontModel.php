@@ -63,11 +63,36 @@ class FrontModel extends Manager{
         return $req;
     }
 
+    public function userAllComments($id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT title, comments.id, comments.content, DATE_FORMAT(comments.created_at, "%d %M %Y à %Hh%i") AS created_at FROM comments INNER JOIN blogposts ON comments.blogpost_id=blogposts.id WHERE user_id=? ORDER BY created_at DESC');
+        $req->execute(array(intval($id)));
+        return $req;
+    }
     // public function userAllComments($id)
     // {
     //     $db = $this->dbConnect();
-    //     $req = $db->prepare('SELECT id, content, created_at FROM comments WHERE user_id=?');
+    //     $req = $db->prepare('SELECT id, content, DATE_FORMAT(created_at, "%d %M %Y à %Hh%i") AS created_at FROM comments WHERE user_id=? ORDER BY created_at DESC');
     //     $req->execute(array(intval($id)));
+    //     return $req;
+    // }
+
+    // un utilisateur supprime son commentaire
+    public function deleteComment($id)
+        {
+            $db = $this->dbConnect();
+            $req = $db->prepare('DELETE FROM comments WHERE id=?');
+            $req->execute(array($id));
+            return $req;
+        }
+    
+    // public function userAllComments($id)
+    // {
+    //     $bdd = $this->dbConnect();
+    //     $req = $bdd->prepare('SELECT id, content FROM comment WHERE user_id=? ORDER BY createdAt DESC');
+    //     $req->execute(array(intval($id)));
+    //     return $req;
     // }
 
     // vérification pour connexion user
@@ -78,6 +103,16 @@ class FrontModel extends Manager{
         $req = $db->prepare('SELECT id, email, mdp, pseudo FROM users WHERE email=?');
         $req->execute(array($email));
       
+        return $req;
+    }
+
+    // voir si un email existe déjà en bdd
+    public function checkMail($email)
+    {
+       
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT email FROM users WHERE email=?');
+        $req->execute(array($email));
         return $req;
     }
 

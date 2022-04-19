@@ -56,6 +56,7 @@ class FrontController extends Controller
         [
             "result" => $result,
             "resPath" => $resPath
+            // "error" => $error
         ];
         
         $result2 = $article->getComments($id);      
@@ -75,19 +76,32 @@ class FrontController extends Controller
 
     }
 
-    function userRegistrationPage()
+    function userRegistrationPage($error=null)
     {
-        return $this->view('userRegistrationPage');
+        return $this->view('userRegistrationPage', $error);
     }
 
     function userRegistration($data)
     {
-        $userRegistration = new \Projet\Models\FrontModel();  
-  
+        $userRegistration = new \Projet\Models\FrontModel(); 
+        $mail = new \Projet\Models\FrontModel();
+        $email = $data[':email'];
+        $checkMail = $mail->checkMail($email);
+        $result = $checkMail->rowCount();
+
         if (filter_var($data[':email'], FILTER_VALIDATE_EMAIL)) 
         {
-            $newUser = $userRegistration->userRegistration($data);          
-            return $this->view('userConnexionPage');
+            if($result > 0)
+            {
+                 $error = "Cette adresse e-mail existe déjà !";
+                 return $this->view('userRegistrationPage', $error);
+            }
+            else 
+            {
+                $newUser = $userRegistration->userRegistration($data);          
+                return $this->view('userConnexionPage');
+            }
+            
         } 
         else 
         {
@@ -95,7 +109,7 @@ class FrontController extends Controller
         }
         return $this->view('home');
     }
-
+       
     function userConnexionPage()
     {
         return $this->view('userConnexionPage');
@@ -117,7 +131,7 @@ class FrontController extends Controller
 
         if($correctPassword)
         {
-            return $this->view('myAccountPage');
+            header('Location: index.php?action=myAccount' . $_SESSION['id']);
         }
         else
         {
@@ -125,8 +139,21 @@ class FrontController extends Controller
         }
     }
 
-    function myAccountPage()
+    function myAccountPage($id)
     {
+        $userComments = new \Projet\Models\FrontModel();        
+        $result = $userComments->userAllComments($id);        
+        $datas = $result->fetchAll();
+        
+        return $this->view('myAccountPage', $datas);
+    }
+
+    // un utilisateur supprime son commentaire
+    function deleteComment($id)
+    {
+        $userComments = new \Projet\Models\FrontModel();        
+        $deleteComment = $userComments->deleteComment($id);        
+        
         return $this->view('myAccountPage');
     }
 
@@ -136,9 +163,9 @@ class FrontController extends Controller
     }
 
 
-    function contact()
+    function contact($error)
     {
-        return $this->view('contact');
+        return $this->view('contact',$error);
     }
     function legales()
     {
@@ -152,7 +179,7 @@ class FrontController extends Controller
 
 //       /*===================== mail formulaire de contact==================================*/
 
-      function contactPost($data)
+      function contactPost($data, $error=null)
       {
           $postMail = new \Projet\Models\ContactModel();
   
@@ -167,4 +194,4 @@ class FrontController extends Controller
 
    
  
-}
+    }

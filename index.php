@@ -19,7 +19,7 @@ try{
         
         if($_GET['action'] == 'contact')
         {
-            $frontController->contact();
+            $frontController->contact($error=null);
         }
 
         elseif($_GET['action'] == 'about')
@@ -79,13 +79,14 @@ try{
                 ":objet"=>$object,
                 ":content"=>$content
             ];
-            if (!empty($fullname) && (!empty($email) && (!empty($phone) && (!empty($object) && (!empty($content)))))) 
+            if (!empty($fullname) && (!empty($email) && (!empty($content)))) 
             {
                  $frontController->contactPost($data);
             } 
             else 
             {
-                throw new Exception('tous les champs ne sont pas remplis');
+                $error = "Tous les champs obligatoires ne sont pas remplis !";
+                return $frontController->contact($error);
             }
         } 
             
@@ -110,9 +111,9 @@ try{
             }
             else
             {
-                echo 'Les mots de passe ne sont pas les mêmes !' ;
+                header('Location: app/Views/Front/userRegistrationPage.php?erreurmdp');
             }
-
+        
             $data = 
             [
                 ":lastname"=>$lastname,
@@ -125,11 +126,13 @@ try{
            
             if ((!empty($lastname) && (!empty($firstname) && (!empty($pseudo) && (!empty($email) && (!empty($pass)) && (!empty($confirm_mdp))))))) 
             {
+
                 $frontController->userRegistration($data);
             } 
             else 
             {
-                throw new Exception('tous les champs ne sont pas remplis');
+                $error = "Tous les champs ne sont pas remplis !";
+                return $frontController->userRegistrationPage($error);
             }        
         }             
         // accès à la page de connexion du user
@@ -159,7 +162,14 @@ try{
 
         elseif($_GET['action'] == 'myAccount')
         {
-            $frontController->myAccountPage();          
+            $id = $_GET['id'];
+            $frontController->myAccountPage($id);          
+        }  
+
+        elseif($_GET['action'] == 'deleteComment')
+        {
+            $id = $_GET['id'];
+            $frontController->deleteComment($id);          
         }  
 
         elseif($_GET['action'] == 'deconnexion')
