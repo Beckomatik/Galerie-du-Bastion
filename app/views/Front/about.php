@@ -1,6 +1,6 @@
 <?php include ('header.php'); ?>
 
-<main class="container">
+<main class="container" id="aboutPage">
     <div class="me">
         <h1>Photographe professionnel en Bretagne</h1>
         <p><b>A mes 10ans</b>, mon grand-père m'a offert un appareil <span>photo argentique, un Nikon</span>, un beau cadeau. Une passion

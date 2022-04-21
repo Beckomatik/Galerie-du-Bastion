@@ -131,7 +131,7 @@ class FrontController extends Controller
 
         if($correctPassword)
         {
-            header('Location: index.php?action=myAccount' . $_SESSION['id']);
+            header('Location: index.php?action=myAccount&id=' . $_SESSION['id']);
         }
         else
         {

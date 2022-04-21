@@ -17,6 +17,7 @@
 }
 
 
+
 main{
   padding: 20px 0;
 }
@@ -37,6 +38,7 @@ h2{
 
 .container{
   width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -316,6 +318,10 @@ input[type=submit]{
 
 
 /* PAGE ABOUT **********************************************/
+#aboutPage{
+  display: flex;
+  flex-wrap: wrap;
+}
 .me span{
   color:var(--red);
 }
@@ -347,16 +353,111 @@ input[type=submit]{
   font-size: 1.2rem;
 }
 
-#picportfolio{
-  margin-top: 30px;
+#portfolioPage .theGallery{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-#picportfolio img{
+.picPortfolio{  
+  margin: 30px auto 15px;
+}
+
+.picPortfolio img{
   width: 100%;
 }
 
+/* LIGHTBOX *********************************************************/
+
+.lightbox{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(51, 51, 51, 0.936);
+  z-index: 10;
+  animation: lightboxIn 0.5s;
+  transition: opacity .3s;
+}
+.lightbox.fadeout{
+  opacity: 0;
+}
+
+.lightbox__next{
+  background: url(/app/public/Front/image/nextarrow.png) center center / 100% 100%;
+  right: 0;
+}
+.lightbox__prev{
+  background: url(/app/public/Front/image/previousarrow.png) center center / 100% 100%;
+  left: 0;
+}
+.arrow{
+  border: none;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  top: 50%;
+  margin-top: -14px;
+  z-index: 11;
+  opacity: 0.5;
+  text-indent: -3000px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.arrow:hover{
+  opacity: 1;
+}
+
+.lightbox__close{
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: url(/app/public/Front/image/close-cross.png) center center / 100% 100% transparent;
+  position: fixed;
+  text-indent: 3000px;
+  top: 20px;
+  right: 20px;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 12;
+}
+.lightbox__close:hover{
+  opacity: 1;
+}
+.lightbox__container img{
+  width: 100%;
+  height: 100vh;
+  object-fit: contain;
+  animation: lightboxIn 0.5s;
+
+}
+
+.lightbox__container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.lightbox__loader{
+  width: 38px;
+  height: 38px;
+  opacity: 0.5;
+  background: url(/app/public/Front/image/loader.svg) center center no-repeat;
+}
+
+@keyframes lightboxIn{
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+
+
 /* BLOG *********************************************************/
-.forms .createdAt, .forms .category{
+.forms .createdAt, 
+.forms .category{
   font-size: 1rem;
 }
 .myArticle{
@@ -524,4 +625,56 @@ input[type=submit]{
   width: 20px;
   margin-right: 10px;
   margin-bottom: -3px;
+}
+
+/* MEDIA QUERIES ********************************************/
+
+/* min 768px for TABLETS */
+@media all and (min-width:768px){
+
+  /* PORTFOLIO PAGE ********************************/
+  #portfolioPage .theGallery .picPortfolio{
+    width: 46vw;
+    height: 46vw;
+  }
+  #portfolioPage .theGallery .picPortfolio p{
+    font-size: 1rem
+  }
+  #portfolioPage .theGallery .picPortfolio img{
+    width: 100%;
+    height: 95%;   
+    object-fit: cover;
+  }
+
+  /* LIGHTBOX PAGE ********************************/
+  .lightbox__container{
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+}
+/* min 992px for DESKTOPS */
+@media all and (min-width:992px){
+
+  /* ABOUT PAGE ******************************/
+  #aboutPage{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+  }
+  #aboutPage .me{
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    line-height: 2.5rem;
+  }  
+  #aboutPage .mepic{
+    width: 48%;
+  }
+
+  /* PORTFOLIO PAGE ***************************/
+  #portfolioPage .theGallery .picPortfolio{
+    width: 30vw;
+    height: 30vw;
+  }
 }

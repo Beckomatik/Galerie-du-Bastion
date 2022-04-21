@@ -18,8 +18,8 @@ if(isset($_SESSION['id'])){?>
         <p id="infoCom">Votre adresse e-mail ne sera pas publiée</p>
         <form action="index.php?action=postComment&user_id=<?= $_SESSION['id'] ?>&article_id=<?= $datas['result']['id'] ?>" method="POST">
 
-            <label for="content"></label>
-            <textarea id="content" placeholder="Ajouter un commentaire" name="content" required></textarea>
+            
+            <textarea aria-label="Ajouter un commentaire" id="content" placeholder="Ajouter un commentaire" name="content" required></textarea>
 
             <input type="submit" value="Poster un commentaire">
 
