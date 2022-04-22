@@ -18,7 +18,7 @@
         <input type="text" placeholder="Pseudo" name="pseudo" id="pseudo" value="<?php if(isset($_POST['pseudo'])) echo $_POST['pseudo'] ?>" required>
 
         <label for="email">E-mail <span>*</span></label>
-        <input type="email" id="email" name="email" placeholder="Votre E-mail" value="<?php if(isset($_POST['email'])) echo $_POST['email'] ?>" required>
+        <input type="email" id="email" name="email" placeholder="Votre E-mail" value="<?php if(isset($_POST['email'])) echo htmlspecialchars($_POST['email']) ?>" required>
 
         <label for="password">Mot de passe <span>*</span></label>
         <input type="password" placeholder="Votre mot de passe" name="mdp" id="password" required>

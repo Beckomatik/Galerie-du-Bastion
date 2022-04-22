@@ -111,6 +111,16 @@ class AdminModel extends Manager
             return $delArticles;
         }
 
+        // affichage du nombre de mails dans le dashboard
+        public function countMails()
+        {
+            $db = $this->dbConnect();
+            $req = $db->prepare('SELECT COUNT(id) FROM contacts');
+            $req->execute();
+
+            return $req;
+        }
+
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     // ++++++++ INFO COMPTE +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
    

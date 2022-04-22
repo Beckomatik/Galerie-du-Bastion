@@ -103,7 +103,7 @@ h1 i{
 }
 
 
-/* SIDENAV */
+/* DASHBOARD ****************************************/
 
 #dashboard{
     background-color:rgb(196, 196, 196) ;
@@ -118,13 +118,13 @@ h1 i{
 }
 
 #sidenav li{
+   display: flex;
    width: 45vw;
    height: 45vw;
    background-color: var(--light);
    margin: 10px 0;
    text-align: center;
    border-radius: 10px;
-   display: flex;
 }
 
 #sidenav li img{
@@ -135,7 +135,8 @@ h1 i{
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around
+    justify-content: space-around;
+    padding: 20px; 
 }
 
 #sidenav li p{
@@ -143,7 +144,7 @@ h1 i{
     text-decoration: none;    
 }
 
-/* PORTFOLIO ET BLOG */
+/* PORTFOLIO ET BLOG ***************************************/
 
 /* les images */
 .myPosts{
@@ -324,3 +325,88 @@ input#photo{
     margin-top: 10px;
 }
 
+/* INFOS ADMIN ************************************************/
+#infosAdmin p{
+    margin: 10px 0;
+}
+
+/* CONNEXION ADMIN ********************************************/
+#connectAdmin h1,
+#connectAdmin h2{
+    text-align: center;
+}
+#connectAdmin .formAdmin{
+    width: 320px;
+    background-color: rgb(220, 220, 220);
+    padding: 15px 10px;
+    margin: 20px auto;
+}
+#connectAdmin .formAdmin label,
+#connectAdmin .formAdmin input{
+    width: 300px;
+    margin: 5px 0;
+}
+#connectAdmin .formAdmin input{
+    height: 50px;
+}
+
+#connectAdmin .formAdmin input[type="text"],
+#connectAdmin .formAdmin input[type="password"]{
+    padding-left: 10px;
+}
+
+#connectAdmin form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+}
+#connectAdmin .formAdmin input[type="submit"]{
+    background-color: var(--light);
+    border: 1px solid rgb(118,118,118);
+    margin: 15px 0;
+    border-radius: 40px;
+    width: 200px;
+    align-self: center;
+}
+#connectAdmin .formAdmin input[type="submit"]:hover{
+    color: var(--light);
+    background-color: var(--dark);
+}
+#connectAdmin .formAdmin img{
+    width: 30px;
+    margin-bottom: -6px;
+}
+
+
+
+/* MEDIA QUERIES **********************************************/
+
+/* min 768px for TABLETS */
+@media all and (min-width:768px){
+
+/* DASHBOARD */
+#sidenav ul{
+  justify-content: space-around;
+}
+#sidenav li{
+    width: 30vw;
+    height: 30vw;
+    margin: 30px 20px;
+    
+ }
+}
+
+  /* min 992px for DESKTOPS */
+@media all and (min-width:992px){
+
+/* DASHBOARD */
+
+#sidenav li{
+    width: 20vw;
+    height: 20vw;
+ }
+
+
+
+}

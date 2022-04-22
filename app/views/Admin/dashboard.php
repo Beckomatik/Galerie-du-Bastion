@@ -25,7 +25,8 @@
             </li>
             <li>
                 <a href="indexAdmin.php?action=mails">
-                    <p>Mes emails</p>
+                    <p>Mes emails <?php echo $datas[0]; ?> </p>
+                    
                     <p><img src="/app/public/Administration/img/mail.png" alt=""></p>
                 </a>
             </li>

@@ -52,9 +52,12 @@ class AdminController extends Controller
          $_SESSION['id'] = $resultat['id'];
          $_SESSION['firstname'] = $resultat['firstname'];
          $_SESSION['lastname'] = $resultat['lastname'];
+         $_SESSION['token'] = 'admin';
+       
+
  
          if ($isPasswordCorrect) { 
-             require 'app/views/Admin/dashboard.php';
+            header('Location: indexAdmin.php?action=dashBoard&id=' .$_SESSION['id']);
          }          
          else {
              echo 'vos identifiants sont incorrect';
@@ -67,7 +70,11 @@ class AdminController extends Controller
     // accès au dashboard
     function dashBoard()
     {
-        return $this->viewAdmin('dashboard');
+        $mails = new \Projet\Models\AdminModel();
+        $count = $mails->countMails();
+        $countMails = $count->fetch();
+        
+        return $this->viewAdmin('dashboard', $countMails);
     }
 
     function aboutAdmin()
