@@ -121,7 +121,7 @@ try {
                 $uniqueName = uniqid('', true);
                 $fileName = $uniqueName . '.' . $extension;
                 // enregistre les images uploader dans le chemin
-                move_uploaded_file(filter_var($tmpName), './app/public/Administration/img/' . filter_var($name));
+                move_uploaded_file(filter_var($tmpName), './app/public/Administration/img/' . filter_var($fileName));
             } 
             else 
             {
@@ -129,7 +129,7 @@ try {
             }
             $data=
             [
-                ':picture' => $name,
+                ':picture' => $fileName,
                 ':title' => htmlspecialchars($_POST['title']),
                 ':content' => htmlspecialchars($_POST['content']),
                 ':category' => htmlspecialchars($_POST['category']), 
@@ -177,12 +177,12 @@ try {
                 $fileName = $uniqueName . '.' . $extension;
 
                 // enregistre les images uploader dans le chemin
-                move_uploaded_file(filter_var($tmpName), './app/public/Administration/img/' . filter_var($name));
+                move_uploaded_file(filter_var($tmpName), './app/public/Administration/img/' . filter_var($fileName));
 
                 $data=
                 [
                     'id' =>$_GET['id'],
-                    'picture' => $name,
+                    'picture' => $fileName,
                     'title' => htmlspecialchars($_POST['title']),
                     'content' => htmlspecialchars($_POST['content']),
                     'category' => htmlspecialchars($_POST['category']), 
@@ -234,7 +234,7 @@ try {
                 $uniqueName = uniqid('', true);
                 $fileName = $uniqueName . '.' . $extension;
                 // enregistre les images uploader dans le chemin
-                move_uploaded_file(filter_var($tmpName), './app/public/Administration/img/' . filter_var($name));
+                move_uploaded_file(filter_var($tmpName), './app/public/Administration/img/' . filter_var($fileName));
             } 
             else 
             {
@@ -242,7 +242,7 @@ try {
             }
             $data=
             [
-                ':picture' => $name,
+                ':picture' => $fileName,
                 ':title' => htmlspecialchars($_POST['title']),
                 ':category' => htmlspecialchars($_POST['category']), 
                 ':alt' => htmlspecialchars($_POST['alt']) 

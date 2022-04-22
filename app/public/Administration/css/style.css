@@ -211,14 +211,12 @@ h1 i{
 .forms #mesimages{
     margin: 25px 0;
 }
-.postForm{
-    margin: 10px 0;
-    width: 100%;
-}
+
 .postForm input{
     padding: 15px;
     background-color: #24DBC8;
     border: 1px solid var(--blue);
+    border-radius: 40px;
 }
 input{
     font-size: 1.3rem;
@@ -227,6 +225,28 @@ input{
 input#photo{
     width: 100%;
     overflow-wrap: break-word;
+    margin-top: 10px;
+}
+
+#folioFront form{
+    display: flex;
+    flex-direction: column;
+}
+
+#folioFront form .postForm{
+   width: 250px;
+   align-self:center;
+   margin-top: 30px;
+}
+#folioFront input[type="submit"]:hover{
+    background-color: green;
+    border-color: green;
+    color: var(--light);
+}
+#folioFront textarea{
+    padding: 7px;
+    font-size: 1rem;
+   
 }
 
 
@@ -385,16 +405,24 @@ input#photo{
 /* min 768px for TABLETS */
 @media all and (min-width:768px){
 
-/* DASHBOARD */
-#sidenav ul{
-  justify-content: space-around;
-}
-#sidenav li{
-    width: 30vw;
-    height: 30vw;
-    margin: 30px 20px;
-    
- }
+    /* DASHBOARD */
+    #sidenav ul{
+    justify-content: space-around;
+    }
+    #sidenav li{
+        width: 30vw;
+        height: 30vw;
+        margin: 30px 20px;    
+    }
+
+    /* PORTFOLIO */
+    .forms form{
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 auto;
+    }
+
 }
 
   /* min 992px for DESKTOPS */
