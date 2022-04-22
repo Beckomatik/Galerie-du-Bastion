@@ -103,8 +103,8 @@ try {
         {
             if(isset($_FILES['photo']))
 
-            $tmpName = htmlspecialchars($_FILES['photo']['tmp_name']);
-            $name = htmlspecialchars($_FILES['photo']['name']);
+            $tmpName = $_FILES['photo']['tmp_name'];
+            $name = $_FILES['photo']['name'];
             $size = $_FILES['photo']['size'];
             $error = $_FILES['photo']['error'];
             $type = $_FILES['photo']['type'];
@@ -154,8 +154,8 @@ try {
         {
             if(!empty($_FILES['photo']))
 
-            $tmpName = htmlspecialchars($_FILES['photo']['tmp_name']);
-            $name = htmlspecialchars($_FILES['photo']['name']);
+            $tmpName = $_FILES['photo']['tmp_name'];
+            $name = $_FILES['photo']['name'];
             $size = $_FILES['photo']['size'];
             $error = $_FILES['photo']['error'];
             $type = $_FILES['photo']['type'];
@@ -177,7 +177,8 @@ try {
                 $fileName = $uniqueName . '.' . $extension;
 
                 // enregistre les images uploader dans le chemin
-                move_uploaded_file($tmpName, './app/public/Administration/img/' . $name);
+                move_uploaded_file(filter_var($tmpName), './app/public/Administration/img/' . filter_var($name));
+
                 $data=
                 [
                     'id' =>$_GET['id'],
@@ -215,8 +216,8 @@ try {
         {        
             if(isset($_FILES['photo'])) 
 
-            $tmpName = htmlspecialchars($_FILES['photo']['tmp_name']);
-            $name = htmlspecialchars($_FILES['photo']['name']);
+            $tmpName = $_FILES['photo']['tmp_name'];
+            $name = $_FILES['photo']['name'];
             $size = $_FILES['photo']['size'];
             $error = $_FILES['photo']['error'];
             $type = $_FILES['photo']['type'];
@@ -233,7 +234,7 @@ try {
                 $uniqueName = uniqid('', true);
                 $fileName = $uniqueName . '.' . $extension;
                 // enregistre les images uploader dans le chemin
-                move_uploaded_file($tmpName, './app/public/Administration/img/' . $name);
+                move_uploaded_file(filter_var($tmpName), './app/public/Administration/img/' . filter_var($name));
             } 
             else 
             {
