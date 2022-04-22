@@ -112,7 +112,7 @@ try {
             $arrExtension = explode('.', $name);
             $extension = strtolower(end($arrExtension));
 
-            $extensionsAuthorized = ['jpg', 'jpeg', 'gif', 'png', 'wep'];
+            $extensionsAuthorized = ['jpg', 'jpeg', 'gif', 'png', 'webp'];
             $maxSize = 5000000;
 
             if (in_array($extension, $extensionsAuthorized) && $size <= $maxSize && $error == 0) 
@@ -121,7 +121,7 @@ try {
                 $uniqueName = uniqid('', true);
                 $fileName = $uniqueName . '.' . $extension;
                 // enregistre les images uploader dans le chemin
-                move_uploaded_file($tmpName, './app/public/Administration/img/' . $name);
+                move_uploaded_file(filter_var($tmpName), './app/public/Administration/img/' . filter_var($name));
             } 
             else 
             {
@@ -163,7 +163,7 @@ try {
             $arrExtension = explode('.', $name);
             $extension = strtolower(end($arrExtension));
 
-            $extensionsAuthorized = ['jpg', 'jpeg', 'gif', 'png', 'wep'];
+            $extensionsAuthorized = ['jpg', 'jpeg', 'gif', 'png', 'webp'];
             $maxSize = 5000000;
             if($size > $maxSize)
             {
@@ -224,7 +224,7 @@ try {
             $arrExtension = explode('.', $name);
             $extension = strtolower(end($arrExtension));
 
-            $extensionsAuthorized = ['jpg', 'jpeg', 'gif', 'png', 'wep'];
+            $extensionsAuthorized = ['jpg', 'jpeg', 'gif', 'png', 'webp'];
             $maxSize = 5000000;
 
             if (in_array($extension, $extensionsAuthorized) && $size <= $maxSize && $error == 0) 
