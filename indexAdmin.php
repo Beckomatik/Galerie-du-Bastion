@@ -24,8 +24,8 @@ try {
                 throw new Exception('renseigner vos identifiants');
             }
         } 
-        if($_SESSION['token']=='admin'){
-          
+        if($_SESSION['token']=='admin')
+        {
         // création d'un nouvel admin
         if ($_GET['action'] == 'createAdmin') 
         {
@@ -36,65 +36,75 @@ try {
             $mdp = password_hash($pass, PASSWORD_DEFAULT);
             $adminController->createAdmin($firstname, $lastname, $mdp, $email);
         }
-
         
         // accès aux différentes pages
         elseif ($_GET['action'] == 'createAdminPage') 
         {
             $adminController->createAdminPage();
         } 
+
         elseif ($_GET['action'] == 'contact') 
         {
             $adminController->contactAdmin();
-
         } 
-        elseif ($_GET['action'] == 'about') {
+
+        elseif ($_GET['action'] == 'about')
+        {
             $adminController->aboutAdmin();
         } 
+
         elseif ($_GET['action'] == 'portfolio') 
         {
             $adminController->portfolioAdmin();
         } 
+
         elseif ($_GET['action'] == 'blog') 
         {
             $adminController->blogAdmin();
         } 
+
         elseif ($_GET['action'] == 'yourinfos') 
         {           
             $adminController->infoCompte();
         } 
+
         elseif ($_GET['action'] == 'dashBoard') 
         {           
             $adminController->dashBoard();
         } 
+
         elseif ($_GET['action'] == 'deconnexion') 
         {           
             session_destroy();
             $adminController->connexionAdminPage();
         } 
+
         // voir tous les mails
         elseif ($_GET['action'] == 'mails') 
         {                      
             $adminController->mailsAdmin();
         }
+
         // voir un mail
         elseif ($_GET['action'] == 'showMail')
         {
             $id = $_GET['id'];
             $adminController->showMail($id);
         }
+
         elseif ($_GET['action'] == 'deleteMail')
         {
             $id = $_GET['id'];
             $adminController->deleteMail($id);
         }
+        
         // envoi d'article depuis le blog
         elseif ($_GET['action'] == 'sendArticle') 
         {
             if(isset($_FILES['photo']))
 
             $tmpName = $_FILES['photo']['tmp_name'];
-            $name = $_FILES['photo']['name'];
+            $name = htmlspecialchars($_FILES['photo']['name']);
             $size = $_FILES['photo']['size'];
             $error = $_FILES['photo']['error'];
             $type = $_FILES['photo']['type'];
@@ -145,7 +155,7 @@ try {
             if(!empty($_FILES['photo']))
 
             $tmpName = $_FILES['photo']['tmp_name'];
-            $name = $_FILES['photo']['name'];
+            $name = htmlspecialchars($_FILES['photo']['name']);
             $size = $_FILES['photo']['size'];
             $error = $_FILES['photo']['error'];
             $type = $_FILES['photo']['type'];
@@ -200,13 +210,13 @@ try {
             $adminController->deleteArticle();
         }
 
-        // ENVOI DU FORMULAIRE PORTFOLIO
+        // ENVOI D'IMAGE du PORTFOLIO
         elseif ($_GET['action'] == 'sendPicFolio')
         {        
             if(isset($_FILES['photo'])) 
 
             $tmpName = $_FILES['photo']['tmp_name'];
-            $name = $_FILES['photo']['name'];
+            $name = htmlspecialchars($_FILES['photo']['name']);
             $size = $_FILES['photo']['size'];
             $error = $_FILES['photo']['error'];
             $type = $_FILES['photo']['type'];

@@ -11,16 +11,16 @@
             <form action="index.php?action=contactPost" method="POST">
 
                 <label for="fullname">Nom et prénom <span>*</span></label>
-                <input type="text" id="lname" name="fullname" placeholder="Nom et Prénom" value="<?php if(isset($_POST['fullname'])) echo $_POST['fullname'] ?>" required>
+                <input type="text" id="lname" name="fullname" placeholder="Nom et Prénom" value="<?php if(isset($_POST['fullname'])) echo htmlspecialchars($_POST['fullname']) ?>" required>
 
                 <label for="email">E-mail <span>*</span></label>
-                <input type="email" id="email" name="email" placeholder="Votre E-mail" value="<?php if(isset($_POST['email'])) echo $_POST['email'] ?>" required>
+                <input type="email" id="email" name="email" placeholder="Votre E-mail" value="<?php if(isset($_POST['email'])) echo htmlspecialchars($_POST['email']) ?>" required>
 
                 <label for="phone">Téléphone</label>
-                <input type="tel" id="phone" name="phone" placeholder="Votre numéro de téléphone" value="<?php if(isset($_POST['phone'])) echo $_POST['phone'] ?>">
+                <input type="tel" id="phone" name="phone" placeholder="Votre numéro de téléphone" value="<?php if(isset($_POST['phone'])) echo htmlspecialchars($_POST['phone']) ?>">
 
                 <label for="object">Objet</label>
-                <input type="text" id="object" name="objet" placeholder="Objet de votre demande" value="<?php if(isset($_POST['objet'])) echo $_POST['objet'] ?>">
+                <input type="text" id="object" name="objet" placeholder="Objet de votre demande" value="<?php if(isset($_POST['objet'])) echo htmlspecialchars($_POST['objet']) ?>">
 
 
                 <label for="content">Votre message <span>*</span></label>

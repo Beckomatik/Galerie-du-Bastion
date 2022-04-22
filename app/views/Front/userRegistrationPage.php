@@ -9,13 +9,13 @@
     <form action="index.php?action=userRegistration" method="POST">
 
         <label for="lastname">Nom <span>*</span></label>
-        <input type="text" placeholder="Nom" name="lastname" id="lastname" value="<?php if(isset($_POST['lastname'])) echo $_POST['lastname'] ?>" required>
+        <input type="text" placeholder="Nom" name="lastname" id="lastname" value="<?php if(isset($_POST['lastname'])) echo htmlspecialchars($_POST['lastname']) ?>" required>
 
         <label for="firstname">Prénom <span>*</span></label>
-        <input type="text" placeholder="Prénom" name="firstname" id="firstname" value="<?php if(isset($_POST['firstname'])) echo $_POST['firstname'] ?>" required>
+        <input type="text" placeholder="Prénom" name="firstname" id="firstname" value="<?php if(isset($_POST['firstname'])) echo htmlspecialchars($_POST['firstname']) ?>" required>
 
         <label for="pseudo">Pseudo <span>*</span></label>
-        <input type="text" placeholder="Pseudo" name="pseudo" id="pseudo" value="<?php if(isset($_POST['pseudo'])) echo $_POST['pseudo'] ?>" required>
+        <input type="text" placeholder="Pseudo" name="pseudo" id="pseudo" value="<?php if(isset($_POST['pseudo'])) echo htmlspecialchars($_POST['pseudo']) ?>" required>
 
         <label for="email">E-mail <span>*</span></label>
         <input type="email" id="email" name="email" placeholder="Votre E-mail" value="<?php if(isset($_POST['email'])) echo htmlspecialchars($_POST['email']) ?>" required>
