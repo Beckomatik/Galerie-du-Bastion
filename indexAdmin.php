@@ -97,13 +97,13 @@ try {
             $id = $_GET['id'];
             $adminController->deleteMail($id);
         }
-        
+
         // envoi d'article depuis le blog
         elseif ($_GET['action'] == 'sendArticle') 
         {
             if(isset($_FILES['photo']))
 
-            $tmpName = $_FILES['photo']['tmp_name'];
+            $tmpName = htmlspecialchars($_FILES['photo']['tmp_name']);
             $name = htmlspecialchars($_FILES['photo']['name']);
             $size = $_FILES['photo']['size'];
             $error = $_FILES['photo']['error'];
@@ -154,7 +154,7 @@ try {
         {
             if(!empty($_FILES['photo']))
 
-            $tmpName = $_FILES['photo']['tmp_name'];
+            $tmpName = htmlspecialchars($_FILES['photo']['tmp_name']);
             $name = htmlspecialchars($_FILES['photo']['name']);
             $size = $_FILES['photo']['size'];
             $error = $_FILES['photo']['error'];
@@ -215,7 +215,7 @@ try {
         {        
             if(isset($_FILES['photo'])) 
 
-            $tmpName = $_FILES['photo']['tmp_name'];
+            $tmpName = htmlspecialchars($_FILES['photo']['tmp_name']);
             $name = htmlspecialchars($_FILES['photo']['name']);
             $size = $_FILES['photo']['size'];
             $error = $_FILES['photo']['error'];
