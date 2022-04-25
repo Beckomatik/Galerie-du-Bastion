@@ -12,11 +12,27 @@ class FrontModel extends Manager{
 
         return $req;
     }
+    public function getPortfolioItemsHome()
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT picture, title, category, alt FROM portfolios ORDER BY id DESC LIMIT 3');
+        $req->execute(array());
+
+        return $req;
+    }
 
     public function getBlogItems()
     {
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT id, title, picture, content, category, alt, DATE_FORMAT(created_at, "%d %M %Y") AS created_at FROM blogposts ORDER BY id DESC');
+        $req->execute(array());
+
+        return $req;
+    }
+    public function getBlogItemsHome()
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT id, title, picture, content, category, alt, DATE_FORMAT(created_at, "%d %M %Y") AS created_at FROM blogposts ORDER BY id DESC LIMIT 3');
         $req->execute(array());
 
         return $req;

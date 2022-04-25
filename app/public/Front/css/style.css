@@ -219,29 +219,37 @@ h2{
   flex-direction: column;
   flex-wrap: wrap;
 }
+.homepage h2{
+ margin-bottom: 0;
+}
 /* fleches */
 .homepage i{
   color: var(--red);
   margin-right: 10px;
 }
+.homepage #home-news{
+  margin-bottom: 15px;
+}
 
-/* les dernières images */
-.homepage .lastpics{
-  
+.homepage #home-news{
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;  
+  flex-direction: column;
 }
-.homepage .lastpics div{
-  width: 100%; 
-  margin-bottom: 4%;
+.homepage #home-news .seeMore{
+  align-self: center;
+  border: 1px solid var(--dark);
+  border-radius: 40px;
+  padding: 10px;
+  width: 150px;
+  text-align: center;
+  margin: 20px 0;
 }
-.homepage .lastpics img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.homepage #home-news .seeMore:hover{
+  background-color: var(--dark);
+  color: var(--light);
 }
+
+
 /* les derniers articles de blog */
 
 
@@ -353,7 +361,7 @@ input[type=submit]{
   font-size: 1.2rem;
 }
 
-#portfolioPage .theGallery{
+.theGallery{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -458,10 +466,19 @@ input[type=submit]{
 /* BLOG *********************************************************/
 .forms .createdAt, 
 .forms .category{
-  font-size: 1rem;
+  font-size: 0.8rem;
+}
+.forms .createdAt{
+  margin-top: 10px;
+}
+.forms .content{
+  margin-top: 10px;
 }
 .myArticle{
   margin-top: 30px;
+}
+.myArticle h3{
+  font-size: 1.2rem;
 }
 .myArticle p{
   width: 100%;
@@ -475,6 +492,10 @@ input[type=submit]{
   display: flex;
   flex-wrap: wrap;
 }
+#blogpage .myArticle {
+ 
+ border: 2px solid red;
+}
 #blogPage .btn{
   border: 0;
   border-radius: 40px;
@@ -482,6 +503,10 @@ input[type=submit]{
   width: 160px;
   padding: 10px;
   margin: 10px auto 0;
+}
+#blogPage .btn:hover{
+  background-color: rgb(1, 137, 179);
+  color: var(--light);
 }
 #blogPage .btn a{
   color: var(--light);
@@ -633,17 +658,23 @@ input[type=submit]{
 @media all and (min-width:768px){
 
   /* PORTFOLIO PAGE ********************************/
-  #portfolioPage .theGallery .picPortfolio{
+  .theGallery .picPortfolio{
     width: 46vw;
     height: 46vw;
   }
-  #portfolioPage .theGallery .picPortfolio p{
+  .theGallery .picPortfolio p{
     font-size: 1rem
   }
-  #portfolioPage .theGallery .picPortfolio img{
+  .theGallery .picPortfolio img{
     width: 100%;
     height: 95%;   
     object-fit: cover;
+  }
+
+  /* HOMEPAGE GALLERY */
+  .homepage .theGallery .picPortfolio{
+      width: 80%;
+      height: auto;
   }
 
   /* LIGHTBOX PAGE ********************************/
@@ -656,6 +687,7 @@ input[type=submit]{
 @media all and (min-width:992px){
 
   /* ABOUT PAGE ******************************/
+  
   #aboutPage{
     display: flex;
     justify-content: space-between;
@@ -673,8 +705,63 @@ input[type=submit]{
   }
 
   /* PORTFOLIO PAGE ***************************/
-  #portfolioPage .theGallery .picPortfolio{
+  .theGallery .picPortfolio{
     width: 30vw;
     height: 30vw;
   }
+
+  /* HOMEPAGE GALLERY */
+   .homepage .theGallery .picPortfolio{
+    width: 30%;
+    height: auto;
+  }
+
+  /* BLOG PAGE ********************************/
+  #blogPage .myArticle,
+  .homepage .myArticle{
+    width: 80%;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(223, 223, 223);
+    border-radius: 15px;
+    padding:15px;
+  }
+  #blogPage .myArticle h3,
+  .homepage .myArticle h3{
+    font-size: 1.8rem;
+  }
+
+  #blogPage .myArticle .createdAt,
+  .homepage .myArticle .createdAt{
+    text-align: center;
+    margin-top: 0;
+  }
+  #blogPage .myArticle img,
+  .homepage .myArticle img{
+    width: 20vw;
+    height: 15vw;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  #blogPage .myArticle p:last-of-type,
+  .homepage .myArticle p:last-of-type{
+    width: 55%;
+    padding-left: 20px;
+    line-height: 2rem;
+  }
+  
+  #blogPage .myArticle .content,
+  #blogPage .myArticle .category{
+    display: none;
+  }
+  #blogPage .btn{
+    height: 45px;
+    margin-right: 0;
+  }
+  
+  
+  
 }

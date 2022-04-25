@@ -6,8 +6,26 @@ class FrontController extends Controller
 {
     function home()
     {
-        return $this->view('home');
+        $imagesManager = new \Projet\Models\FrontModel();
+        $myPics = $imagesManager->getPortfolioItemsHome();
+        $resultPics = $myPics->fetchAll();
+        $resPath = "/app/public/Administration/img/";
+
+        $articleManager = new \Projet\Models\FrontModel();
+        $myPosts = $articleManager->getBlogItemsHome();
+        $resultBlog = $myPosts->fetchAll();
+      
+
+        $data=
+        [
+            "resultPics" => $resultPics,
+            "resPath" => $resPath,
+            "resultBlog" => $resultBlog
+        ];
+       
+        return $this->view('home', $data);
     }
+    
 
     function about()
     {
@@ -120,23 +138,26 @@ class FrontController extends Controller
         $user = new \Projet\Models\FrontModel();
         $userConnexion = $user->verifyMail($email);
         
-
         $result = $userConnexion->fetch();
+        
         $correctPassword = password_verify($mdp, $result['mdp']);
-
-        $_SESSION['email'] = $result['email'];
-        $_SESSION['mdp'] = $result['mdp'];
-        $_SESSION['id'] = $result['id'];
-        $_SESSION['pseudo'] = $result['pseudo'];
-
+        
         if($correctPassword)
         {
-            header('Location: index.php?action=myAccount&id=' . $_SESSION['id']);
+            $_SESSION['email'] = $result['email'];
+            $_SESSION['mdp'] = $result['mdp'];
+            $_SESSION['id'] = $result['id'];
+            $_SESSION['pseudo'] = $result['pseudo'];
+    
+            header('Location: index.php?action=myAccount&id=' . $_SESSION['id']);           
         }
         else
-        {
-            return $this->view('userConnexionPage');
+        {      
+            $error = "Le mot de passe ne correspond pas";      
+            return $this->view('userConnexionPage', $error);
         }
+        
+       
     }
 
     function myAccountPage($id)

@@ -47,20 +47,23 @@ class AdminController extends Controller
  
          $isPasswordCorrect = password_verify($mdp, $resultat['mdp']);
  
-         $_SESSION['email'] = $resultat['email']; 
-         $_SESSION['mdp'] = $resultat['mdp'];
-         $_SESSION['id'] = $resultat['id'];
-         $_SESSION['firstname'] = $resultat['firstname'];
-         $_SESSION['lastname'] = $resultat['lastname'];
-         $_SESSION['token'] = 'admin';
        
-
  
-         if ($isPasswordCorrect) { 
+         if ($isPasswordCorrect) 
+         {
+            $_SESSION['email'] = $resultat['email']; 
+            $_SESSION['mdp'] = $resultat['mdp'];
+            $_SESSION['id'] = $resultat['id'];
+            $_SESSION['firstname'] = $resultat['firstname'];
+            $_SESSION['lastname'] = $resultat['lastname'];
+            $_SESSION['token'] = 'admin';
+          
+    
             header('Location: indexAdmin.php?action=dashBoard&id=' .$_SESSION['id']);
          }          
          else {
-             echo 'vos identifiants sont incorrect';
+            $error = "Vos identifiants son incorrects !";
+                return $this->viewAdmin('connexionAdmin', $error);
          } 
      }
 
@@ -215,54 +218,3 @@ class AdminController extends Controller
 
 
     
- 
-
-//     }
-//     /*=========================== page EmailView  ==========================================*/
-//     function showMails()
-//     {
-//         $mails = new \Projet\Models\ContactModel();
-//         $allMails = $mails->getMails();
-
-//         require 'app/Views/Admin/emailView.php';
-//     }
-
-//      /*=========================== supprimer un mail ==================================*/
-//      function deleteMail($id)
-//      {
-//         $deleteMail = new \Projet\Models\ContactModel();
-//         $deleteEmail = $deleteMail->deleteMail($id);
- 
-//          header('Location: indexAdmin.php?action=showMails');
-//      }
-
-
-
-
-//     /* retour tableau de bord */
-//     function dashbord()
-//     {
-//         $countMail = new \Projet\Models\ContactModel();
-//         $nbrMail = $countMail->countMail();
-
-//         require 'app/Views/Admin/dashboard.php';
-//     }
-
-
-//     function compte($id)
-//     {
-//         $userManager = new \Projet\Models\AdminModel();
-//         $newCompte = $userManager->compte($id);
-//         require 'app/Views/Admin/compte.php';
-//     }
-
-//     function newCompte($id, $firstname, $mail)
-//     {
-//         $userManager = new \Projet\Models\AdminModel();
-//         $newNameAd = $userManager->newCompte($id, $firstname, $mail);
-
-//         $_SESSION['id'] = $id;
-        
-//         header('Location: indexAdmin.php?action=compte&id=' . $id);
-//     }
-

@@ -11,6 +11,11 @@
 </head>
 
 <body>
+
+<?php if(isset($datas)){?>
+    <p class='error'><?= $datas ?></p>
+<?php  } ?>
+ 
   <main id="connectAdmin">
     <h1>Bienvenue dans votre espace de connexion</h1>
     <div class="formAdmin">  

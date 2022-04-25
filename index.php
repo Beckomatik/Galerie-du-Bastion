@@ -111,7 +111,8 @@ try{
             }
             else
             {
-                header('Location: app/Views/Front/userRegistrationPage.php?erreurmdp');
+                $error = "Les mots de passe doivent être identiques !";
+                return $frontController->userRegistrationPage($error);
             }
         
             $data = 
@@ -144,19 +145,18 @@ try{
         elseif($_GET['action'] == 'userConnexion')
         {
             $email = htmlspecialchars($_POST['email']);
-            $mdp = $_POST['mdp'];
+            $mdp = htmlspecialchars($_POST['mdp']);
             
-
-            if (!empty($email) && (!empty($mdp)))
+            
+            if (!empty($email) && (!empty($mdp)) && filter_var($email, FILTER_VALIDATE_EMAIL))
             {
                 $frontController->userConnexion($email, $mdp);
             }
             else 
             {
-                header('Location: app/Views/Front/userConnexionPage.php?erreur');
-                // $error = 'Tous les champs doivent etre remplis ! ';
-                // // $frontController->userConnexionPage($error);
-                // throw new Exception($error);
+                $error = "Tous les champs ne sont pas remplis gros zozo !";
+                return $frontController->userConnexionPage();
+               
             }            
         }
 
@@ -177,6 +177,10 @@ try{
             session_destroy();
             header('Location: index.php');          
         }  
+        else
+        {
+            echo 'erreur 404 eeezezeze!';
+        }
     }
     else
     {

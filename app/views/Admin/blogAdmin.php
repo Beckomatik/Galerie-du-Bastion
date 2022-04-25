@@ -1,6 +1,6 @@
 <?php include ('header.php'); ?>
 
-<main class="container forms">
+<main class="container forms" id="blogAdmin">
 <div class="backToMenu">
        <a href="/indexAdmin.php?action=dashBoard"><img src="/app/public/Administration/img/back-button.png" alt=""> Retour à l'accueil</a> 
 </div>
