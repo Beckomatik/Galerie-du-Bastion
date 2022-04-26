@@ -1,6 +1,6 @@
 <?php include ('header.php'); ?>
 
-<main class="homepage container">
+<main class="container" id="homepage">
     <h1>Photographe breton pur beurre</h1>
     <div id="home-news">
         <h2><i class="fa-solid fa-right-long"></i>Les dernières photos</h2>
@@ -25,10 +25,12 @@
                 <img src="<?= $datas["resPath"] . $data['picture'] ?>" alt="<?= $data['alt'] ?>">
                 <p class="category">Catégorie : #<?=$data['category'] ?></p>            
                 <p class="content"><?=mb_substr($data['content'],0,300) ?>[...]</p>        
+                <!-- <button class="btn"><a href="index.php?action=oneArticle&id=<?= $data['id'] ?>">Lire l'article</a></button> -->
                 <a href="index.php?action=oneArticle&id=<?= $data['id'] ?>">Lire l'article</a>
             </article>
-
-        <?php } ?>
+            
+            <hr>
+            <?php } ?>
 
     </section>
 </main>

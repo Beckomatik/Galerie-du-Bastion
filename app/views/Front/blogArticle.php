@@ -9,7 +9,7 @@
         <p class="createdAt">Publié le <?=$datas['result']['created_at'] ?></p>
         <img src="<?= $datas["resPath"] . $datas['result']['picture'] ?>" alt="<?= $datas['result']['alt'] ?>">
         <p class="category">Catégorie : #<?=$datas['result']['category'] ?></p>            
-        <p><?=$datas['result']['content'] ?></p>        
+        <p class="articleContent"><?=$datas['result']['content'] ?></p>        
     </article>
 <?php
 if(isset($_SESSION['id'])){?>

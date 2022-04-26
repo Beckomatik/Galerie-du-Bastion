@@ -21,7 +21,7 @@
 
 <body>
     <header>
-        <div class="bloc-top">
+        <div class="bloc-top" id="backToTop">
             <!-- MENU BURGER -->
             <div id="burger-menu">
                 <span></span>

@@ -1,7 +1,9 @@
 <?php include ('header.php'); ?>
 
 <main class="container forms" id="mofifArticle">
-
+<div class="backToMenu">
+       <a href="/indexAdmin.php?action=dashBoard"><img src="/app/public/Administration/img/back-button.png" alt=""> Retour à l'accueil</a> 
+</div>
     <!-- message de confirmation de la suppression, à faire disparaitre avec JS au bout de quelques secondes -->
     <!-- <?php if(isset($_GET['success'])&& ($_GET['success']=='true')){echo 'L\'article a bien été modifié';} ?> -->
 

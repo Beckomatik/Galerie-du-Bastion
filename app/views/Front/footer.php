@@ -10,6 +10,8 @@
    
 </div>
 <p id="copy">©Copyright Alan Nihp 2022. Tous droits réservés.</p>
+<!-- retour haut de page -->
+<div id="back-up"><a href="#backToTop"><i class="fa-solid fa-arrow-up toparrow" title="Retour haut de page"></i></a></div>
 </footer>
 <script type="text/javascript" src="/app/public/Front/js/burger.js"></script>
 <script type="text/javascript" src="/app/public/Front/js/map.js"></script>
