@@ -6,11 +6,11 @@ class AdminController extends Controller
 {
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     // +++++++++ CONNEXION ET ADMINISTRATION ++++++++++++++++++++++++++++++++++++++++++++
-
+  
     // connexion à la page de connexion
     function connexionAdminPage()
     {
-        return $this->viewAdmin('connexionAdmin');
+        require 'app/views/Admin/connexionAdmin.php';
     }
 
     // création de l'administrateur
@@ -43,29 +43,35 @@ class AdminController extends Controller
          $userManager = new \Projet\Models\AdminModel();
          $connexAdm = $userManager->recupMdp($email);
  
-         $resultat = $connexAdm->fetch();
- 
-         $isPasswordCorrect = password_verify($mdp, $resultat['mdp']);
- 
-       
- 
-         if ($isPasswordCorrect) 
-         {
-            $_SESSION['email'] = $resultat['email']; 
-            $_SESSION['mdp'] = $resultat['mdp'];
-            $_SESSION['id'] = $resultat['id'];
-            $_SESSION['firstname'] = $resultat['firstname'];
-            $_SESSION['lastname'] = $resultat['lastname'];
-            $_SESSION['token'] = 'admin';
-          
-    
-            header('Location: indexAdmin.php?action=dashBoard&id=' .$_SESSION['id']);
-         }          
-         else {
+         $resultat = $connexAdm->fetch();         
+        
+         
+         if(!empty($resultat)){
+            $isPasswordCorrect = password_verify($mdp, $resultat['mdp']);
+            if ($isPasswordCorrect) 
+                {
+                    $_SESSION['email'] = $resultat['email']; 
+                    $_SESSION['mdp'] = $resultat['mdp'];
+                    $_SESSION['id'] = $resultat['id'];
+                    $_SESSION['firstname'] = $resultat['firstname'];
+                    $_SESSION['lastname'] = $resultat['lastname'];
+                    $_SESSION['role'] = $resultat['role'];
+                    // $_SESSION['token'] = 'admin';
+                
+                    header('Location: indexAdmin.php?action=dashBoard&id=' .$_SESSION['id']);
+                }          
+            else{
             $error = "Vos identifiants son incorrects !";
-                return $this->viewAdmin('connexionAdmin', $error);
-         } 
+                return $this->viewNoAdmin('connexionAdmin', $error);
+            } 
+        }
+        else {
+           $error = "Mauvaise adresse email !";
+           return $this->viewNoAdmin('connexionAdmin', $error);
+        }
      }
+
+   
 
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     // ++++++++++++++ ACCES PAGES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

@@ -14,18 +14,19 @@ try {
         if ($_GET['action'] == 'connexionAdmin') 
         { 
             $email = htmlspecialchars($_POST['email']);
-            $mdp = $_POST['mdp'];
+            $mdp = htmlspecialchars($_POST['mdp']);
             if (!empty($email) && !empty($mdp)) 
             {
                 $adminController->connexion($email, $mdp);
             } 
             else 
             {
-                throw new Exception('renseigner vos identifiants');
+                echo 'identifiants non valides';
             }
         } 
-        if($_SESSION['token']=='admin')
-        {
+        // if($_SESSION['token']=='admin')
+        // {
+
         // création d'un nouvel admin
         if ($_GET['action'] == 'createAdmin') 
         {
@@ -249,20 +250,32 @@ try {
             ];           
             $adminController->portfolioForm($data);           
         }
-    }
-        else
+        elseif($_GET['action'] == '404')
         {
-            header('location: index.php');
+            $adminController->errorPage();
         }
-    } 
+        // else
+        // {
+        //     throw new Exception("La page n'existe pas", 404);
+        // }
+
+        // }
+        //     else
+        //     {
+            //         header('location: index.php');
+            //     }
+        } 
     else 
     {
-            $adminController->connexionAdminPage();               
+            $adminController->connexionAdminPage();      
     }
     
 }
  catch (Exception $e) 
     {
-        require 'app/Views/Admin/error.php';
+        if ($e->getCode() == 404)
+        {
+            require 'app/Views/Admin/page404.php';
+        }
     }
 

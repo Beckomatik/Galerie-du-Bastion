@@ -16,7 +16,7 @@ class AdminModel extends Manager
         public function recupMdp($email)
         {
             $db = $this->dbConnect();
-            $req = $db->prepare('SELECT id, firstname, lastname, mdp, email FROM admins WHERE email=?');
+            $req = $db->prepare('SELECT id, firstname, lastname, mdp, email, role FROM admins WHERE email=?');
             $req->execute(array($email));
             return $req;
         }

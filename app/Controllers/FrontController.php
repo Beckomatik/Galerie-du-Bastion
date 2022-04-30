@@ -140,21 +140,29 @@ class FrontController extends Controller
         
         $result = $userConnexion->fetch();
         
-        $correctPassword = password_verify($mdp, $result['mdp']);
-        
-        if($correctPassword)
+        if(!empty($result))
         {
-            $_SESSION['email'] = $result['email'];
-            $_SESSION['mdp'] = $result['mdp'];
-            $_SESSION['id'] = $result['id'];
-            $_SESSION['pseudo'] = $result['pseudo'];
-    
-            header('Location: index.php?action=myAccount&id=' . $_SESSION['id']);           
+            $correctPassword = password_verify($mdp, $result['mdp']);
+            
+            if($correctPassword)
+            {
+                $_SESSION['email'] = $result['email'];
+                $_SESSION['mdp'] = $result['mdp'];
+                $_SESSION['id'] = $result['id'];
+                $_SESSION['pseudo'] = $result['pseudo'];
+        
+                header('Location: index.php?action=myAccount&id=' . $_SESSION['id']);           
+            }
+            else
+            {      
+                $error = "Le mot de passe ne correspond pas";      
+                return $this->view('userConnexionPage', $error);
+            }
         }
         else
-        {      
-            $error = "Le mot de passe ne correspond pas";      
-            return $this->view('userConnexionPage', $error);
+        {
+            $error = "Email non exisant";      
+                return $this->view('userConnexionPage', $error);
         }
         
        

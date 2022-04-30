@@ -24,7 +24,33 @@
     padding: 20px 0;
     font-size: 1.2rem;
   }
-  
+.noPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid red;
+}
+.noPage h2{
+   width: 100%;
+   text-align: center;
+   font-size: 35vw;
+}
+.noPage svg{
+    width: 30%;
+    fill: var(--dark);
+}
+.noPage a.errorReturn{
+    border: 1px solid var(--dark);
+    border-radius: 10px;
+    width: 250px;
+    padding: 10px;
+    text-align: center;
+    margin: 20px;
+}
+.noPage a.errorReturn:hover{
+   background-color: var(--dark);
+   color: var(--light);
+}
 
 .container{
     width: 95%;
@@ -452,6 +478,15 @@ input#photo{
     height: 20vw;
  }
 
-
+ /* page 404 */
+ 
+ .noPage h2{
+    text-align: center;
+    font-size: 25vw;
+ }
+ .noPage svg{
+     width: 20%;
+     fill: var(--dark);
+ }
 
 }

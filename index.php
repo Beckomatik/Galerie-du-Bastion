@@ -179,7 +179,7 @@ try{
         }  
         else
         {
-            echo 'erreur 404 eeezezeze!';
+            throw new Exception("La page n'existe pas", 404);
         }
     }
     else
@@ -189,8 +189,10 @@ try{
 } 
 catch(Exception $e)
 {
-    // die($e->getMessage());
-    require 'app/Views/Front/error.php';
+    if ($e->getCode() == 404)
+        {
+            require 'app/Views/Front/page404.php';
+        }
 }
 catch(Error $e) 
 {
