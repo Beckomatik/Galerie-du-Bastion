@@ -177,10 +177,10 @@ try{
             session_destroy();
             header('Location: index.php');          
         }  
-        else
-        {
-            throw new Exception("La page n'existe pas", 404);
-        }
+        // else
+        // {
+        //     throw new Exception("La page n'existe pas", 404);
+        // }
     }
     else
     {

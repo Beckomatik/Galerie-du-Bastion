@@ -79,11 +79,20 @@ class AdminController extends Controller
     // accès au dashboard
     function dashBoard()
     {
-        $mails = new \Projet\Models\AdminModel();
-        $count = $mails->countMails();
+        $items = new \Projet\Models\AdminModel();
+        $count = $items->countMails();
         $countMails = $count->fetch();
+
+        $countCom = $items->countComments();
+        $countComments = $countCom->fetch();
+
+        $data = 
+        [
+            "countMails" => $countMails,
+            "countComments" => $countComments
+        ];
         
-        return $this->viewAdmin('dashboard', $countMails);
+        return $this->viewAdmin('dashboard', $data);
     }
 
     function aboutAdmin()
@@ -201,6 +210,22 @@ class AdminController extends Controller
         $data = $seeMails->fetchAll();
 
         return $this->viewAdmin('mailsAdmin', $data);
+    }
+    function commentsAdmin()
+    {
+        $comments = new \Projet\Models\AdminModel();
+        $seeComments = $comments->getComments();
+        
+        $data = $seeComments->fetchAll();
+      
+        return $this->viewAdmin('commentsAdmin', $data);
+    }
+    function deleteComment($id)
+    {
+        $userComments = new \Projet\Models\AdminModel();        
+        $deleteComment = $userComments->deleteComment($id);        
+
+        header('Location: indexAdmin.php?action=commentsAdmin');
     }
 
     function showMail($id)

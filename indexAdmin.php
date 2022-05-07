@@ -85,6 +85,19 @@ try {
         {                      
             $adminController->mailsAdmin();
         }
+        // voir tous les mails
+        elseif ($_GET['action'] == 'commentsAdmin') 
+        {                      
+            $adminController->commentsAdmin();
+            // echo 'commentaire admin';
+        }
+
+        // supprimer un commentaire
+        elseif($_GET['action'] == 'deleteComment')
+        {
+            $id = $_GET['id'];
+            $adminController->deleteComment($id);          
+        }  
 
         // voir un mail
         elseif ($_GET['action'] == 'showMail')
@@ -250,32 +263,29 @@ try {
             ];           
             $adminController->portfolioForm($data);           
         }
-        elseif($_GET['action'] == '404')
-        {
-            $adminController->errorPage();
-        }
+     
         // else
         // {
         //     throw new Exception("La page n'existe pas", 404);
+           
         // }
-
-        // }
-        //     else
-        //     {
-            //         header('location: index.php');
-            //     }
-        } 
+    } 
     else 
     {
             $adminController->connexionAdminPage();      
     }
     
 }
- catch (Exception $e) 
+catch (Exception $e) 
+{
+    if ($e->getCode() == 404)
     {
-        if ($e->getCode() == 404)
-        {
-            require 'app/Views/Admin/page404.php';
-        }
+        require 'app/Views/Admin/page404.php';
     }
+    }
+catch(Error $e) 
+{
+    eCatcher($e);
+    require "app/Views/Admin/oups.php";
+} 
 

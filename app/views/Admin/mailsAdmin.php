@@ -21,7 +21,9 @@
                 <p class="mailContent"><?=$data['content'] ?></p>
             </a>
         </div>
-        <div id="delMail"><a href="indexAdmin.php?action=deleteMail&id=<?= $data['id'] ?>">Supprimer</a></div>
+        <div class="delete">
+            <a href="indexAdmin.php?action=deleteMail&id=<?= $data['id'] ?>">Supprimer</a>
+        </div>
     </div>
 
 

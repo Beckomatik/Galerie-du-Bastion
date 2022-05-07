@@ -17,7 +17,8 @@
                     <a href="index.php?action=deleteComment&id=<?= $allComments['id'] ?>"><img src="/app/public/Front/image/supprimer.png" alt="icone de corbeille supprimer">Supprimer</a>
                 </div>
             </div>
-
+            
+            <!-- <?php var_dump($allComments);die; ?> -->
         <?php } ?>
     <?php } ?>
 

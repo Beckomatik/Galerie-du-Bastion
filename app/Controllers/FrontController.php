@@ -183,7 +183,7 @@ class FrontController extends Controller
         $userComments = new \Projet\Models\FrontModel();        
         $deleteComment = $userComments->deleteComment($id);        
         
-        return $this->view('myAccountPage');
+        header('Location: index.php?action=myAccount');
     }
 
     function shop()

@@ -132,6 +132,31 @@ class AdminModel extends Manager
             return $req;
         }
 
+        // COMMENTAIRE
+        public function getComments()
+        {
+           $db = $this->dbConnect();
+           $req = $db->prepare('SELECT id, blogpost_id, user_id, DATE_FORMAT(created_at, "Le %d %M %Y à %H:%i") AS created_at, content FROM comments ORDER BY created_at DESC');
+        //    $req = $db->prepare('SELECT pseudo, comments.id, comments.content, DATE_FORMAT(comments.created_at, "%d %M %Y à %Hh%i") AS created_at FROM comments INNER JOIN users ON comments.user_id=users.id WHERE blogpost_id=? ORDER BY created_at DESC');
+           $req->execute();
+           return $req;
+        }
+        public function countComments()
+        {
+            $db = $this->dbConnect();
+            $req = $db->prepare('SELECT COUNT(id) FROM comments');
+            $req->execute();
+
+            return $req;
+        }
+        public function deleteComment($id)
+        {
+            $db = $this->dbConnect();
+            $req = $db->prepare('DELETE FROM comments WHERE id=?');
+            $req->execute(array($id));
+            return $req;
+        }
+
    
 
 

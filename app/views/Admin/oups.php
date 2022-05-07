@@ -1,6 +1,6 @@
 <?php include ('header.php'); ?>
 
-<main class="containter">
+<main class="container">
     
 Un problème est survenu
 

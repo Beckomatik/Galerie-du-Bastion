@@ -26,6 +26,22 @@
                 <label for="content">Votre message <span>*</span></label>
                 <textarea id="content" name="content" placeholder="Ecrivez votre message" required></textarea>
 
+                <div class="bloc-rgpd">
+                    <p id="clic-rgpd">
+                    <p>RGPD <span>*</span></p>
+                    <input type="checkbox" name="objet" id="inscription" value="inscription" required>
+                    <label for="inscription" class="petit">J'accepte la politique de confidentialité</label>
+                    </p>
+                    <p id="confidentiel">
+                        En cochant cette case et en soumettant ce formulaire, j'accepte que mes données personnelles
+                        soient
+                        utilisées pour me recontacter dans le cadre de ma demande indiquée dans ce formulaire. Les
+                        informations
+                        recueillies ne feront pas l’objet d’un traitement informatique autre que les finalités acceptées
+                        ci-dessus.
+                    </p>
+                </div>
+
                 <p class="needarea"><span>*</span> champs obligatoires</p>
                 <input type="submit" value="Envoyer">
 

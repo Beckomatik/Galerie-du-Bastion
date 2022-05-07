@@ -12,7 +12,7 @@
         <img src="<?= $datas["resPath"] . $data['picture'] ?>" alt="<?= $data['alt'] ?>">
         <p class="category">Catégorie : #<?=$data['category'] ?></p>            
         <p class="content"><?=mb_substr($data['content'],0,300) ?>[...]</p>        
-        <button class="btn"><a href="index.php?action=oneArticle&id=<?= $data['id'] ?>">Lire l'article</a></button>
+        <a href="index.php?action=oneArticle&id=<?= $data['id'] ?>">Lire l'article</a>
     </article>
 
     <?php } ?>
