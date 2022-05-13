@@ -720,8 +720,14 @@ input[type=submit]{
   border-radius: 40px;
   align-self: center;
 }
+.userAccount input[type=submit]:hover,
+.userAccount .userRegistration a:hover{
+  background-color: var(--dark);
+  color: var(--light);
+  border: 1px solid var(--dark);
+}
 
-.userAccount .userRegistration button{
+/* .userAccount .userRegistration button{
   width: 240px;
   height: 50px;
   font-size: 1.2rem;
@@ -729,13 +735,21 @@ input[type=submit]{
   border-radius: 40px;
   background-color: var(--dark);
   align-self: center;
-  
-}
+} */
 
 .userAccount .userRegistration a{
-  color: var(--light);
+  width: 240px;
+  padding: 12px;
+  font-size: 1.2rem;
+  border: 1px solid var(--dark);
+  border-radius: 40px;
+  background-color: var(--light);
+  align-self: center;
+  color: var(--dark);
   font-weight: normal;
+  text-align: center;
 }
+
 
 /* DASHBOARD USER ***************************/
 #dashboardUser .userComments{

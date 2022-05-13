@@ -85,12 +85,13 @@ class FrontController extends Controller
         return $this->view('blogArticle', $datas);
     }
 
-    public function postComment($data)
+    function postComment($data)
     {
         $comment = new \Projet\Models\FrontModel();  
         $result = $comment->postComment($data);
 
         $this->oneArticle($data['idArticle']);
+
 
     }
 
@@ -184,6 +185,8 @@ class FrontController extends Controller
         $deleteComment = $userComments->deleteComment($id);        
         
         header('Location: index.php?action=myAccount');
+
+       
     }
 
     function shop()

@@ -56,7 +56,7 @@ try {
 
         elseif ($_GET['action'] == 'portfolio') 
         {
-            $adminController->portfolioAdmin();
+            $adminController->portfolioAdmin($error=null);
         } 
 
         elseif ($_GET['action'] == 'blog') 
@@ -110,6 +110,12 @@ try {
         {
             $id = $_GET['id'];
             $adminController->deleteMail($id);
+        }
+
+        elseif ($_GET['action'] == 'deleteUser')
+        {
+            $id = $_GET['id'];
+            $adminController->deleteUser($id);
         }
 
         // envoi d'article depuis le blog
@@ -252,7 +258,9 @@ try {
             } 
             else 
             {
-                echo 'Mauvaise extension ou photo trop volumineuse ou erreur';
+                echo 'Mauvaise extension ou photo trop volumineuse';
+                // $error= "Mauvaise extension ou photo trop volumineuse";
+                // return $adminController->portfolioAdmin($error);
             }
             $data=
             [
@@ -262,6 +270,10 @@ try {
                 ':alt' => htmlspecialchars($_POST['alt']) 
             ];           
             $adminController->portfolioForm($data);           
+        }
+        elseif ($_GET['action'] == 'followers')
+        {
+            $adminController->subscribersList();
         }
      
         // else

@@ -299,21 +299,24 @@ input#photo{
 }
 
 
-/* PAGE MAILS *************************************************/
+/* PAGE MAILS (+ commentaires + liste utilisateurs) *************************************************/
 #mailsPage h1 img,
-#adminComments h1 img{
+#adminComments h1 img,
+#usersList h1 img{
     width: 60px;
     margin-right: 15px;
     margin-bottom: -15px;
 }
 
 #mailsPage h1,
+#usersList h1,
 #adminComments h1{
     margin-bottom: 30px;
     /* text-align: center; */
 }
 
 #mailsPage .mail,
+#usersList .mail,
 #adminComments .commentContent{
     background-color: rgba(154, 154, 154, 0.158);
     border-radius: 10px 10px 0 10px;
@@ -395,6 +398,11 @@ input#photo{
 
 #mailPage .oneMail .modifOrDel{
     margin-top: 10px;
+}
+
+/* INFOS USER */
+#usersList .mail .idUser{
+    font-weight: 600;
 }
 
 /* INFOS ADMIN ************************************************/
@@ -502,6 +510,21 @@ input#photo{
  .noPage svg{
      width: 20%;
      fill: var(--dark);
+ }
+
+ /* Liste des utilisateurs */
+
+ #usersList .flexList,
+ #adminComments .flexList{
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-between;
+    
+ }
+ #usersList .fullMail,
+ #adminComments .userComments{
+     width: 48%;
+     margin-bottom: 15px;
  }
 
 }

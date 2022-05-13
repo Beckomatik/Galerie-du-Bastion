@@ -58,7 +58,7 @@ class AdminController extends Controller
                     $_SESSION['role'] = $resultat['role'];
                     // $_SESSION['token'] = 'admin';
                 
-                    header('Location: indexAdmin.php?action=dashBoard&id=' .$_SESSION['id']);
+                    header('Location: indexAdmin.php?action=dashBoard');
                 }          
             else{
             $error = "Vos identifiants son incorrects !";
@@ -79,6 +79,7 @@ class AdminController extends Controller
     // accès au dashboard
     function dashBoard()
     {
+        $_SESSION['id'];
         $items = new \Projet\Models\AdminModel();
         $count = $items->countMails();
         $countMails = $count->fetch();
@@ -86,10 +87,14 @@ class AdminController extends Controller
         $countCom = $items->countComments();
         $countComments = $countCom->fetch();
 
+        $countUser = $items->countUsers();
+        $countUsers = $countUser->fetch();
+
         $data = 
         [
             "countMails" => $countMails,
-            "countComments" => $countComments
+            "countComments" => $countComments,
+            "countUsers" => $countUsers
         ];
         
         return $this->viewAdmin('dashboard', $data);
@@ -117,7 +122,7 @@ class AdminController extends Controller
         header('Location: indexAdmin.php?action=portfolio');
     }
     // ajout des photos dans la page porfolioAdmin
-    function portfolioAdmin()
+    function portfolioAdmin($error)
     {
         $imagesManager = new \Projet\Models\AdminModel();
         $myPics = $imagesManager->getPortfolioItems();
@@ -211,6 +216,14 @@ class AdminController extends Controller
 
         return $this->viewAdmin('mailsAdmin', $data);
     }
+    function subscribersList()
+    {
+        $userss = new \Projet\Models\AdminModel();
+        $seeUsers = $userss->getInfosUsers();
+        $data = $seeUsers->fetchAll();
+
+        return $this->viewAdmin('subscribersList', $data);
+    }
     function commentsAdmin()
     {
         $comments = new \Projet\Models\AdminModel();
@@ -225,7 +238,7 @@ class AdminController extends Controller
         $userComments = new \Projet\Models\AdminModel();        
         $deleteComment = $userComments->deleteComment($id);        
 
-        header('Location: indexAdmin.php?action=commentsAdmin');
+        header('Location: indexAdmin.php?action=commentsAdmin&id=' . $_SESSION['id']);
     }
 
     function showMail($id)
@@ -242,6 +255,13 @@ class AdminController extends Controller
         $mailOne = $mail->deleteMail($id);
 
         header('Location: indexAdmin.php?action=mails');
+    }
+    function deleteUser($id)
+    {
+        $mail = new \Projet\Models\AdminModel();
+        $mailOne = $mail->deleteUser($id);
+
+        header('Location: indexAdmin.php?action=followers');
     }
 
 

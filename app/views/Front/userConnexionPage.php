@@ -22,7 +22,7 @@
     </div>
     <div class="userRegistration">
         <h2>Pas encore de compte ? Inscrivez-vous pour accéder à plus de contenu !</h2>
-        <button><a href="index.php?action=userRegistrationPage">Je m'inscris !</a></button>
+        <a href="index.php?action=userRegistrationPage">Je m'inscris !</a>
     </div>
 
     

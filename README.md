@@ -1,1 +1,39 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/77504e72828d1359c8ce/maintainability)](https://codeclimate.com/github/Beckomatik/Galerie-du-Bastion/maintainability)
+
+# La Galerie du Bastion
+
+## Description du projet :
+
+Vous avez entre les mains mon projet pour la validation du diplôme de **Développeur Intégrateur Web** (RNCP de niveau 5).
+
+Il s'agit du site web d'un photographe fictif dans lequel on peut trouver : 
+
+### Côté Front / visiteurs :
+* un accueil 
+* une page à propos
+* un portolio
+* un blog
+* une page de contact 
+
+Ainsi qu'un espace de création et de connexion à un compte. Tout le monde peut voir les commentaires mais **seules les personnes possedant un compte peuvent écrire des commenntaires**.
+
+### Côté Back / administrateur :
+* un accueil 
+* les infos de l'administrateur
+* portfolio : l'ajout ou la suppression de photos
+* blog : l'ajout, la modification et la suppresion d'articles
+* une messagerie qui réceptionne les messages de la page de contact et qui permet de réponre ou de supprimer les messages
+* une page abonnés contenant la liste et les informations concernant les **utilisateurs inscrits**
+* une page commentaires permettant de lire et de supprimer les commentaires indésirables
+
+## Technologies : 
+
+* HTML
+* CSS
+* Javascript
+* PHP
+* SQL
+
+## Installation :
+
+Composer init ?

@@ -149,12 +149,38 @@ class AdminModel extends Manager
 
             return $req;
         }
+        public function countUsers()
+        {
+            $db = $this->dbConnect();
+            $req = $db->prepare('SELECT COUNT(id) FROM users');
+            $req->execute();
+
+            return $req;
+        }
         public function deleteComment($id)
         {
             $db = $this->dbConnect();
             $req = $db->prepare('DELETE FROM comments WHERE id=?');
             $req->execute(array($id));
             return $req;
+        }
+
+        public function deleteUser($id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('DELETE FROM users WHERE id = ? ');
+        $req->execute(array($id));
+        
+        return $req;
+    }
+        // Infos sur les utilisateurs inscrits
+        public function getInfosUsers()
+        {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT id, firstname, lastname, pseudo, email, DATE_FORMAT(created_at, "Compte crée le %d %M %Y") AS created_at FROM users ORDER BY id DESC');
+        $req->execute();
+        
+        return $req;
         }
 
    

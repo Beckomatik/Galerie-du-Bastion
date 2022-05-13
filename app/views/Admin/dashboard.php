@@ -26,14 +26,18 @@
             <li>
                 <a href="indexAdmin.php?action=mails">
                     <p>Mes emails (<?php echo $datas["countMails"][0]; ?>) </p>
-                    
                     <p><img src="/app/public/Administration/img/mail.png" alt=""></p>
+                </a>
+            </li>
+            <li>
+                <a href="indexAdmin.php?action=followers">
+                    <p>Abonné·e·s (<?php echo $datas["countUsers"][0]; ?>) </p>
+                    <p><img src="/app/public/Administration/img/followers.png" alt=""></p>
                 </a>
             </li>
             <li>
                 <a href="indexAdmin.php?action=commentsAdmin">
                     <p id="lesCom">Commentaires (<?php echo $datas["countComments"][0]; ?>) </p>
-                    
                     <p><img src="/app/public/Administration/img/commenter.png" alt=""></p>
                 </a>
             </li>

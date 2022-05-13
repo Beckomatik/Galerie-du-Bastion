@@ -2,7 +2,7 @@
 
 <main class="container" id="dashboardUser">
 <?php if(isset($_SESSION['id'])){?>
-    <h1>Bienvenue de votre espace utilisateur <?= $_SESSION['pseudo'] ?> 🙂 !</h1> 
+    <h1>Bienvenue dans votre espace utilisateur <?= $_SESSION['pseudo'] ?> 🙂 !</h1> 
     <h2>Vos commentaires :</h2>
     
     <?php
@@ -18,7 +18,6 @@
                 </div>
             </div>
             
-            <!-- <?php var_dump($allComments);die; ?> -->
         <?php } ?>
     <?php } ?>
 
