@@ -989,6 +989,15 @@ input[type=submit]{
    width: 20%;
    fill: var(--dark);
 }
-  
+  /* dashboard user */
+
+  #dashboardUser .flexList{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  #dashboardUser .userComments{
+   width: 48%;
+  }
   
 }

@@ -5,10 +5,9 @@
     <h1>CONDITIONS GÉNÉRALES DE VENTE</h1>
 
     <h2>OBJET</h2>
-    <p>Olivier Ramonteu propose des prestations photographiques et vidéo destinées aux particuliers et aux professionnels, telles que présentées sur le site internet www.olivier-ramonteu.fr.
+    <p>Alan Nihp propose des prestations photographiques et vidéo destinées aux particuliers et aux professionnels, telles que présentées sur le site internet www.galeriedubastion.test.
         Les conditions générales de vente (ci-après nommées « CGV ») créent un accord légal et s’appliquent à toutes les
-        commandes de prestations et de produits conclues entre le Client (ci-après nommé « le Client ») et Olivier
-        Ramonteu (ci-après nommé « le Photographe »). Toute réservation de séance, de prestation ou commande de produits entraîne l’entière adhésion aux présentes
+        commandes de prestations et de produits conclues entre le Client (ci-après nommé « le Client ») et Alan Nihp (ci-après nommé « le Photographe »). Toute réservation de séance, de prestation ou commande de produits entraîne l’entière adhésion aux présentes
         CGV, sauf conditions particulières consenties par écrit entre le Photographe et le Client.
     </p>
 
@@ -90,7 +89,7 @@
         soit l’usage (concours, diffusion, exposition, reproduction, etc.) faite sans l’accord écrit du photographe
         constitue un délit de contrefaçon, au sens de l’article L 335-2 du même Code, et est punissable de peines
         pouvant aller jusqu’à 3 ans d’emprisonnement et 300000 € d’amende. Pour toute utilisation publique tels que les réseaux sociaux, le client devra obligatoirement citer le nom de la
-        photographe et ajouter un lien vers le site www.olivier-ramonteu.fr. Photographies Le post-traitement, au même titre que la prise de vue, est propre au Photographe et fait partie intégrante de
+        photographe et ajouter un lien vers le site www.galeriedubastion.test. Photographies Le post-traitement, au même titre que la prise de vue, est propre au Photographe et fait partie intégrante de
         son travail et de son savoir-faire. Aucune modification ne pourra être réalisée sur les photographies sans
         l’accord écrit du Photographe.
     </p>
