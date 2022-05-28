@@ -18,6 +18,7 @@ class AdminController extends Controller
     {
         $userManager = new \Projet\Models\AdminModel();
         $user = $userManager->createAdmin($firstname, $lastname, $mdp, $email);
+
         require 'app/views/Admin/connexionAdmin.php';
     }
 
@@ -33,7 +34,8 @@ class AdminController extends Controller
         $id = $_SESSION['id'];       
         $userManager = new \Projet\Models\AdminModel();
         $user = $userManager->infoCompte($id);  
-        $info = $user->fetch();            
+        $info = $user->fetch();  
+
         return $this->viewAdmin('infosAdmin', $info);
     }   
 
@@ -41,32 +43,35 @@ class AdminController extends Controller
      function connexion($email, $mdp)
      { 
          $userManager = new \Projet\Models\AdminModel();
-         $connexAdm = $userManager->recupMdp($email);
- 
-         $resultat = $connexAdm->fetch();         
-        
+         $connexAdm = $userManager->recupMdp($email); 
+         $resultat = $connexAdm->fetch();     
          
-         if(!empty($resultat)){
+         if(!empty($resultat))
+         {
             $isPasswordCorrect = password_verify($mdp, $resultat['mdp']);
+
             if ($isPasswordCorrect) 
-                {
-                    $_SESSION['email'] = $resultat['email']; 
-                    $_SESSION['mdp'] = $resultat['mdp'];
-                    $_SESSION['id'] = $resultat['id'];
-                    $_SESSION['firstname'] = $resultat['firstname'];
-                    $_SESSION['lastname'] = $resultat['lastname'];
-                    $_SESSION['role'] = $resultat['role'];
-                    // $_SESSION['token'] = 'admin';
+            {
+                $_SESSION['email'] = $resultat['email']; 
+                $_SESSION['mdp'] = $resultat['mdp'];
+                $_SESSION['id'] = $resultat['id'];
+                $_SESSION['firstname'] = $resultat['firstname'];
+                $_SESSION['lastname'] = $resultat['lastname'];
+                $_SESSION['role'] = $resultat['role'];
                 
-                    header('Location: indexAdmin.php?action=dashBoard');
-                }          
-            else{
-            $error = "Vos identifiants son incorrects !";
+                header('Location: indexAdmin.php?action=dashBoard');
+            }          
+            else
+            {
+                $error = "Vos identifiants son incorrects !";
+
                 return $this->viewNoAdmin('connexionAdmin', $error);
             } 
         }
-        else {
+        else 
+        {
            $error = "Mauvaise adresse email !";
+
            return $this->viewNoAdmin('connexionAdmin', $error);
         }
      }
@@ -121,6 +126,7 @@ class AdminController extends Controller
 
         header('Location: indexAdmin.php?action=portfolio');
     }
+
     // ajout des photos dans la page porfolioAdmin
     function portfolioAdmin($error)
     {
@@ -132,15 +138,17 @@ class AdminController extends Controller
             "result" => $result,
             "resPath" => $resPath
         ];       
+
         return $this->viewAdmin('portfolioAdmin', $data);
     }
 
-     // suppression de photos du portfolio
+     // suppression des photos du portfolio
      function deletePicture()
      {
          $delPictures = new \Projet\Models\AdminModel();
          $delPicture = $delPictures->deletePicture(); 
-         header('Location: indexAdmin.php?action=portfolio&success=true');
+
+         header('Location: indexAdmin.php?action=portfolio');
      }
 
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -154,6 +162,7 @@ class AdminController extends Controller
 
         header('Location: indexAdmin.php?action=blog');
     }
+
     // ajout des photos et contenu de la bdd vers la page blog
     function blogAdmin()
     {
@@ -173,13 +182,16 @@ class AdminController extends Controller
     {
         $modifArticles = new \Projet\Models\AdminModel();
         $modifArticle = $modifArticles->modifyArticle($data);
-        header('Location: indexAdmin.php?action=blog&success=true');
-    }    
+
+        header('Location: indexAdmin.php?action=blog');
+    } 
+
     function modifyArticleWithoutPic($data)
     {
         $modifArticles = new \Projet\Models\AdminModel();
         $modifArticle = $modifArticles->modifyArticleWithoutPic($data);
-        header('Location: indexAdmin.php?action=blog&success=true');
+
+        header('Location: indexAdmin.php?action=blog');
     }    
 
     // redirection vers page de modification d'article
@@ -189,7 +201,8 @@ class AdminController extends Controller
         $myPost = $articleManager->getBlogItem($id);
         $result = $myPost->fetch();
         $resPath = "/app/public/Administration/img/";
-        $data=[
+        $data=
+        [
             "result" => $result,
             "resPath" => $resPath
         ];
@@ -202,7 +215,8 @@ class AdminController extends Controller
     {
         $delArticles = new \Projet\Models\AdminModel();
         $deArticle = $delArticles->deleteArticle();
-        header('Location: indexAdmin.php?action=blog&success=true');
+
+        header('Location: indexAdmin.php?action=blog');
     }  
     
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -216,6 +230,7 @@ class AdminController extends Controller
 
         return $this->viewAdmin('mailsAdmin', $data);
     }
+
     function subscribersList()
     {
         $userss = new \Projet\Models\AdminModel();
@@ -224,15 +239,16 @@ class AdminController extends Controller
 
         return $this->viewAdmin('subscribersList', $data);
     }
+
     function commentsAdmin()
     {
         $comments = new \Projet\Models\AdminModel();
-        $seeComments = $comments->getComments();
-        
+        $seeComments = $comments->getComments();        
         $data = $seeComments->fetchAll();
       
         return $this->viewAdmin('commentsAdmin', $data);
     }
+
     function deleteComment($id)
     {
         $userComments = new \Projet\Models\AdminModel();        
@@ -249,6 +265,7 @@ class AdminController extends Controller
 
         return $this->viewAdmin('mailAdmin', $data);
     }
+
     function deleteMail($id)
     {
         $mail = new \Projet\Models\ContactModel();
@@ -256,6 +273,7 @@ class AdminController extends Controller
 
         header('Location: indexAdmin.php?action=mails');
     }
+    
     function deleteUser($id)
     {
         $mail = new \Projet\Models\AdminModel();
@@ -263,8 +281,6 @@ class AdminController extends Controller
 
         header('Location: indexAdmin.php?action=followers');
     }
-
-
 }
 
 

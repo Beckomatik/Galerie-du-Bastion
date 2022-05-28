@@ -19,10 +19,10 @@
             <input type="submit" value="Se connecter">
 
         </form>
-    </div>
+    
     <div class="userRegistration">
         <h2>Pas encore de compte ? Inscrivez-vous pour accéder à plus de contenu !</h2>
-        <a href="index.php?action=userRegistrationPage">Je m'inscris !</a>
+        <a href="index.php?action=userRegistrationPage" title="S'inscrire">Je m'inscris !</a>
     </div>
 
     

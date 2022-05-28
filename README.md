@@ -15,7 +15,7 @@ Il s'agit du site web d'un photographe fictif dans lequel on peut trouver :
 * un blog
 * une page de contact 
 
-Ainsi qu'un espace de création et de connexion à un compte. Tout le monde peut voir les commentaires mais **seules les personnes possedant un compte peuvent écrire des commenntaires**.
+Ainsi qu'un espace de création et de connexion à un compte. Tout le monde peut voir les commentaires mais **seules les personnes possedant un compte peuvent écrire des commentaires**.
 
 ### Côté Back / administrateur :
 * un accueil 
@@ -36,4 +36,12 @@ Ainsi qu'un espace de création et de connexion à un compte. Tout le monde peut
 
 ## Installation :
 
-Composer init ?
+* Télécharger les fichiers du repository et dézipper le dossier
+* Installer composer puis taper la commande 'composer install' dans le répertoire du site
+* Vous pouvez créer un nouveau compte utilisateur ou utiliser les identifiants fournis avec l'envoi du projet. Des identifiants sont également fournis pour la partie administration
+* Pour accéder à la page de connexion à l'administration : https://galeriedubastion.com/indexAdmin.php
+* Il y a un routeur pour la partie front (index.php) et un router pour le back (indexAdmin.php)
+
+Bonne visite !
+
+Alan Dauphin

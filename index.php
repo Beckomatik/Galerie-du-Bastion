@@ -1,6 +1,5 @@
 <?php
-//empty — Détermine si une variable est vide
-//isset — Détermine si une variable est déclarée et est différente de null
+
 session_start();
 
 require_once __DIR__ . '/vendor/autoload.php';
@@ -26,31 +25,33 @@ try{
         {
             $frontController->about();
         }
+
         elseif($_GET['action'] == 'portfolio')
         {
             $frontController->portfolio();
         }
+
         elseif($_GET['action'] == 'blog')
         {
             $frontController->blogArticles();
         }
-        elseif($_GET['action'] == 'shop')
-        {
-            $frontController->shop();
-        }
+
         elseif($_GET['action'] == 'legales')
         {
             $frontController->legales();
         }
+
         elseif($_GET['action'] == 'cgv')
         {
             $frontController->cgv();
         }
+
         elseif($_GET['action'] == 'oneArticle')
         {
             $id = $_GET['id'];
             $frontController->oneArticle($id);
         }
+
         elseif($_GET['action'] == 'postComment')
         {
             $data = [
@@ -60,7 +61,6 @@ try{
             ];
             $frontController->postComment($data);
         }
-
 
         //  envois de mail dans la bdd
         elseif ($_GET['action'] == 'contactPost') 
@@ -79,10 +79,12 @@ try{
                 ":objet"=>$object,
                 ":content"=>$content
             ];
+
             if (!empty($fullname) && (!empty($email) && (!empty($content)))) 
             {
                  $frontController->contactPost($data);
             } 
+
             else 
             {
                 $error = "Tous les champs obligatoires ne sont pas remplis !";
@@ -94,7 +96,8 @@ try{
         elseif($_GET['action'] == 'userRegistrationPage')
         {
             $frontController->userRegistrationPage();        
-        }         
+        }  
+
         // création du user
         elseif($_GET['action'] == 'userRegistration')
         {
@@ -135,12 +138,14 @@ try{
                 $error = "Tous les champs ne sont pas remplis !";
                 return $frontController->userRegistrationPage($error);
             }        
-        }             
+        }   
+
         // accès à la page de connexion du user
         elseif($_GET['action'] == 'userConnexionPage')
         {
             $frontController->userConnexionPage();           
-        }         
+        }   
+
         // connexion du user
         elseif($_GET['action'] == 'userConnexion')
         {
@@ -152,6 +157,7 @@ try{
             {
                 $frontController->userConnexion($email, $mdp);
             }
+
             else 
             {
                 $error = "Tous les champs ne sont pas remplis gros zozo !";
@@ -177,11 +183,8 @@ try{
             session_destroy();
             header('Location: index.php');          
         }  
-        // else
-        // {
-        //     throw new Exception("La page n'existe pas", 404);
-        // }
     }
+    
     else
     {
         $frontController->home();

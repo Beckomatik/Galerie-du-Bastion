@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Se connecter</title>
-  <link rel="stylesheet" href="/app/public/Administration/css/style.css">
-
-</head>
-
-<body>
+<?php include ('header.php'); ?>
 
 <?php if(isset($datas)){?>
     <p class='error'><?= $datas ?></p>
@@ -22,7 +10,7 @@
         <form action="indexAdmin.php?action=connexionAdmin" method="post">
 
 
-          <label for="email">Email :</label></td>
+          <label for="email">Email :</label>
           <input type="text" placeholder=" Votre email" name="email" id="email">
 
           <label for="password">Mot de passe :</label>
@@ -31,12 +19,9 @@
           <input type="submit" value="Se connecter">
 
         </form>
-        <a href="/"><img src="/app/public/Administration/img/back-button.png" alt=""> Retour au site</a>     
+        <a href="/" title="retour au site"><img src="/app/public/Administration/img/back-button.png" alt="fleche retour gauche"> Retour au site</a>     
     </div>
-
-
-    <h2><a href="indexAdmin.php?action=createAdminPage">Création d'un compte</a></h2>
+    <!-- <h2><a href="indexAdmin.php?action=createAdminPage">Création d'un compte</a></h2> -->
   </main>
 </body>
-
 </html>

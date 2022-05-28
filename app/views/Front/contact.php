@@ -11,7 +11,7 @@
             <form action="index.php?action=contactPost" method="POST">
 
                 <label for="fullname">Nom et prénom <span>*</span></label>
-                <input type="text" id="lname" name="fullname" placeholder="Nom et Prénom" value="<?php if(isset($_POST['fullname'])) echo htmlspecialchars($_POST['fullname']) ?>" required>
+                <input type="text" id="fullname" name="fullname" placeholder="Nom et Prénom" value="<?php if(isset($_POST['fullname'])) echo htmlspecialchars($_POST['fullname']) ?>" required>
 
                 <label for="email">E-mail <span>*</span></label>
                 <input type="email" id="email" name="email" placeholder="Votre E-mail" value="<?php if(isset($_POST['email'])) echo htmlspecialchars($_POST['email']) ?>" required>
@@ -27,11 +27,11 @@
                 <textarea id="content" name="content" placeholder="Ecrivez votre message" required></textarea>
 
                 <div class="bloc-rgpd">
-                    <p id="clic-rgpd">
-                    <p>RGPD <span>*</span></p>
-                    <input type="checkbox" name="objet" id="inscription" value="inscription" required>
-                    <label for="inscription" class="petit">J'accepte la politique de confidentialité</label>
-                    </p>
+                    <div id="clic-rgpd">
+                        <p>RGPD <span>*</span></p>
+                        <input type="checkbox" name="objet" id="inscription" value="inscription" required>
+                        <label for="inscription" class="petit">J'accepte la politique de confidentialité</label>
+                    </div>
                     <p id="confidentiel">
                         En cochant cette case et en soumettant ce formulaire, j'accepte que mes données personnelles
                         soient

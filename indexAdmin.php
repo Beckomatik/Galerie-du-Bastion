@@ -15,17 +15,17 @@ try {
         { 
             $email = htmlspecialchars($_POST['email']);
             $mdp = htmlspecialchars($_POST['mdp']);
+
             if (!empty($email) && !empty($mdp)) 
             {
                 $adminController->connexion($email, $mdp);
             } 
+
             else 
             {
                 echo 'identifiants non valides';
             }
         } 
-        // if($_SESSION['token']=='admin')
-        // {
 
         // création d'un nouvel admin
         if ($_GET['action'] == 'createAdmin') 
@@ -85,11 +85,10 @@ try {
         {                      
             $adminController->mailsAdmin();
         }
-        // voir tous les mails
+        // voir tous les commentaires
         elseif ($_GET['action'] == 'commentsAdmin') 
         {                      
             $adminController->commentsAdmin();
-            // echo 'commentaire admin';
         }
 
         // supprimer un commentaire
@@ -143,10 +142,12 @@ try {
                 // enregistre les images uploader dans le chemin
                 move_uploaded_file(filter_var($tmpName), './app/public/Administration/img/' . filter_var($fileName));
             } 
+
             else 
             {
                 echo 'Mauvaise extension ou photo trop volumineuse ou erreur';
             }
+
             $data=
             [
                 ':picture' => $fileName,
@@ -189,7 +190,7 @@ try {
             {
                 echo 'Le fichier est trop volumineux';die;
             }
-            // créer une page d'erreur exprès pour les fichiers de photos trop volumineux
+
             if (in_array($extension, $extensionsAuthorized) && $size <= $maxSize && $error == 0) 
             {
                 // pour modifier le nom d'une image si les noms sont similaires
@@ -211,6 +212,7 @@ try {
                 // modify with picture
                 $adminController->modifyArticle($data);  
             } 
+            
             else 
             {
                 $data=
@@ -231,7 +233,7 @@ try {
             $adminController->deleteArticle();
         }
 
-        // ENVOI D'IMAGE du PORTFOLIO
+        // envoi d'image pour le portfolio
         elseif ($_GET['action'] == 'sendPicFolio')
         {        
             if(isset($_FILES['photo'])) 
@@ -259,9 +261,8 @@ try {
             else 
             {
                 echo 'Mauvaise extension ou photo trop volumineuse';
-                // $error= "Mauvaise extension ou photo trop volumineuse";
-                // return $adminController->portfolioAdmin($error);
             }
+
             $data=
             [
                 ':picture' => $fileName,
@@ -275,18 +276,12 @@ try {
         {
             $adminController->subscribersList();
         }
-     
-        // else
-        // {
-        //     throw new Exception("La page n'existe pas", 404);
-           
-        // }
     } 
+
     else 
     {
             $adminController->connexionAdminPage();      
     }
-    
 }
 catch (Exception $e) 
 {

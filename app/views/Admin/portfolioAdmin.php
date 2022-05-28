@@ -1,15 +1,8 @@
 <?php include('header.php'); ?>
 <main class="container forms" id="folioFront">
-
-
-
-<div class="backToMenu">
-       <a href="/indexAdmin.php?action=dashBoard"><img src="/app/public/Administration/img/back-button.png" alt=""> Retour à l'accueil</a> 
-</div>
-    
-    <!-- message de confirmation de la suppression, à faire disparaitre avec JS au bout de quelques secondes -->
-    <!-- <?php if(isset($_GET['success'])&& ($_GET['success']=='true')){echo 'La photo a bien été supprimée';} ?> -->
-    
+    <div class="backToMenu">
+        <a href="/indexAdmin.php?action=dashBoard" title="retour accueil"><img src="/app/public/Administration/img/back-button.png" alt="fleche gauche"> Retour à l'accueil</a> 
+    </div>
     <h1><i class="fa-solid fa-arrow-right"></i> Page portfolio</h1>
     <form action="indexAdmin.php?action=sendPicFolio" method="post" enctype="multipart/form-data">
 
@@ -29,14 +22,15 @@
     </form>
 
     <p id="mesimages">Mes images</p>
+
     <?php foreach ($datas['result'] as $data) { ?>
 
         <div class="myPosts">          
-            <img src="<?= $datas["resPath"] . $data['picture'] ?>" alt="">
+            <img src="<?= $datas["resPath"] . $data['picture'] ?>" alt="photo galerie">
             <p>Titre : <?=$data['title'] ?></p>            
             <p>Catégorie : <?=$data['category'] ?></p>            
             <p>Balise Alt : <?=$data['alt'] ?></p>
-            <p><a href="indexAdmin.php?action=deletePicture&id=<?= $data['id'] ?>">Supprimer la photo</a></p>
+            <p><a href="indexAdmin.php?action=deletePicture&id=<?= $data['id'] ?>" title="supprimer la photo">Supprimer la photo</a></p>
         </div>
 
     <?php } ?>

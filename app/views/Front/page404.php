@@ -1,6 +1,7 @@
 <?php include ('header.php'); ?>
 
 <main class="container noPage">
+
     <h1>ERREUR</h1>
     <h2>4
         <a href="/" title="Retour à l'accueil" >
@@ -12,8 +13,8 @@
         </a>4
     </h2>
     <p>Oops , cette page n'existe pas !</p>
-    <a class="errorReturn" href="/">Retour à l'accueil</a>
-</main>
+    <a class="errorReturn" href="/" title="Retour à l'accueil">Retour à l'accueil</a>
 
+</main>
 
 <?php include ('footer.php'); ?>

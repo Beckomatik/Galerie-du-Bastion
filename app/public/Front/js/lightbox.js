@@ -1,4 +1,4 @@
-// display photos full screen
+// Galerie d'image en plein écran
 
 /**
 *  @property {HTMLElement} element
@@ -19,7 +19,6 @@ class Lightbox{
             } 
             ))
     }
-
     
     /**
     *  @param {string} url URL de l'image

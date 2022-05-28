@@ -4,6 +4,33 @@ namespace Projet\Controllers;
 
 class FrontController extends Controller
 {
+
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // +++++++++ PAGES +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    function about()
+    {
+        return $this->view('about');
+    }
+
+    function contact($error)
+    {
+        return $this->view('contact',$error);
+    }
+    
+    function legales()
+    {
+        return $this->view('legales');
+    }
+    
+    function cgv()
+    {
+        return $this->view('cgv');
+    }
+
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // +++++++++ PAGE D'ACCUEIL +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
     function home()
     {
         $imagesManager = new \Projet\Models\FrontModel();
@@ -14,7 +41,6 @@ class FrontController extends Controller
         $articleManager = new \Projet\Models\FrontModel();
         $myPosts = $articleManager->getBlogItemsHome();
         $resultBlog = $myPosts->fetchAll();
-      
 
         $data=
         [
@@ -25,16 +51,12 @@ class FrontController extends Controller
        
         return $this->view('home', $data);
     }
-    
 
-    function about()
-    {
-        return $this->view('about');
-    }
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // +++++++++ PORTFOLIO ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     function portfolio()
     {
-   
         $imagesManager = new \Projet\Models\FrontModel();
         $myPics = $imagesManager->getPortfolioItems();
         $result = $myPics->fetchAll();
@@ -47,6 +69,9 @@ class FrontController extends Controller
        
         return $this->view('portfolio', $data);
     }
+
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // +++++++++ BLOG +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     function blogArticles()
     {        
@@ -67,19 +92,15 @@ class FrontController extends Controller
         $article = new \Projet\Models\FrontModel();
         $oneArticle = $article->getArticle($id);
         $result = $oneArticle->fetch();
-
-        
         $resPath = "/app/public/Administration/img/";
         $data=
         [
             "result" => $result,
             "resPath" => $resPath
-            // "error" => $error
         ];
         
         $result2 = $article->getComments($id);      
         $comments = $result2->fetchAll();
-        
         $datas = array_merge($data, $comments);
 
         return $this->view('blogArticle', $datas);
@@ -91,15 +112,17 @@ class FrontController extends Controller
         $result = $comment->postComment($data);
 
         $this->oneArticle($data['idArticle']);
-
-
     }
 
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // +++++++++ CREATION USER ET CONNEXION++++++++++++++++++++++++++++++++++++++++++++++
+
+    // page de création de compte
     function userRegistrationPage($error=null)
     {
         return $this->view('userRegistrationPage', $error);
     }
-
+    // création du compte
     function userRegistration($data)
     {
         $userRegistration = new \Projet\Models\FrontModel(); 
@@ -113,14 +136,15 @@ class FrontController extends Controller
             if($result > 0)
             {
                  $error = "Cette adresse e-mail existe déjà !";
+
                  return $this->view('userRegistrationPage', $error);
             }
             else 
             {
-                $newUser = $userRegistration->userRegistration($data);          
+                $newUser = $userRegistration->userRegistration($data);  
+
                 return $this->view('userConnexionPage');
             }
-            
         } 
         else 
         {
@@ -128,17 +152,17 @@ class FrontController extends Controller
         }
         return $this->view('home');
     }
-       
+
+    // page de connexion de l'utilisateur
     function userConnexionPage()
     {
         return $this->view('userConnexionPage');
     }
-
+    // connexion de l'utilisateur
     function userConnexion($email, $mdp)
     {
         $user = new \Projet\Models\FrontModel();
         $userConnexion = $user->verifyMail($email);
-        
         $result = $userConnexion->fetch();
         
         if(!empty($result))
@@ -165,10 +189,8 @@ class FrontController extends Controller
             $error = "Email non exisant";      
                 return $this->view('userConnexionPage', $error);
         }
-        
-       
     }
-
+    // page d'accueil de l'utilisateur
     function myAccountPage($id)
     {
         $userComments = new \Projet\Models\FrontModel();        
@@ -178,52 +200,30 @@ class FrontController extends Controller
         return $this->view('myAccountPage', $datas);
     }
 
-    // un utilisateur supprime son commentaire
     function deleteComment($id)
     {
         $userComments = new \Projet\Models\FrontModel();        
         $deleteComment = $userComments->deleteComment($id);        
         
         header('Location: index.php?action=myAccount');
-
-       
     }
 
-    function shop()
+
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // +++++++++ FORMULAIRE DE CONTACT ++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    function contactPost($data, $error=null)
     {
-        return $this->view('shop');
-    }
-
-
-    function contact($error)
-    {
-        return $this->view('contact',$error);
-    }
-    function legales()
-    {
-        return $this->view('legales');
-    }
-    
-    function cgv()
-    {
-        return $this->view('cgv');
-    }
-
-//       /*===================== mail formulaire de contact==================================*/
-
-      function contactPost($data, $error=null)
-      {
-          $postMail = new \Projet\Models\ContactModel();
+        $postMail = new \Projet\Models\ContactModel();
   
-  
-          if (filter_var($data[':mail'], FILTER_VALIDATE_EMAIL)) {
-              $Mail = $postMail->postMail($data);
-              require 'app/Views/Front/confirmeContact.php';
-          } else {
-              header('Location: app/Views/Front/error.php');
-          }
-      }
-
-   
- 
+        if (filter_var($data[':mail'], FILTER_VALIDATE_EMAIL)) 
+        {
+            $Mail = $postMail->postMail($data);
+            require 'app/Views/Front/confirmeContact.php';
+        } 
+        else 
+        {
+            header('Location: app/Views/Front/error.php');
+        }
     }
+}
