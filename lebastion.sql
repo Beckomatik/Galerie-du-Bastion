@@ -12,6 +12,12 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+
+-- Listage de la structure de la base pour galeriedubastion
+DROP DATABASE IF EXISTS `galeriedubastion`;
+CREATE DATABASE IF NOT EXISTS `galeriedubastion` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `galeriedubastion`;
+
 -- Listage de la structure de la table galeriedubastion. admins
 DROP TABLE IF EXISTS `admins`;
 CREATE TABLE IF NOT EXISTS `admins` (
@@ -45,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `blogposts` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
--- Listage des données de la table galeriedubastion.blogposts : ~3 rows (environ)
+-- Listage des données de la table galeriedubastion.blogposts : ~4 rows (environ)
 /*!40000 ALTER TABLE `blogposts` DISABLE KEYS */;
 INSERT INTO `blogposts` (`id`, `title`, `picture`, `content`, `category`, `alt`, `created_at`) VALUES
 	(23, '      Quinze jours au Pérou', '6264ff90281c62.57557706.webp', '<p><strong>Terminal international de Tacna, P&eacute;rou</strong>. &Ccedil;a grouille de partout, je sors de l&agrave; et je me rends directement &agrave; mon h&ocirc;tel. J&rsquo;y passe trois nuits. C&rsquo;est beaucoup car en fait il n&rsquo;y a pas grand chose &agrave; faire ici. J&rsquo;ai comme l&rsquo; impression d&rsquo;&ecirc;tre le seul touriste &agrave; me promener dans la ville. Mais j&rsquo;aime bien ces moments de transitions, hors du flux mondialis&eacute;, qui me permettent de &laquo; sentir &raquo; l&rsquo;atmosph&egrave;re de ce nouveau pays. Je me r&eacute;gale dans les petits restaurants du coin. Motiv&eacute;, je repars en bus <strong>direction Arequipa!</strong></p>\r\n<p>&nbsp;</p>\r\n<p>&Ccedil;a change vraiment !! Le centre est super joli et l&rsquo;auberge vraiment cool, tenue par mama Silvia, son papa tout gentil et sa fille toute mignonne. On peut acc&eacute;der au toit et avoir une superbe vue &agrave; 360 degr&eacute;s. La vie n&rsquo;est pas cher (pour un voyageur), de quoi se laisser tenter par les nombreux restaurants (les p&eacute;ruviens sont des as de la cuisine): v&eacute;g&eacute;tariens, mexicains, turques, p&eacute;ruviens bien sur, chinois&hellip; Je trouve aussi rapidement le bon plan petit d&eacute;jeuner: une association franco-p&eacute;ruvienne, Rayo del sol, vend des croissants et des pains au chocolats. L&rsquo;argent r&eacute;colt&eacute; sert &agrave; scolariser les enfants vivant dans les quartiers d&eacute;favoris&eacute;s &agrave; l&rsquo;ext&eacute;rieur de la ville. C&rsquo;est un boulanger fran&ccedil;ais aux fourneaux et c&rsquo;est super bon! Avec Silvia je n&eacute;gocie pour aller au<span style="color: rgb(224, 62, 45);"> <strong>Colca canyon</strong></span>&nbsp;(profond de 3400 m&egrave;tres!). Je prends la formule deux jours. Un mini bus passe me prendre t&ocirc;t le matin.</p>', 'amerique du sud', 'perou randonnee machu picchu', '2022-04-25 11:31:53'),
@@ -67,20 +73,17 @@ CREATE TABLE IF NOT EXISTS `comments` (
   KEY `FK_comments_users` (`user_id`),
   CONSTRAINT `FK_comments_blogposts` FOREIGN KEY (`blogpost_id`) REFERENCES `blogposts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_comments_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
 
--- Listage des données de la table galeriedubastion.comments : ~9 rows (environ)
+-- Listage des données de la table galeriedubastion.comments : ~6 rows (environ)
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
 INSERT INTO `comments` (`id`, `blogpost_id`, `user_id`, `content`, `created_at`) VALUES
-	(56, 23, 10, 'Merci pour ce bel article qui me rappelle mon voyage en amérique du sud il y a 20 ans !', '2022-05-11 21:06:35'),
 	(57, 27, 10, 'J&#039;en rêve ! Pourvu que je puisse y aller un jour !', '2022-05-11 21:10:15'),
 	(60, 25, 10, 'Le pont de San Francisco , un incontournable :)', '2022-05-11 21:12:00'),
 	(61, 26, 6, 'De si belles régions si proche de chez nous finalement, merci de nous partager votre regard au travers de votre plume raffinée !', '2022-05-11 21:13:50'),
 	(62, 26, 11, 'Ma prochaine destination pour des randonnées dans le nord du pays ! Merci pour les infos utiles.', '2022-05-11 21:16:31'),
 	(63, 23, 11, 'Costaude la montée du Machu Picchu, bravo!', '2022-05-11 21:17:04'),
-	(72, 27, 12, 'Quelle ambiance, merci de donner un aperçu bien différent de la vision classique du &quot;Japon , entre tradition et modernité&quot;. Le Japon est bien plus que ça :)', '2022-05-13 11:55:11'),
-	(73, 25, 12, 'Le rêve américain !', '2022-05-13 12:04:33'),
-	(78, 26, 13, 'La Laponie , aussi beau en été qu&#039;en hiver !', '2022-05-13 12:18:28');
+	(72, 27, 12, 'Quelle ambiance, merci de donner un aperçu bien différent de la vision classique du &quot;Japon , entre tradition et modernité&quot;. Le Japon est bien plus que ça :)', '2022-05-13 11:55:11');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 
 -- Listage de la structure de la table galeriedubastion. contacts
