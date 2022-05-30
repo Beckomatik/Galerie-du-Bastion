@@ -7,7 +7,7 @@ class Manager
     {
         try 
         {
-            $db = new \PDO('mysql:host=localhost;dbname=galeriedubastion;charset=utf8', 'root', '');
+            $db = new \PDO('mysql:host=mysql-lecodedubastion.alwaysdata.net;dbname=lecodedubastion_galeriedubastion;charset=utf8', '250412', 'Onizuka9marin_AD');
             $db->query("SET lc_time_names = 'fr_FR'");
 
             return $db;

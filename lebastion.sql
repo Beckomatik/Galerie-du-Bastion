@@ -12,14 +12,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-
--- Listage de la structure de la base pour galeriedubastion
-DROP DATABASE IF EXISTS `galeriedubastion`;
-CREATE DATABASE IF NOT EXISTS `galeriedubastion` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `galeriedubastion`;
-
 -- Listage de la structure de la table galeriedubastion. admins
-DROP TABLE IF EXISTS `admins`;
 CREATE TABLE IF NOT EXISTS `admins` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `firstname` varchar(50) NOT NULL,
@@ -38,8 +31,32 @@ INSERT INTO `admins` (`id`, `firstname`, `lastname`, `mdp`, `email`, `created_at
 	(2, 'John', 'Doe', '$2y$10$h1yju8rahkWE27wKLpOj3.ElasgxBSbvlMRpzxoN7kGDVminChkXq', 'jane@contact.fr', '2022-03-31 10:36:37', 1);
 /*!40000 ALTER TABLE `admins` ENABLE KEYS */;
 
+-- Listage de la structure de la table galeriedubastion. users
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(50) NOT NULL,
+  `lastname` varchar(50) NOT NULL,
+  `pseudo` varchar(50) NOT NULL,
+  `mdp` varchar(255) NOT NULL,
+  `confirm_mdp` varchar(255) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+
+-- Listage des données de la table galeriedubastion.users : ~6 rows (environ)
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` (`id`, `firstname`, `lastname`, `pseudo`, `mdp`, `confirm_mdp`, `email`, `created_at`) VALUES
+	(6, 'Nellie', 'Bly', 'Nellie', '$2y$10$bvjhFNwL6hsKQqe5y.rdq..Moyatv8nGd0399zjuH8aWuBZ0FzLR.', '$2y$10$vJWYTy4mYkI.2ex.NJDdZOYOwFrhrVZ5MgwwpVLGTjm9nNq4djZz.', 'bly@contact.com', '2022-04-11 15:58:53'),
+	(9, 'Muriel', 'Knokar', 'Mumu', '$2y$10$RJGeEPLrEqMqykKFqu6eX.nMV.ooQuLeb9sXdbJ/DRQfXZbcRmgyu', '$2y$10$hB9VVvdlEYnu/9QfA7DI5edUNrDfWPPQWhMlT8hh1RloxHkhapcIe', 'mumu@contact.fr', '2022-04-15 14:23:48'),
+	(10, 'Alex', 'Honnold', 'Koala', '$2y$10$fZ/UHzIkge1x9N0rlsfHouNasHTAWRg0u/RFYHg0372WTwqH3NeOa', '$2y$10$Cqcs4DDpxO7X5Sk2oyyqyuVMjRqMjOUWA6AF7IUMpwvyr67.NRJae', 'lex@gmail.com', '2022-05-11 20:59:20'),
+	(11, 'Heather', 'Anderson', 'Hiky girl', '$2y$10$mkZuP8dSCzJ6wZ7LRc46sujmKNmT8DoQei3kMCAeei8V5rXUt8tYO', '$2y$10$9JNlI6KGUKDtxZnv8xEjP.lSSeEFO9KpxcgMQyOL95WgjVPzGxtVm', 'kyky@contact.com', '2022-05-11 21:15:26'),
+	(12, 'Zangerl', 'Babsi', 'Zangy', '$2y$10$Jh8u.bOULXhF6u5P696aa.2nlz4FQ6FO12M0QnpW2eGId89cbsPBK', '$2y$10$Z0c6IbedB3pG93OlyG.YSOsythfxzjN9WIWL/0DcEYM7b0G47NXt6', 'zaza@contact.com', '2022-05-13 11:19:46'),
+	(13, 'Jack', 'London', 'Frisco', '$2y$10$nk2QjdxawJ.uVBj5p26QH.n5dJNe0utji1.WfllXj7PT93/6tEYKG', '$2y$10$AMjVYVQVBl/bmrUbyz3JfOiTHjOkmWRVVgyxwO.4D.bzUrzX/Akdi', 'london@contact.com', '2022-05-13 12:08:35');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+
 -- Listage de la structure de la table galeriedubastion. blogposts
-DROP TABLE IF EXISTS `blogposts`;
 CREATE TABLE IF NOT EXISTS `blogposts` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
@@ -61,7 +78,6 @@ INSERT INTO `blogposts` (`id`, `title`, `picture`, `content`, `category`, `alt`,
 /*!40000 ALTER TABLE `blogposts` ENABLE KEYS */;
 
 -- Listage de la structure de la table galeriedubastion. comments
-DROP TABLE IF EXISTS `comments`;
 CREATE TABLE IF NOT EXISTS `comments` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `blogpost_id` int(11) unsigned NOT NULL,
@@ -87,7 +103,6 @@ INSERT INTO `comments` (`id`, `blogpost_id`, `user_id`, `content`, `created_at`)
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 
 -- Listage de la structure de la table galeriedubastion. contacts
-DROP TABLE IF EXISTS `contacts`;
 CREATE TABLE IF NOT EXISTS `contacts` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `fullname` varchar(50) NOT NULL,
@@ -99,14 +114,13 @@ CREATE TABLE IF NOT EXISTS `contacts` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
--- Listage des données de la table galeriedubastion.contacts : ~1 rows (environ)
+-- Listage des données de la table galeriedubastion.contacts : ~0 rows (environ)
 /*!40000 ALTER TABLE `contacts` DISABLE KEYS */;
 INSERT INTO `contacts` (`id`, `fullname`, `mail`, `phone`, `objet`, `content`, `created_at`) VALUES
 	(7, 'Yvon Chouinard', 'chouinard@gmail.com', '+339089', 'Commande Patagonia', 'Avez vous reçu le bon de commande?', '2022-04-09 15:11:39');
 /*!40000 ALTER TABLE `contacts` ENABLE KEYS */;
 
 -- Listage de la structure de la table galeriedubastion. portfolios
-DROP TABLE IF EXISTS `portfolios`;
 CREATE TABLE IF NOT EXISTS `portfolios` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `picture` varchar(500) NOT NULL,
@@ -131,31 +145,7 @@ INSERT INTO `portfolios` (`id`, `picture`, `title`, `category`, `alt`, `created_
 	(27, '627691a652edc9.38020528.jpg', 'Collines d&#039;Asie', 'nature', 'nature collines', '2022-05-07 17:35:02');
 /*!40000 ALTER TABLE `portfolios` ENABLE KEYS */;
 
--- Listage de la structure de la table galeriedubastion. users
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `firstname` varchar(50) NOT NULL,
-  `lastname` varchar(50) NOT NULL,
-  `pseudo` varchar(50) NOT NULL,
-  `mdp` varchar(255) NOT NULL,
-  `confirm_mdp` varchar(255) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
--- Listage des données de la table galeriedubastion.users : ~6 rows (environ)
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`id`, `firstname`, `lastname`, `pseudo`, `mdp`, `confirm_mdp`, `email`, `created_at`) VALUES
-	(6, 'Nellie', 'Bly', 'Nellie', '$2y$10$bvjhFNwL6hsKQqe5y.rdq..Moyatv8nGd0399zjuH8aWuBZ0FzLR.', '$2y$10$vJWYTy4mYkI.2ex.NJDdZOYOwFrhrVZ5MgwwpVLGTjm9nNq4djZz.', 'bly@contact.com', '2022-04-11 15:58:53'),
-	(9, 'Muriel', 'Knokar', 'Mumu', '$2y$10$RJGeEPLrEqMqykKFqu6eX.nMV.ooQuLeb9sXdbJ/DRQfXZbcRmgyu', '$2y$10$hB9VVvdlEYnu/9QfA7DI5edUNrDfWPPQWhMlT8hh1RloxHkhapcIe', 'mumu@contact.fr', '2022-04-15 14:23:48'),
-	(10, 'Alex', 'Honnold', 'Koala', '$2y$10$fZ/UHzIkge1x9N0rlsfHouNasHTAWRg0u/RFYHg0372WTwqH3NeOa', '$2y$10$Cqcs4DDpxO7X5Sk2oyyqyuVMjRqMjOUWA6AF7IUMpwvyr67.NRJae', 'lex@gmail.com', '2022-05-11 20:59:20'),
-	(11, 'Heather', 'Anderson', 'Hiky girl', '$2y$10$mkZuP8dSCzJ6wZ7LRc46sujmKNmT8DoQei3kMCAeei8V5rXUt8tYO', '$2y$10$9JNlI6KGUKDtxZnv8xEjP.lSSeEFO9KpxcgMQyOL95WgjVPzGxtVm', 'kyky@contact.com', '2022-05-11 21:15:26'),
-	(12, 'Zangerl', 'Babsi', 'Zangy', '$2y$10$Jh8u.bOULXhF6u5P696aa.2nlz4FQ6FO12M0QnpW2eGId89cbsPBK', '$2y$10$Z0c6IbedB3pG93OlyG.YSOsythfxzjN9WIWL/0DcEYM7b0G47NXt6', 'zaza@contact.com', '2022-05-13 11:19:46'),
-	(13, 'Jack', 'London', 'Frisco', '$2y$10$nk2QjdxawJ.uVBj5p26QH.n5dJNe0utji1.WfllXj7PT93/6tEYKG', '$2y$10$AMjVYVQVBl/bmrUbyz3JfOiTHjOkmWRVVgyxwO.4D.bzUrzX/Akdi', 'london@contact.com', '2022-05-13 12:08:35');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;

@@ -60,7 +60,7 @@ class FrontController extends Controller
         $imagesManager = new \Projet\Models\FrontModel();
         $myPics = $imagesManager->getPortfolioItems();
         $result = $myPics->fetchAll();
-        $resPath = "/app/public/Administration/img/";
+        $resPath = "./app/public/Administration/img/";
         $data=
         [
             "result" => $result,
@@ -78,7 +78,7 @@ class FrontController extends Controller
         $articleManager = new \Projet\Models\FrontModel();
         $myPosts = $articleManager->getBlogItems();
         $result = $myPosts->fetchAll();
-        $resPath = "/app/public/Administration/img/";
+        $resPath = "./app/public/Administration/img/";
         $data=
         [
             "result" => $result,
@@ -92,7 +92,7 @@ class FrontController extends Controller
         $article = new \Projet\Models\FrontModel();
         $oneArticle = $article->getArticle($id);
         $result = $oneArticle->fetch();
-        $resPath = "/app/public/Administration/img/";
+        $resPath = "./app/public/Administration/img/";
         $data=
         [
             "result" => $result,
