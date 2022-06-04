@@ -532,12 +532,12 @@ input[type=submit]{
 }
 
 .lightbox__next{
-  background: url(/app/public/Front/image/nextarrow.png) center center / 100% 100%;
+  background: url(../image/nextarrow.png) center center / 100% 100%;
   right: 0;
 }
 
 .lightbox__prev{
-  background: url(/app/public/Front/image/previousarrow.png) center center / 100% 100%;
+  background: url(../image/previousarrow.png) center center / 100% 100%;
   left: 0;
 }
 
@@ -563,7 +563,7 @@ input[type=submit]{
   width: 20px;
   height: 20px;
   border: none;
-  background: url(/app/public/Front/image/close-cross.png) center center / 100% 100% transparent;
+  background: url(../image/close-cross.png) center center / 100% 100% transparent;
   position: fixed;
   text-indent: 3000px;
   top: 20px;
@@ -596,7 +596,7 @@ input[type=submit]{
   width: 38px;
   height: 38px;
   opacity: 0.5;
-  background: url(/app/public/Front/image/loader.svg) center center no-repeat;
+  background: url(../image/loader.svg) center center no-repeat;
 }
 
 @keyframes lightboxIn{
@@ -873,6 +873,9 @@ input[type=submit]{
   }
   
   /* PORTFOLIO PAGE ************************************************************************/
+  .theGallery{
+    justify-content: space-around;
+  }
 
   .theGallery .picPortfolio{
     width: 40vw;
@@ -969,10 +972,14 @@ input[type=submit]{
   }
 
   /* PAGE PORTFOLIO ****************************************************************************/
-
+  .theGallery{
+    margin-top: 30px;
+  }
+  
   #portfolioPage .theGallery .picPortfolio{
-    width: 25vw;
-    height: 25vw;
+    width: 333px;
+    height: 333px;
+    margin: 30px 20px;
   }
 
   /* portfolio dans l'accueil ********************/

@@ -2,7 +2,7 @@
 
 <main class="container forms" id="blogAdmin">
     <div class="backToMenu">
-        <a href="/indexAdmin.php?action=dashBoard"><img src="/app/public/Administration/img/back-button.png" alt="fleche gauche"> Retour à l'accueil</a> 
+        <a href="./indexAdmin.php?action=dashBoard"><img src="./app/public/Administration/img/back-button.png" alt="fleche gauche"> Retour à l'accueil</a> 
     </div>
 
     <h1><i class="fa-solid fa-arrow-right"></i> Page blog</h1>

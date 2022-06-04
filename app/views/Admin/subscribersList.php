@@ -3,11 +3,11 @@
 <main class="container forms" id="usersList">
 
     <div class="backToMenu">
-        <a href="/indexAdmin.php?action=dashBoard" title="retour accueil"><img src="/app/public/Administration/img/back-button.png" alt="fleche gauche">
+        <a href="./indexAdmin.php?action=dashBoard" title="retour accueil"><img src="./app/public/Administration/img/back-button.png" alt="fleche gauche">
             Retour à l'accueil</a>
     </div>
 
-    <h1><img src="/app/public/Administration/img/followers.png" alt="logo user">Les utilisateurs inscrits</h1>
+    <h1><img src="./app/public/Administration/img/followers.png" alt="logo user">Les utilisateurs inscrits</h1>
     <div class="flexList">
 
         <?php foreach($datas as $data){ ?>

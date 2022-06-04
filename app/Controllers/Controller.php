@@ -26,10 +26,7 @@ class Controller
     {
         include('app/Views/Admin/' . $viewname . '.php');
     }
-    // public function errorPage()
-    // {
-    //     include('app/Views/Admin/page404.php');
-    // }
+  
    
 
 

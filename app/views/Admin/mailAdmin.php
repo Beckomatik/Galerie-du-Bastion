@@ -1,11 +1,11 @@
 <?php include ('header.php'); ?>
 
 <main class="container forms" id="mailItem">
-    <div class="backBtn"><a href="indexAdmin.php?action=mails" title="retour aux emails"><img src="/app/public/Administration/img/back-button.png"
+    <div class="backBtn"><a href="indexAdmin.php?action=mails" title="retour aux emails"><img src="./app/public/Administration/img/back-button.png"
                 alt="fleche gauche"> Retour aux emails</a></div>
     <div id="mailPage">
 
-        <h1><img src="/app/public/Administration/img/avatar.png" alt="logo avatar"><?=$datas['fullname'] ?></h1>
+        <h1><img src="./app/public/Administration/img/avatar.png" alt="logo avatar"><?=$datas['fullname'] ?></h1>
 
         <div class="oneMail">
 

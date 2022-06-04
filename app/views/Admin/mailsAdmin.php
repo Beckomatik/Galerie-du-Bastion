@@ -2,11 +2,11 @@
 
 <main class="container forms" id="mailsPage">
     <div class="backToMenu">
-        <a href="/indexAdmin.php?action=dashBoard" title="retour à l'accueil"><img src="/app/public/Administration/img/back-button.png" alt="fleche gauche">
+        <a href="./indexAdmin.php?action=dashBoard" title="retour à l'accueil"><img src="./app/public/Administration/img/back-button.png" alt="fleche gauche">
             Retour à l'accueil</a>
     </div>
 
-    <h1><img src="/app/public/Administration/img/logoemail.png" alt="logo emails"> Mes mails</h1>
+    <h1><img src="./app/public/Administration/img/logoemail.png" alt="logo emails"> Mes mails</h1>
 
     <?php foreach($datas as $data){ ?>
 

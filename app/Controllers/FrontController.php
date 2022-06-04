@@ -36,7 +36,7 @@ class FrontController extends Controller
         $imagesManager = new \Projet\Models\FrontModel();
         $myPics = $imagesManager->getPortfolioItemsHome();
         $resultPics = $myPics->fetchAll();
-        $resPath = "/app/public/Administration/img/";
+        $resPath = "./app/public/Administration/img/";
 
         $articleManager = new \Projet\Models\FrontModel();
         $myPosts = $articleManager->getBlogItemsHome();

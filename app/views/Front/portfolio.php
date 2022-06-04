@@ -4,7 +4,7 @@
 
     <h1>Portfolio</h1>
     <p>Toutes les photos ici présentes sont <strong>disponible à la vente</strong> dans différents formats</p>
-    <p><a href="/index.php?action=contact" target="_blank">Contactez-moi </a>si vous souhaitez plus d'informations&nbsp;😉
+    <p><a href="./index.php?action=contact" target="_blank">Contactez-moi </a>si vous souhaitez plus d'informations&nbsp;😉
     </p>
     
     <div class="theGallery">

@@ -17,7 +17,7 @@
                             <p>Vous avez écris : "<span><?= $allComments['content'] ?></span>"</p>
                         </div>
                         <div class="deleteComment">
-                            <a href="index.php?action=deleteComment&id=<?= $allComments['id'] ?>" title="Supprimer le commentaire"><img src="/app/public/Front/image/supprimer.png" alt="icone de corbeille supprimer">Supprimer</a>
+                            <a href="index.php?action=deleteComment&id=<?= $allComments['id'] ?>" title="Supprimer le commentaire"><img src="./app/public/Front/image/supprimer.png" alt="icone de corbeille supprimer">Supprimer</a>
                         </div>
                     </div>
                     

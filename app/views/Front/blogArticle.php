@@ -2,7 +2,7 @@
 
 <main class="forms" id="oneArticlePage">
 
-    <div class="backBtn"><a href="index.php?action=blog" title="retour au blog"><img src="/app/public/Administration/img/back-button.png"
+    <div class="backBtn"><a href="index.php?action=blog" title="retour au blog"><img src="./app/public/Administration/img/back-button.png"
                 alt="bouton de retour en arrière">Retour au blog</a></div>  
 
     <article class="myArticle">
@@ -39,7 +39,7 @@
             <div class="oneComment">
                 <p id="comName"><?= $comment['pseudo']?></p>    
                 <p id="comDate">A écrit le <?= $comment['created_at']?></p>    
-                <p id="comCom"><img src="/app/public/Front/image/straight-quotes.png" alt="guillemets de citation"><span><?= $comment['content']?></span><img src="/app/public/Front/image/straight-quotes.png" alt="guillemets de citation"></p>  
+                <p id="comCom"><img src="./app/public/Front/image/straight-quotes.png" alt="guillemets de citation"><span><?= $comment['content']?></span><img src="./app/public/Front/image/straight-quotes.png" alt="guillemets de citation"></p>  
             </div>
         
         <?php }; }  ?>

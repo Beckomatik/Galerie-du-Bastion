@@ -18,12 +18,12 @@
 
 <header id="head">
     <div id="top-bar">
-       <a href="/indexAdmin.php?action=dashBoard" title="retour accueil">La Galerie - Administration</a> 
+       <a href="./indexAdmin.php?action=dashBoard" title="retour accueil">La Galerie - Administration</a> 
     </div>
     <nav id="top-nav">
         <ul>
-            <li><a href="/" title="voir le site" target="_blank">Voir mon site</a></li>
-            <li><a href="/indexAdmin.php?action=deconnexion" title="se déconnecter">Déconnexion</a></li>
+            <li><a href="./" title="voir le site" target="_blank">Voir mon site</a></li>
+            <li><a href="./indexAdmin.php?action=deconnexion" title="se déconnecter">Déconnexion</a></li>
         </ul>
     </nav>
 </header>

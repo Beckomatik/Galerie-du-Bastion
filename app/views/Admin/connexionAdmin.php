@@ -19,7 +19,7 @@
           <input type="submit" value="Se connecter">
 
         </form>
-        <a href="/" title="retour au site"><img src="/app/public/Administration/img/back-button.png" alt="fleche retour gauche"> Retour au site</a>     
+        <a href="./" title="retour au site"><img src="./app/public/Administration/img/back-button.png" alt="fleche retour gauche"> Retour au site</a>     
     </div>
     <!-- <h2><a href="indexAdmin.php?action=createAdminPage">Création d'un compte</a></h2> -->
   </main>

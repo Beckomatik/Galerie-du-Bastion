@@ -11,7 +11,6 @@
     <p><strong>Always Data</strong></p>
     <p>91 rue du Faubourg St Honoré</p>
     <p>75008 Paris</p>
-    <p>Canada</p>
   
 
     <h2>Réalisation du site :</h2>
@@ -22,7 +21,7 @@
     <h2>Droit d’auteur – Copyright © – Droit des marques</h2>
     <p>Copyright ©Alan Nihp – Tous droits réservés.</p>
     <p>Tous les éléments (informations, données, photographies, etc.) présents sur
-        <a title="Alan Nihp, photographe indépendant en Bretagne" href="/"><strong>ce site</strong></a>,
+        <a title="Alan Nihp, photographe indépendant en Bretagne" href="./"><strong>ce site</strong></a>,
         sont protégés par les dispositions du Code de la Propriété Intellectuelle. Aucune utilisation ou diffusion ne
         peut se faire sans l’accord écrit de l’auteur. Tous les droits de reproduction sont réservés, y compris pour les représentations iconographiques et photographiques, ainsi que les contenus rédactionnels. Si vous souhaitez utiliser des images, textes ou informations, merci d’en faire la demande dans la rubrique « <a
             href="index.php?action=contact" title="Page de contact"><b>Contact</b></a> ».

@@ -3,7 +3,7 @@
     <p><a href="./"><i class="fa-brands fa-facebook-square"></i></a></p>
     <p><a href="./"><i class="fa-brands fa-instagram"></i></a></p>
     <p><a href="./"><i class="fa-brands fa-youtube"></i></a></p>
-    <p><a href="./"><i class="fa-solid fa-envelope"></i></a></p>
+    <p><a href="./index.php?action=contact"><i class="fa-solid fa-envelope"></i></a></p>
 </div>
 <div class="legal">
     <a href="index.php?action=legales" title="mentions légalese">Mentions légales</a><span>//</span><a href="index.php?action=cgv" title="conditions générales de ventes">CGV</a>

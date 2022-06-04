@@ -15,7 +15,7 @@
     </div>
 
     <div class="mepic">
-        <img src="/app/public/Front/image/auteur.jpg" alt="photo de photgraphe">
+        <img src="./app/public/Front/image/auteur.jpg" alt="photo de photographe">
     </div>
 
 </main>

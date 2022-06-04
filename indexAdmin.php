@@ -10,8 +10,13 @@ try {
     
     if (isset($_GET['action'])) 
     {
+        if ($_GET['action'] == 'connexionAdminPage') 
+        {           
+            
+            $adminController->connexionAdminPage();
+        } 
         // connexion de l'admin
-        if ($_GET['action'] == 'connexionAdmin') 
+        elseif ($_GET['action'] == 'connexionAdmin') 
         { 
             $email = htmlspecialchars($_POST['email']);
             $mdp = htmlspecialchars($_POST['mdp']);
@@ -28,7 +33,7 @@ try {
         } 
 
         // création d'un nouvel admin
-        if ($_GET['action'] == 'createAdmin') 
+        elseif ($_GET['action'] == 'createAdmin') 
         {
             $email = $_POST['email'];
             $pass = $_POST['mdp'];

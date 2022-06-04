@@ -10,7 +10,8 @@ class AdminController extends Controller
     // connexion à la page de connexion
     function connexionAdminPage()
     {
-        require 'app/views/Admin/connexionAdmin.php';
+        // require 'app/views/Admin/connexionAdmin.php';
+        return $this->viewNoAdmin('connexionAdmin');
     }
 
     // création de l'administrateur
@@ -133,7 +134,7 @@ class AdminController extends Controller
         $imagesManager = new \Projet\Models\AdminModel();
         $myPics = $imagesManager->getPortfolioItems();
         $result = $myPics->fetchAll();
-        $resPath = "/app/public/Administration/img/";
+        $resPath = "./app/public/Administration/img/";
         $data=[
             "result" => $result,
             "resPath" => $resPath
@@ -169,7 +170,7 @@ class AdminController extends Controller
         $articleManager = new \Projet\Models\AdminModel();
         $myPost = $articleManager->getBlogItems();
         $result = $myPost->fetchAll();
-        $resPath = "/app/public/Administration/img/";
+        $resPath = "./app/public/Administration/img/";
         $data=[
             "result" => $result,
             "resPath" => $resPath
@@ -200,7 +201,7 @@ class AdminController extends Controller
         $articleManager = new \Projet\Models\AdminModel();
         $myPost = $articleManager->getBlogItem($id);
         $result = $myPost->fetch();
-        $resPath = "/app/public/Administration/img/";
+        $resPath = "./app/public/Administration/img/";
         $data=
         [
             "result" => $result,
